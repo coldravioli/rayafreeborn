@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(8, 8, 22);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative; 
+    flex-direction: column; 
+}
+
+.terminal {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.terminal-text {
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 1.5;
+    border-right: 2px solid #ffffff; 
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ffffff;
+    }
+}
+
+#clear-button {
+    display: none; 
+    position: absolute; 
+    bottom: 40%;
+    left: 50%; 
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 5px;
+    background-color: #6f95ff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px 20px;
+}
+
+#clear-button:hover {
+    background-color: lightblue;
+}

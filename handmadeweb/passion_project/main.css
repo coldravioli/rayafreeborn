@@ -1,0 +1,138 @@
+h1 {
+    font-family: 'Handjet', sans-serif;
+    font-weight: 900;
+    font-size: 200px;
+    color: rgb(36, 36, 122);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    line-height: 150px;
+
+}
+
+h2 {
+    font-family: 'Handjet', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #555; 
+    text-align: center;
+    margin-top: 10px;
+}
+
+.p1 {
+    font-family: 'Handjet', sans-serif;
+    background-color: #f4f4f4;
+    font-size: 400%;
+    margin-bottom: 60px;
+    display: flex;
+    gap: 40px;
+    position: relative;
+    align-self: center;
+}
+
+body {
+    background-image: url('bubbles.gif');
+    background-size: cover;           
+    background-position: center;      
+    background-repeat: no-repeat;     
+    background-attachment: fixed;     
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.movement p{
+    display: inline-block;
+    background-color: rgb(96, 152, 170);
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    animation: slide-right 13.2s linear infinite;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.movement{
+    background-color: rgb(96, 152, 170);
+    width:100%;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+@keyframes slide-right{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.sticky {
+    background:lightblue;
+    position: sticky;
+    top: 10px;
+    align-self: center;
+    width: 415px;
+    justify-content: center;
+    border: white dotted;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px; 
+    width: 80%;
+    max-width: 1200px; 
+    padding: 40px;
+    margin: 0 auto;
+    align-items: center; 
+}
+.grid-item {
+    overflow: hidden; 
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.label {
+    font-family: 'Handjet', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    color: rgb(36, 36, 122);
+    text-align: center;
+}
+
+.sale::after {
+    content: "50% OFF";
+    display: block;
+    position: relative;
+    top: 110px;
+    left: 50%;
+    width: 60px;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(255, 0, 0, 0.491);
+    padding: 6px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.soldOut::after{
+    content: "SOLD OUT";
+    display: block;
+    position: relative;
+    top: 80px;
+    left: 50%;
+    width: 60px;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.539);
+    padding: 6px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}

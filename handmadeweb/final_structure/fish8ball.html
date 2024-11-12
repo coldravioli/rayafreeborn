@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish 8 Ball</title>
+    <link rel="icon" type="image/x-icon" href="uglystar.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="8ball.css">
+</head>
+<body>
+    <embed src="path/to/your/bubble-music.mp3" loop="true" autostart="true" width="2" height="0">
+        <div class="container">
+        <h2></h2>
+        <div id="fish-container"></div>
+        <input type="text" id="question-input" placeholder="Start Typing...">
+        <button id="ask-button"></button>
+    </div>
+
+    <script>
+        const fishImages = [
+            'fish1.jpg',
+            'fish2.jpg',
+            'fish3.jpg',
+            'fish4.jpg',
+            'fish5.jpg',
+            'fish6.jpg',
+            'fish7.jpg',
+            'fish8.jpg',
+            
+        ];
+
+        document.getElementById('ask-button').onclick = function() {
+            addFish();
+        };
+
+        document.getElementById('question-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addFish();
+                event.preventDefault();
+            }
+        });
+
+        function addFish() {
+            const fishContainer = document.getElementById('fish-container');
+            const randomIndex = Math.floor(Math.random() * fishImages.length);
+            const fishImage = fishImages[randomIndex];
+            
+            const fish = document.createElement('img');
+            fish.src = fishImage;
+            fish.alt = 'Fish';
+            fish.classList.add('draggable-fish');
+            
+            fish.style.position = 'absolute';
+            fish.style.top = Math.random() * (window.innerHeight - 100) + 'px'; 
+            fish.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            
+            fishContainer.appendChild(fish);
+            makeDraggable(fish);
+        }
+
+        function makeDraggable(fish) {
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            fish.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - fish.getBoundingClientRect().left;
+                offsetY = e.clientY - fish.getBoundingClientRect().top;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    fish.style.left = (e.clientX - offsetX) + 'px';
+                    fish.style.top = (e.clientY - offsetY) + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        }
+    </script>
+</body>
+</html>
