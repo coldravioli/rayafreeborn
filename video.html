@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wii Play Fishing</title>
+    <link rel="icon" type="image/x-icon" href="king.png">
+    <link rel="stylesheet" href="video.css">
+
+</head>
+<body>
+
+
+<video width="100%" height="100%" autoplay muted>
+      <source src="meowsadface.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <button onclick="unmuteVideo()">Unmute Video</button>
+
+    <script>
+        function unmuteVideo() {
+          var video = document.getElementById('meowsadface');
+          video.muted = false;
+        }
+      </script>
+    
+    </body>
+</html>
