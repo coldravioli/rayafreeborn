@@ -1,5 +1,74 @@
-* {
-  box-sizing: border-box;
+body {
+  background-color: pink
+   }
+
+ table.clear {
+ border:0px solid RGB(0,0,0,1);
+ margin-left:auto; 
+ margin-right:auto;
+ background-color: RGB(0,0,0,0);
+  }
+
+ .invert:hover{
+   filter: invert(100%);
+ }
+
+ .shitfuck:hover{
+   filter: brightness(110%) blur(1.5px);
+ }
+
+ .middleshitfuck:hover{
+   filter: brightness(90%) blur(1px);
+ }
+
+ .invert:hover{
+   filter: invert(100%);
+ }
+
+ .middleinvert:hover{
+   filter: invert(100%);
+ }
+
+ img.middle{
+ display: block;
+ margin-left:auto; 
+ margin-right:auto;
+ }
+
+ img.middleinvert{
+ display: block;
+ margin-left:auto; 
+ margin-right:auto;
+ }
+
+ img.middleshitfuck{
+ display: block;
+ margin-left:auto; 
+ margin-right:auto;
+ }
+
+ p {
+ text-align: center; color:#000000;
+ }
+
+ h4 {
+ text-align: center; color:black;
+ }
+
+ h3 {
+ text-align: center; color:black;
+ }
+
+a:hover {
+  font-size: 14px;
+  color:#ffde06;
+}
+
+li {
+  font-size: 14px;
+  font-family: "Positive System";
+  max-width: 900px;
+  color: 0a3c5e;
 }
 
 body {

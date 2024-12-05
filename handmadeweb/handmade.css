@@ -2,6 +2,36 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-family: "LEDLIGHT";
+  font-size: 120%;
+}
+
+a:hover {
+  font-size: 14px;
+  color:#ffde06;
+}
+
+li {
+  font-size: 14px;
+  font-family: "Positive System";
+  max-width: 900px;
+  color: 0a3c5e;
+}
+
+
 img {
   max-width: 100%
+}
+body {
+  /* background-color: rgb(239, 236, 233); */
+  background-color: #95d6f6;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 10px;
+    color:#230862;
+    background-image: url('bubbles.gif');
+    background-size: cover;           
+    background-position: center;      
+    background-repeat: no-repeat;     
+
 }
