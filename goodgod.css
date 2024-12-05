@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+body {
+    background-color: white
+}
+
+table.clear {
+    border:0px solid RGB(0,0,0,1);
+    margin-left:auto; 
+    margin-right:auto;
+    background-color: RGB(0,0,0,0);
+}
+
+.invert:hover{
+  filter: invert(100%);
+}
+
+.foods:hover{
+  filter: brightness(110%) blur(1.5px);
+}
+
+.middlefoods:hover{
+  filter: brightness(90%) blur(1px);
+}
+
+.invert:hover{
+  filter: invert(100%);
+}
+
+.middleinvert:hover{
+  filter: invert(100%);
+}
+
+img.middle{
+    display: block;
+    margin-left:auto; 
+    margin-right:auto;
+    height: 200px;
+}
+img.middleinvert{
+    display: block;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+img.middlefoods{
+    display: block;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+p {
+    text-align: center; color:#000000;
+}
+
+h4 {
+    text-align: center; color:black;
+}
+
+h3 {
+    font-family: d;
+    text-align: center; color:black;
+}
+
+* {
+    margin:0;
+    padding:0
+}
+
+body { 
+padding:20px 10px 
+}
+a img {
+display:block;
+border:none;
+}
+.outer {
+width:480px;
+height:50px;
+margin:auto;
+border:0px solid #000;
+position:relative;/* stacking context*/
+}
+.image-holder {
+float:right;
+margin:6px 10px 10px 0;
+width:400px;
+height:200px;
+border:0px solid #000;
+padding:1px;
+position:relative;
+z-index:1;
+display:block;
+}
+ul.links {
+list-style:none;
+}
+.links li {
+}
+.links li a {
+display:block;
+width:90px;
+padding:2px;
+text-decoration:none;
+}
+.links li a span, .links li a b { /*dont touch these*/
+position:absolute;
+right:24px;
+top:-999em;
+width:300px;
+height:300px;
+z-index:2;
+}
+.links li a span img {
+display:block;
+margin:0 0 5px
+}
+.links li a:hover, .links li.over a {
+visibility:visible;
+}
+.links li a:hover span, .links li.over a span {top:-77px; left:-440px;}/*second tv position*/
+.links li a:hover b, .links li.over a b {
+top:500px;
+left:0px;
+height:auto;
+}
+a:link {
+color: white;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:visited {
+color: white;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+color: lightgrey;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+color: purple;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.wazzup {
+list-style: none;}
+
+.wazzup:hover{
+  cursor: pointer;
+}
+
+.mouseMovement {
+    background-color: transparent;
+    position: fixed;
+    z-index: 100;
+    display:flex;
+    flex-wrap: wrap;
+  }
+  
+  .square {
+    width: 40px;
+    height: 40px;
+    background-image: url("https://icon-library.com/images/fire-icon-free/fire-icon-free-1.jpg");
+    background-size: cover;
+    opacity: 0;
+  }
+  
+  .square:hover {
+    opacity: 1;
+  }
+
+  /* .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  } */
+
+  ul.links {
+    display: flex;
+    justify-content: space-between; 
+    padding: 0; 
+    list-style-type: none; 
+    height: 100px;
+  }
+  
+  ul.links li {
+    margin: 0 0px;
+  }
+
+  .menu-bar {
+    background-color: #ffffff00;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .menu-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .menu-bar ul li {
+    flex: 1;
+  }
+  
+  .menu-bar ul li a {
+    font-family: 'Silkscreen', monospace;
+    display: block;
+    color: rgb(20, 131, 151);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .menu-bar ul li a:hover {
+    background-color: #57575707;
+    border-radius: 10px;
+  }
+  
+  .content {
+    margin-top: 50px; /* Adjust to avoid overlapping with the fixed menu */
+    padding: 20px;
+  }

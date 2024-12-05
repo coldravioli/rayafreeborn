@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 h1 {
     font-family: 'Handjet', sans-serif;
     font-weight: 900;
@@ -11,7 +13,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Handjet', sans-serif;
+    font-family: 'Silkscreen', monospace;
     font-weight: 400;
     font-size: 30px;
     color: #555; 
@@ -31,7 +33,7 @@ h2 {
 }
 
 body {
-    background-image: url('bubbles.gif');
+    background-image: url('aaaaapastel.png');
     background-size: cover;           
     background-position: center;      
     background-repeat: no-repeat;     
@@ -50,7 +52,7 @@ body {
     margin: 0;
     white-space: nowrap;
     animation: slide-right 13.2s linear infinite;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Silkscreen', monospace;
     color: white;
 }
 
