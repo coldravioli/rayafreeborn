@@ -58,7 +58,7 @@ h4 {
 }
 
 h3 {
-    font-family: d;
+    font-family: 'Silkscreen', monospace;
     text-align: center; color:black;
 }
 
@@ -247,6 +247,8 @@ list-style: none;}
   }
   
   .content {
-    margin-top: 50px; /* Adjust to avoid overlapping with the fixed menu */
+    margin-top: 50px;
     padding: 20px;
   }
+
+  
