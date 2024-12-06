@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Ballet:opsz@16..72&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Silkscreen:wght@400;700&display=swap');
 
 h1 {
-    font-family: "Ballet", sans-serif;
+    font-family: 'Handjet', sans-serif;
     font-weight: 900;
     font-size: 200px;
     color: rgb(36, 36, 122);
@@ -12,6 +12,10 @@ h1 {
     margin-bottom: 60px;
     line-height: 150px;
 
+}
+
+b {
+    font-family: 'Ballet', monospace;
 }
 
 h2 {
