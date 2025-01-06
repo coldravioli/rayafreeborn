@@ -352,9 +352,10 @@ img {
 
 
 .profile img{
-     max-width: 30vw;
+     max-width: 50vw;
      max-height:auto;
      border-radius: 20px;
+     padding-bottom: 20px;
    }
 
    hr {
@@ -362,6 +363,17 @@ img {
     border: 0;
     border-top: 1px solid #74b0968b;
     margin: 20px auto;
+   }
+
+   .project img{
+
+    margin-bottom: 50px;
+    padding-bottom: 20vh;
+    margin-top: -15vh
+   }
+
+   .meow img{
+    margin-bottom: 14vh;
    }
 
 
