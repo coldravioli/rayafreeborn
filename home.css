@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Ballet:opsz@16..72&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Silkscreen:wght@400;700&display=swap");
+
 
 * {
     box-sizing: border-box;
@@ -8,15 +10,15 @@ body {
     background-color: white(255, 255, 255);
 }
 
-img {
-    max-width: 100%
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
-  }
   
   /* Create four equal columns that sits next to each other */
   .column {
@@ -32,18 +34,26 @@ img {
   }
   
   /* Responsive layout - makes a two column-layout instead of four columns */
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1200px) {
     .column {
-      flex: 50%;
-      max-width: 50%;
+      flex: 30%;
+      max-width: 30%;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .column {
+      flex: 45%;
+      max-width: 45%;
     }
   }
   
+  
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800) {
     .column {
-      flex: 100%;
-      max-width: 100%;
+      flex: 50%;
+      max-width: 50%;
     }
   }
 
@@ -188,4 +198,215 @@ img {
       width: 100%;
       text-align: left;
     }
+  }
+
+  .haleypic img{
+    max-width: 30vw;
+    max-height:auto;
+    border-radius: 30px;
+  }
+
+.lato-thin {
+    font-family: "Lato", serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .lato-light {
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  o-bold {
+    font-family: "Lato", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-black {
+    font-family: "Lato", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .lato-thin-italic {
+    font-family: "Lato", serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .lato-bold-italic {
+    font-family: "Lato", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .lato-black-italic {
+    font-family: "Lato", serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+
+h1{
+    font-size: 70px;
+    position: relative;
+    font-family: "Lato-lack";
+  }
+
+p{
+    font-family: karla;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+  img.center{
+    position:absolute;
+    z-index:-1;
+  }
+
+  #container {
+    background-image:url(mountains.png);
+    background-position:center;
+    position: relative;
+    width:700px;
+    height:400px;
+    z-index: -1;
+}
+
+.img-with-text {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-top: 1%;
+    height: auto;
+    padding-bottom: 35vh;
+}
+
+.img-with-text img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+.img-with-text h1 {
+    position: absolute;
+    top: -8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 8, 26); 
+    /* background-color: rgba(0, 0, 0, 0.5);  */
+    /* padding: 10px;  */
+    font-size: 10vw;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8vw;
+    margin: 15%;
+    margin-top: 0;
+   }
+
+   .threecontainer {
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8vw;
+    margin: 10%;
+    margin-top: 10px;
+   }
+   
+    */
+   h1.text {
+     font-size: 10vw;
+     /* text-align: center; */
+   }
+
+
+.profile img{
+     max-width: 30vw;
+     max-height:auto;
+     border-radius: 20px;
+   }
+
+   hr {
+    width: 70%;
+    border: 0;
+    border-top: 1px solid #74b0968b;
+    margin: 20px auto;
+   }
+
+
+   .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #11111196;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Silkscreen', monospace;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    font-family: 'Silkscreen', monospace;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
   }
