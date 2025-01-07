@@ -365,6 +365,10 @@ img {
     margin: 20px auto;
    }
 
+   .longer hr{
+    width: 90%;
+   }
+
    .project img{
 
     margin-bottom: 50px;
