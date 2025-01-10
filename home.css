@@ -410,9 +410,9 @@ img {
    }
 
 .sidenav a {
-  padding: 6px 8px 6px 16px;
+  padding: 3px 1px 6px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
   color: #d1d9e8;
   display: block;
   font-family: 'lato';
@@ -495,4 +495,40 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.css1{
+  /* background-color:yellow; */
+  font-size:50px;
+  font-family: "lato";
+  font-style:italic;
+  font-weight:bold;
+  color:rgba(0, 0, 0, 0.356);
+  /* text-shadow: 2px 2px 8px #FF0000; */
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.css2{
+  color:blue;
+  background-color:lightpink;
+  font-size:30px;
+  font-family: Leelawadee UI Semilight;
+  font-style:italic;
+  font-weight:600;
+  letter-spacing: 3px;
+}
+
+.css3{
+  background-color:rgb(159, 233, 243);
+  border: 5px solid;
+  border-radius: 10px;
+}
+
+.css4{
+  color:rgb(146, 3, 101);
+  font-style: italic;
+  font-family: Georgia;
+  font-weight:bold;
+  word-spacing:2px;
 }
