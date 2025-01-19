@@ -303,11 +303,17 @@ body {
   }
 
 
-h1{
-    font-size: 70px;
+  h1 {
+    font-size: 10vw; /* Default for small viewports */
     position: relative;
     font-family: "Lato-lack";
-  }
+}
+
+@media (min-width: 970px) {
+    h1 {
+        font-size: 5vw; /* Fixed size for medium+ screens */
+    }
+}
 
 p{
     font-family: karla;
@@ -451,10 +457,11 @@ img {
 }
 
 .main {
-  margin-left: 160px; /* Same width as the sidebar + left position in px */
+  margin-left: 185px; /* Same width as the sidebar + left position in px */
   font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  padding: 0px 15px;
   padding-left: 10px;
+  width: auto;
 }
 
 @media screen and (max-height: 450px) {
