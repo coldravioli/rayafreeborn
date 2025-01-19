@@ -550,8 +550,8 @@ img {
 }
 
 #bg-video {
-  position: fixed;
-  top: 20%;
+  position: absolute;
+  top: 12vh;
   left: 53%;
   /* transform: translate(-50%, -50%); */
   width: 20vw;
