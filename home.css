@@ -315,6 +315,18 @@ body {
     }
 }
 
+h2 {
+  font-size: 3vw; /* Default for small viewports */
+  position: relative;
+  /* font-family: "Lato-lack"; */
+}
+
+@media (min-width: 970px) {
+  h2 {
+      font-size: 2vw; /* Fixed size for medium+ screens */
+  }
+}
+
 p{
     font-family: karla;
     font-size: 1.5vw;
