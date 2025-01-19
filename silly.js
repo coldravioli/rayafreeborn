@@ -33,4 +33,11 @@ function updateCarousel() {
 // Automatically rotate every 3 seconds
 setInterval(showNextItem, 5000);
 
-
+function tinyMenu() {
+  var navigation = document.getElementById("mainNav");
+  if (navigation.className === "navigation") {
+    navigation.className += " responsive";
+  } else {
+    navigation.className = "navigation";
+  }
+}
