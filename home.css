@@ -231,6 +231,17 @@ body {
     max-height: 100%;
 }
 
+#bg-video {
+  position: absolute;
+  top: 150px;
+  left: 53%;
+  /* transform: translate(-50%, -50%); */
+  width: 20vw;
+  height: auto;
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays behind other content */
+}
+
 .lato-thin {
     font-family: "Lato", serif;
     font-weight: 100;
@@ -493,7 +504,7 @@ img {
   .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* Aspect ratio: 16:9 */
+    padding-bottom: 100%; /* Aspect ratio: 16:9 */
     height: 0;
     overflow: hidden;
 }
@@ -556,15 +567,4 @@ img {
 
 .grow img {
   animation: grow 2s ease-in-out infinite; /* 2 seconds duration, ease-in-out, infinite loop */
-}
-
-#bg-video {
-  position: absolute;
-  top: 12vh;
-  left: 53%;
-  /* transform: translate(-50%, -50%); */
-  width: 20vw;
-  height: auto;
-  object-fit: cover;
-  z-index: -1; /* Ensure the video stays behind other content */
 }
