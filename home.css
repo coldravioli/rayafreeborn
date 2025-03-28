@@ -444,12 +444,12 @@ img {
   left: 10px;
   background: #00000000;
   overflow-x: hidden;
-  padding: 8px 0;
+  padding: 2px 0;
   font-family: "Lato-black";
    }
 
 .sidenav a {
-  padding: 3px 1px 6px 16px;
+  padding: 3px 1px 1px 16px;
   text-decoration: none;
   font-size: 15px;
   color: #d1d9e8;
