@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="design.css">
+  <title>Advertisements</title>
+</head>
+
+<style>
+    body {
+      background-color: #1b1b1b;
+      color: white;
+    }
+
+    a {
+        color: white !important;
+    }
+    
+    a.active {
+        color: red !important;
+    }
+
+    /* .accordion {
+        color: white !important;
+    } */
+
+    a:hover {
+        color: red !important;
+        transition: color 0.4s ease-in-out, background-color 0.4s ease;
+    }
+</style>
+<body>
+
+    <div class="rayaMenu">
+        <a href="https://rayafreeborn.com/">
+            <img src="rayaname.png" alt="GitHub Link">
+          </a>
+    </div>
+
+    <div class="topMenu">
+        <div class="dropdown">
+            <button class="dropbtn active-btn">PORTFOLIO</button>
+            <div class="dropdown-content">
+              <a href="design.html">DESIGNS</a>
+              <a href="ad.html">ADS</a>
+            </div>
+          </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">CONTACT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
+              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>      
+
+          <a href="resume.html">RÉSUMÉ</a><br>
+
+          <a href="about.html">ABOUT</a>
+
+        </div>
+
+    <div class= page-af>
+    <div id="navbar">
+      <a href="ads.html">
+        <h1>ADVERTISING</h1>
+      </a>
+        <button class="accordion">INFORMATION +</button>
+        <div class="panel about-text">
+            <p>Advertisements! Recently, in my new minor I've been messing around with advertising and copywriting, which has been incredibly fun.</p>
+            <p>It expands when clicked and collapses when clicked again.</p>
+        </div>
+    
+        <button class="accordion">ABOUT +</button>
+        <div class="panel about-text">
+            <p>Advertisements! Recently, in my new minor I've been messing around with advertising and copywriting, which has been incredibly fun.</p>
+            <p>It expands when clicked and collapses when clicked again.</p>
+        </div>
+
+        <br>
+
+    <div class="sticky">
+        <a href="absurd.html">Absurd Snacks</a>
+        <a href="tinyhomes.html">Tiny Homes Campaign</a>
+        <a href="tylenol.html">Tylenol Campaign</a>
+    </div>
+      </div>
+      
+      <script type="module">
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+      
+        new bubbleCursor();
+      </script>
+
+      <script>
+const accordions = document.querySelectorAll(".accordion");
+
+accordions.forEach((accordion) => {
+  const panel = accordion.nextElementSibling;
+
+  accordion.addEventListener("click", () => {
+    const isActive = accordion.classList.contains("active") || accordion.classList.contains("active2");
+
+    if (isActive) {
+      // Collapse
+      accordion.classList.remove("active", "active2");
+      panel.classList.remove("open");
+    } else {
+      // Activate clicked
+      accordion.classList.add("active");
+      accordion.classList.remove("active2");
+      panel.classList.add("open");
+
+      // Make other open ones blue
+      accordions.forEach((acc) => {
+        if (acc !== accordion && (acc.classList.contains("active") || acc.classList.contains("active2"))) {
+          acc.classList.remove("active");
+          acc.classList.add("active2");
+          acc.nextElementSibling.classList.add("open");
+        }
+      });
+    }
+  });
+});
+      </script>
+
+
+<div class="main-content">
+    <div class="row main">
+      <!-- Column 1 -->
+       
+      <div class="column">
+
+        <a href="absurd.html">
+            <img src="ads/absurd/stickers!.png" alt="Better">
+          </a>
+        <a href="tylenol.html">
+            <img src="ads/tylenol/PackingAd2.jpg" alt="Guide">
+          </a>
+        <a href="absurd.html">
+          <img src="ads/absurd/totebags2.png" alt="Better">
+        </a>
+
+
+      </div>
+  
+      <!-- Column 2 -->
+      <div class="column">
+        <a href="absurd.html">
+          <img src="ads/absurd/packages3.png" alt="Better">
+        </a>
+
+        <a href="absurd.html">
+            <img src="ads/absurd/totebags1.png" alt="Better">
+          </a>
+
+          <a href="tinyhomes.html">
+            <img src="ads/clever/CleverTinyHomesAd1.jpg" alt="Bones">
+          </a>
+
+      </div>
+  
+      <!-- Column 3 -->
+      <div class="column">
+
+        <a href="tylenol.html">
+          <img src="ads/tylenol/PackingAd3.jpg" alt="Map Meow">
+        </a>
+        
+        <a href="absurd.html">
+          <img src="ads/absurd/waterbottle.png" alt="Better">
+        </a>
+      </div>
+  
+      <!-- Column 4 -->
+      <div class="column">
+        <a href="tylenol.html">
+          <img src="ads/tylenol/TylenolAdTentRevised.jpg" alt="Game Case">
+        </a>
+
+        <a href="absurd.html">
+            <img src="ads/absurd/set1.png" alt="Better">
+          </a>
+
+        <a href="tinyhomes.html">
+          <img src="ads/clever/CleverTinyHomesAd2.jpg" alt="Cycle">
+        </a>
+        
+      </div>
+  
+      <!-- Column 5 -->
+      <div class="column">
+        <a href="tinyhomes.html">
+          <img src="ads/clever/CleverTinyHomesAd3.jpg" alt="Salt">
+        </a>
+
+
+        <a href="absurd.html">
+            <img src="ads/absurd/packages2.png" alt="Better">
+          </a>
+      </div>
+    </div>
+  </div>
+  
+  
+
+<a href="https://github.com/coldravioli" target="_blank">
+    <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
+  </a>
+
+</body>
+</html>

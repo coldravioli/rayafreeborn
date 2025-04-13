@@ -436,9 +436,9 @@ img {
    }
 
 
-   .sidenav {
-  width: 200px;
-  position: fixed;
+  .sidenav {
+  width: 50vh;
+  position: absolute;
   z-index: 1;
   top: 100px;
   left: 10px;

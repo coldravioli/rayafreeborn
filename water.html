@@ -1,164 +1,169 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Portfolio
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="home.css">
-        <link rel="stylesheet" href="about.css">        
-        <link rel="fav icon" type="image/x-icon" href="basket.png">
-        <script src="silly.js" defer></script>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="design.css">
+  <title>Designs</title>
+</head>
 
+<style>
+    body {
+        background-color: #1b1b1b;
+        color: white;
+    }
 
-        <style>
-          body{
-            background-color: #1b1b1b;
-          }
-          p {
-            color: white;
-          }
-          h1 {
-           color: white;
-           }
-          h2 {
-            color: white;
-            }
-        </style>
+    a {
+        color: white !important;
+    }
+    
+    a.active {
+        color: red !important;
+    }
 
+    /* .accordion {
+        color: white !important;
+    } */
 
-        <div class="topnav" id="myTopnav">
-            <a href="https://rayafreeborn.com/">Home</a>
-            <!-- <a href="resume.html">Resume</a> -->
-            <a href="portfolio.html" class="active">Portfolio</a>
-            <div class="dropdown">
-              <button class="dropbtn">Contact
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                <!-- <a href="#">Email</a> -->
-                <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LinkedIn</a>
-                <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">Instagram</a>
-              </div>
+    a:hover {
+        color: red !important;
+        transition: color 0.4s ease-in-out, background-color 0.4s ease;
+    }
+</style>
+<body>
+
+    <div class="rayaMenu">
+        <a href="https://rayafreeborn.com/">
+            <img src="rayaname.png" alt="GitHub Link">
+          </a>
+    </div>
+
+    <div class="topMenu">
+        <div class="dropdown">
+            <button class="dropbtn active-btn">PORTFOLIO</button>
+            <div class="dropdown-content">
+              <a href="design.html">DESIGNS</a>
+              <a href="ads.html">ADS</a>
+              <!-- <a href="photos.html">PHOTOS</a> -->
+
             </div>
-            <a href="about.html">About</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
           </div>
 
+        <div class="dropdown">
+            <button class="dropbtn">CONTACT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
+              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>      
 
-        
-    </head>
+          <a href="resume.html">RÉSUMÉ</a><br>
 
-    <body>
+          <a href="about.html">ABOUT</a>
 
-      <!-- <div id="splash-screen">
-        <img src="bubbles.gif" alt="SpongeBob Splash Screen">
-    </div> -->
+        </div>
 
+    <div class= page-af>
+    <div id="navbar">
+      <a href="design.html">
+        <a href="design.html">
+          <h1>DESIGNS</h1>
+        </a>        </a>  
 
+        <button class="accordion">INFORMATION +</button>
+        <div class="panel about-text">
+            <p>Advertisements! Recently, in my new minor I've been messing around with advertising and copywriting, which has been incredibly fun.</p>
+            <p>It expands when clicked and collapses when clicked again.</p>
+        </div>
+    
+        <button class="accordion">ABOUT +</button>
+        <div class="panel about-text">
+            <p>Advertisements! Recently, in my new minor I've been messing around with advertising and copywriting, which has been incredibly fun.</p>
+            <p>It expands when clicked and collapses when clicked again.</p>
+        </div>
 
+        <br>
 
-      <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-        <a href="tinyhomes.html">Clever Tiny Homes Campaign</a><br>
-        <a href="tylenol.html">Tylenol Campaign</a><br>
-        <a href="bones.html">BONES!</a><br>
-        <a href="digest.html">The Eater's Digest</a><br>
-        <a href="food.html">Food for Thought</a><br>
-        <a href="guide.html">Field Guide</a><br>
-        <a href="cycle.html">Cycle</a><br>
-        <a href="angular.html">Angular</a><br>
-        <a href="water.html" class="sideactive">Fish Out of Water</a><br>
-        <a href="bleu.html">bleu</a><br>
+    <div class="sticky">
+        <a href="bones.html">BONES!</a>
+        <a href="digest.html">The Eater's Digest</a>
+        <a href="food.html">Food for Thought</a>
+        <a href="guide.html">Field Guide</a>
+        <a href="cycle.html">Cycle</a>
+        <a href="angular.html">Angular</a>
+        <a href="water.html" class="active">Fish Out of Water</a>
+
+        <br>
         <!-- <a href="florence.html">Florence Study Abroad</a><br> -->
         <!-- <a href="https://haleyfreeborn.com/"target="_blank">Website Project</a><br> -->
-        <a href="handmadeweb/lockscreen/index.html"target="_blank">Screen Saver Website</a><br>
-        <a href="handmadeweb/pizza2/index.html"target="_blank">Pizza Website</a><br>
+        <a href="handmadeweb/lockscreen/index.html"target="_blank">Screen Saver Website</a>
+        <a href="handmadeweb/pizza2/index.html"target="_blank">Pizza Website</a>
         <!-- <a href="https://freebornra9ad2.myportfolio.com/"target="_blank">Art Foundations '22-'23</a> -->
-        <a href="red.html">Red</a><br>
-        <a href="maw.html">Make a Wish</a><br>
-
-        <!-- class="sideactive" -->
-
-
+    </div>
       </div>
       
-      <!-- <div id="main">
-        <span style="color: white;font-size:30px;font-family: 'Silkscreen', monospace;cursor:pointer" onclick="openNav()">Menu</span>
-      </div> -->
+      <script type="module">
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
       
-      <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-      }
-      
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft= "0";
-      }
+        new bubbleCursor();
       </script>
 
-<a href="https://github.com/coldravioli" target="_blank">
-  <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:5px;" alt="GitHub Link">
-</a>
+      <script>
+const accordions = document.querySelectorAll(".accordion");
+
+accordions.forEach((accordion) => {
+  const panel = accordion.nextElementSibling;
+
+  accordion.addEventListener("click", () => {
+    const isActive = accordion.classList.contains("active") || accordion.classList.contains("active2");
+
+    if (isActive) {
+      // Collapse
+      accordion.classList.remove("active", "active2");
+      panel.classList.remove("open");
+    } else {
+      // Activate clicked
+      accordion.classList.add("active");
+      accordion.classList.remove("active2");
+      panel.classList.add("open");
+
+      // Make other open ones blue
+      accordions.forEach((acc) => {
+        if (acc !== accordion && (acc.classList.contains("active") || acc.classList.contains("active2"))) {
+          acc.classList.remove("active");
+          acc.classList.add("active2");
+          acc.nextElementSibling.classList.add("open");
+        }
+      });
+    }
+  });
+});
+      </script>
 
 
-<a href="https://github.com/coldravioli" target="_blank">
-  <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:5px;" alt="GitHub Link">
-</a>
-
-      <!-- <div class="threecontainer">
-        <div class="haleypic ">
-          <img src="scans/cover-food.jpg">
-        </div>
-        <div class="haleypic ">
-          <img src="scans/bones.jpg">
-        </div>
-        <div class="haleypic ">
-          <img src="scans/eater-cover.jpg">
-        </div>
-        <div class="haleypic ">
-          <img src="scans/cover-food.jpg">
-        </div>
-      </div> -->
-
-
-      <div class="container main">
+      <div class="main-content">
         <div class="text ">
-          <h1 class="lato-thin">Fish Out of Water</h1>
-          <p>
-            2023
+          <h2>Fish Out of Water</h2>
+       <h3>2024</h3>
 <br><br>
-
+<p>
 Developed an index cataloging over 200 legendary and rare fish from video games. 
 <br><br>
 Link to the spreadsheet <a href="https://docs.google.com/spreadsheets/d/1uYSkn0PM50S6RK8tAJ9MfUjVDBIty4xJgKcH7MLvZ6w/edit?usp=sharing" target="_blank">here</a>.
 </p>
 
-      </div>
 </div>
-      <div class="main haleypic">
-        <img src="scans2/gamecase.png">
+<div class="column main yumfull">
+  <img src="scans2/gamecase.png">
 
-          <!-- Add more carousel items here -->
-        </div>
-      <!-- </div>
-      </div>
-      <div class="row main">
-        <div class="column yumhalf">
-          <img src="scans2/salt.png">
-          <img src="scans2/sag.png">
-          <img src="scans2/ate.png">
-          <img src="scans2/digest.png">
+</div>
+</div>
 
-        </div>
-        <div class="column yumhalf">
-          <img src="scans2/Betterr.png">
-          <img src="scans2/inside.png">
-          <img src="scans2/sugar.png">
-          <img src="scans2/!.png">
-        </div>
-      </div>     -->
+        <a href="https://github.com/coldravioli" target="_blank">
+          <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
+        </a>
+        
     </body>
 
 </html>
