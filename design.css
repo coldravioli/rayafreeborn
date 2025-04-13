@@ -384,3 +384,75 @@ h2 {
     padding: 1vw;
     box-sizing: border-box;
   }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Aspect ratio: 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#bg-video {
+    position: absolute;
+    top: 150px;
+    left: 53%;
+    /* transform: translate(-50%, -50%); */
+    width: 20vw;
+    height: auto;
+    object-fit: cover;
+    z-index: -1; /* Ensure the video stays behind other content */
+  }
+
+  @keyframes grow {
+    0% {
+        transform: scale(1); /* Original size */
+    }
+    50% {
+        transform: scale(1.2); /* Grow to 120% of the original size */
+    }
+    100% {
+        transform: scale(1); /* Return to the original size */
+    }
+  }
+  
+  .grow img {
+    animation: grow 2s ease-in-out infinite; /* 2 seconds duration, ease-in-out, infinite loop */
+  }
+
+  .img-with-text {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100vw;
+    height: 100%; 
+    padding-bottom: 35vh;
+  }
+  
+  .img-with-text img {
+    width: 80%; /* Adjust the size of the image */
+    height: auto;
+  }
+  
+  .img-with-text h1 {
+      position: absolute;
+      top: -8%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgb(0, 8, 26); 
+      /* background-color: rgba(0, 0, 0, 0.5);  */
+      /* padding: 10px;  */
+      font-size: 10vw;
+      white-space: nowrap;
+      text-align: center;
+      margin: 0;
+      box-sizing: border-box;
+  }
