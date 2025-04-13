@@ -217,7 +217,6 @@ h2 {
     align-items: center;
   }
   
-    
     /* Create four equal columns that sits next to each other */
     .column {
       flex: 15%;
@@ -246,7 +245,6 @@ h2 {
         max-width: 45%;
       }
     }
-    
     
     /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
     @media screen and (max-width: 800) {
@@ -473,6 +471,8 @@ a.active, .dropdown2:hover .dropbtn2 {
     padding-bottom: 100%; /* Aspect ratio: 16:9 */
     height: 0;
     overflow: hidden;
+    top: 90px;
+
 }
 
 .left-block img,
@@ -484,21 +484,21 @@ a.active, .dropdown2:hover .dropbtn2 {
 
 .video-container iframe {
     position: absolute;
-    top: 0;
+    top: 90px;
     left: 0;
     width: 100%;
     height: 100%;
 }
 #bg-video {
-    position: absolute;
-    top: 150px;
-    left: 53%;
-    /* transform: translate(-50%, -50%); */
-    width: 20vw;
-    height: auto;
-    object-fit: cover;
-    z-index: -1; /* Ensure the video stays behind other content */
-  }
+  position: absolute;
+  top: 100px;
+  left: 53%;
+  /* transform: translate(-50%, -50%); */
+  height: 15vw;
+  width: auto;
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays behind other content */
+}
 
   @keyframes grow {
     0% {
