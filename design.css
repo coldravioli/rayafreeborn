@@ -20,6 +20,7 @@
 .body-ads {
   background-color: #1b1b1b;
   color: white;
+  overflow-x: hidden;
 }
 .body-ads h1:hover {
   color: rgb(255, 242, 0);
@@ -29,6 +30,7 @@
 .body-designs {
   background-color: #1b1b1b;
   color: white;
+  overflow-x: hidden;
 }
 .body-designs h1:hover {
   color: blue;
@@ -38,6 +40,7 @@
 .body-about {
   background-color: #ffffff;
   color: black;
+  overflow-x: hidden;
 }
 .body-about h1:hover {
   color: blue;
@@ -46,7 +49,7 @@
 
 .body-index {
   background-color: #ffffff;
-
+  overflow-x: hidden;
 }
 .body-index h1:hover {
   color: blue;
@@ -278,7 +281,6 @@ h2 {
     float: left;
     padding-top: 1vw;
     padding-left: 2vw;
-
 }
 
 .rayaMenu img {
@@ -472,39 +474,108 @@ a.active, .dropdown2:hover .dropbtn2 {
   object-fit: contain;
 }
 
+#bg-video {
+  position: absolute;
+  top: 150px;
+  left: 53%;
+  /* transform: translate(-50%, -50%); */
+  width: 20vw;
+  height: auto;
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays behind other content */
+}
+
+.img-with-text {
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100vw;
+  height: 100%; 
+  padding-bottom: 35vh;
+}
+
+.img-with-text img {
+  width: 80%; /* Adjust the size of the image */
+  height: auto;
+}
+
+@keyframes grow {
+  0% {
+      transform: scale(1); /* Original size */
+  }
+  50% {
+      transform: scale(1.2); /* Grow to 120% of the original size */
+  }
+  100% {
+      transform: scale(1); /* Return to the original size */
+  }
+}
+
 .grow img {
   animation: grow 2s ease-in-out infinite; /* 2 seconds duration, ease-in-out, infinite loop */
 }
 
-.vibeKiller {
+.vibekiller {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 3vw;
+  width: auto;
+}
+
+.rayaVideo {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 1px red solid;
+}
+.movingWords {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 10px;
+  border: 1px green solid;
+}
+
+.parent-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.image-box {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-48%, -15%);
+  z-index: 2;
+  height: auto;
+  width: 82vw; /* or a max-width */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Use full viewport height */
-  overflow: hidden;
 }
 
-#bg-video {
+.image-box img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.video-box {
   position: absolute;
-  top: 30px;
-  /* left: 50%; */
-  width: auto;
-  height: 20vw;
-  /* object-fit: cover; */
-  z-index: -1; /* Ensure the video stays behind the image */
-}
-
-.img-with-text img{
-  position: relative;
-  z-index: 1; /* Image stays above the video */
-  width: 90vw; /* Set a fixed width or adjust based on your preference */
-  top: 4vw;
+  top: 12%;
+  left: 50%;
+  transform: translate(10%, -15%);  
+  z-index: 1;
+  width: 17vw;
   height: auto;
 }
 
-iframe {
+.video-box video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
 }
