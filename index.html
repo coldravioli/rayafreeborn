@@ -15,8 +15,61 @@
   import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
 
   new bubbleCursor();
+
+
+  window.addEventListener('scroll', function() {
+  const scrollPos = window.scrollY; // Get current scroll position
+  const image = document.getElementById('recedingImage');
+  
+  // Adjust the position of the image based on scroll
+  image.style.transform = `translate(${ -scrollPos / 10 }%, ${ -scrollPos / 10 }%)`;
+});
+
 </script>
 
+<!-- <style>
+
+#topMenu,
+#rayaMenu {
+  position: absolute;
+  width: 100%;
+  transition: all 0.3s ease; /* Smooth transition for movement */
+}
+
+/* When parent-container is scrolled past, make menus sticky */
+.parent-container.scrolled #topMenu,
+.parent-container.scrolled #rayaMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Image effect to recede into the top left corner */
+.parent-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parent-container img {
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+  transform-origin: top left;
+  width: 100%; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
+}
+
+.parent-container.scrolled img {
+  transform: scale(0.8) translate(-20%, -20%);
+}
+
+</style> -->
+
+<!-- 
+<div class="rayaMenu">
+  <a href="https://rayafreeborn.com/">
+    <img src="rayaname.png" alt="GitHub Link">
+  </a>
+</div> -->
 
 <div class="topMenu2">
   <div class="dropdown2">
@@ -64,22 +117,17 @@
 </div> -->
 
 
-      <!-- <marquee style="font-family: goose;">Website Hand-coded by me!!</marquee> -->
-
-
       <div class="parent-container">
         <div class="image-box grow">
           <img src="rayaname.png" alt="Green Box Image" />
         </div>
+        
         <div class="video-box">
           <video src="Rayawhitebackground.mp4" autoplay muted loop></video>
         </div>
       </div>
+      <marquee style="font-family: goose;">Website Hand-coded by me!!</marquee>
 
-
-      
-      <br>
-<br>
       <a href="https://github.com/coldravioli" target="_blank">
         <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
       </a>
@@ -99,6 +147,24 @@
         <!-- Add more carousel items here -->
       </div>
     </div>
+
+<div class="main-content-split">
+  <div class="left-block">
+    <h2>Hello!</h2>
+    <p>
+      Welcome to my page!
+    </p>
+
+
+  </div>
+
+  <div class="right-block">
+
+    <h2>Where am I?</h2>
+
+  </div>
+</div>
+
 
     <!-- <h1 class="lato-thin">
       Hello!

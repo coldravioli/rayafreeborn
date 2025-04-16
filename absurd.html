@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="design.css">
+  <title>Advertisements</title>
+</head>
+
+<style>
+    body{
+        background-image: url('ads/absurd/colorpurple.png') !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100%;
+        margin: 0;
+    }
+</style>
+
+<body class="body-ads">
+
+    <div class="rayaMenu">
+        <a href="https://rayafreeborn.com/">
+            <img src="rayaname.png" alt="GitHub Link">
+          </a>
+    </div>
+
+    <div class="topMenu">
+        <div class="dropdown">
+            <button class="dropbtn active-btn">PORTFOLIO</button>
+            <div class="dropdown-content">
+              <a href="design.html">DESIGNS</a>
+              <a href="ads.html">ADS</a>
+              <!-- <a href="photos.html">PHOTOS</a> -->
+
+            </div>
+          </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">CONTACT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
+              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>      
+
+          <a href="resume.html">RÉSUMÉ</a><br>
+
+          <a href="about.html">ABOUT</a>
+
+        </div>
+
+        <div class= page-af>
+          <div id="navbar">
+            <a href="ads.html">
+              <h1>ADVERTISING</h1>
+            </a>      
+              <button class="accordion">INFORMATION +</button>
+              <div class="panel about-text">
+                <p>I approach advertising with a focus on impactful storytelling that speaks directly to the audience.
+                  <br><br>
+    
+                  By blending creative concepts with strategic visuals, I craft campaigns that don’t just advertise, but resonate. I aim to create memorable experiences that drive action and build lasting brand connections.</p>
+            </div>
+        
+            <button class="accordion">ABOUT +</button>
+            <div class="panel about-text">
+                <p>I thrive on developing creative strategies that turn simple ideas into powerful campaigns. 
+                  <br><br>
+    
+                  I focus on crafting engaging visuals and messages that resonate with audiences and amplify brand voices. My work is about creating connections that leave a lasting impact, one concept at a time.</p>
+            </div>
+      
+              <br>
+      
+          <div class="sticky">
+              <a href="absurd.html" class = active>Absurd Snacks</a>
+              <a href="tinyhomes.html">Tiny Homes Campaign</a>
+              <a href="tylenol.html">Tylenol Campaign</a>
+          </div>
+            </div>
+      
+      <script type="module">
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+      
+        new bubbleCursor();
+      </script>
+
+      <script>
+const accordions = document.querySelectorAll(".accordion");
+
+accordions.forEach((accordion) => {
+  const panel = accordion.nextElementSibling;
+
+  accordion.addEventListener("click", () => {
+    const isActive = accordion.classList.contains("active") || accordion.classList.contains("active2");
+
+    if (isActive) {
+      // Collapse
+      accordion.classList.remove("active", "active2");
+      panel.classList.remove("open");
+    } else {
+      // Activate clicked
+      accordion.classList.add("active");
+      accordion.classList.remove("active2");
+      panel.classList.add("open");
+
+      // Make other open ones blue
+      accordions.forEach((acc) => {
+        if (acc !== accordion && (acc.classList.contains("active") || acc.classList.contains("active2"))) {
+          acc.classList.remove("active");
+          acc.classList.add("active2");
+          acc.nextElementSibling.classList.add("open");
+        }
+      });
+    }
+  });
+});
+      </script>
+
+
+      <div class="main-content">
+          <h2>Absurd Snacks Ad Campaign</h2>
+       <h3>2025</h3>
+<br><br>
+<div class="main-content-split">
+  <div class="left-block">
+<p>
+    As part of a 24-hour creative sprint, I collaborated with a team of three to develop a comprehensive campaign for Absurd Snacks, an allergy-friendly snack brand. We were challenged to respond to a client brief with strategic creative solutions, which we presented directly to the brand. 
+    <br><br>
+    My responsibilities included producing high-quality mockups of redesigned merchandise and packaging to visually support and strengthen our concept of adventure can be anywhere!
+
+</p>
+
+</div></div>
+
+
+<div class="row main">
+
+  <div class="column main">
+    <img src="ads/absurd/set1.png">
+    <img src="ads/absurd/packages2.png">
+    <img src="ads/absurd/totebags1.png">
+    <img src="ads/absurd/totebags2.png">
+
+
+  </div>
+  <div class="column main">
+    <img src="ads/absurd/packages1.png">
+    <img src="ads/absurd/stickers!.png">
+    <img src="ads/absurd/waterbottle.png">
+  </div>
+</div>
+</div>
+
+
+        <a href="https://github.com/coldravioli" target="_blank">
+          <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
+        </a>
+        
+    </body>
+
+</html>
