@@ -23,7 +23,7 @@
   overflow-x: hidden;
 }
 .body-ads h1:hover {
-  color: rgb(255, 242, 0);
+  color: #fcee21;
   transition: color 0.4s ease-in-out;
 }
 
@@ -33,7 +33,7 @@
   overflow-x: hidden;
 }
 .body-designs h1:hover {
-  color: blue;
+  color: #29abe2;
   transition: color 0.4s ease-in-out;
 }
 
@@ -43,7 +43,7 @@
   overflow-x: hidden;
 }
 .body-about h1:hover {
-  color: blue;
+  color: #29abe2;
   transition: color 0.4s ease-in-out;
 }
 
@@ -52,7 +52,7 @@
   overflow-x: hidden;
 }
 .body-index h1:hover {
-  color: blue;
+  color: #29abe2;
   transition: color 0.4s ease-in-out;
 }
   
@@ -131,13 +131,13 @@ h2 {
   
   #navbar a:hover {
     /* background-color: #ddd; */
-    color: #ff009a;
+    color: #ed1e79;
     transition: color 0.4s ease-in-out;
   }
   
   #navbar a.active {
     /* background-color: #04AA6D; */
-    color: #ff009a;
+    color: #ed1e79;
   }
   
   .main-content {
@@ -203,14 +203,14 @@ h2 {
     font-family: goose-thin-italic;
     transition: 1s;
 
-    color: rgb(255, 234, 0);
+    color: #fcee21;
   }
 
   .accordion.active2 {
     font-family: goose-thin-italic;
     transition: 1s;
 
-    color: rgb(0, 255, 255);
+    color: #29abe2;
   }
 
   .row {
@@ -336,7 +336,7 @@ h2 {
 }
 
 a.active, .dropdown2:hover .dropbtn2 {
-  color: rgb(0, 195, 255);
+  color: #29abe2;
   font-family: goose;
 }
 
@@ -363,7 +363,7 @@ a.active, .dropdown2:hover .dropbtn2 {
 }
 
 .dropbtn:hover, .dropbtn2:hover {
-  color: rgb(0, 195, 255);
+  color: #29abe2;
   font-family: goose;
 }
 
@@ -410,7 +410,7 @@ a.active, .dropdown2:hover .dropbtn2 {
 
 /* Hover effects for dropdown links */
 .dropdown-content a:hover, .dropdown-content2 a:hover {
-  color: rgb(0, 195, 255);
+  color: #29abe2;
   transition: color 0.4s ease-in-out;
 }
 
