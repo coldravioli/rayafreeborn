@@ -50,6 +50,7 @@
 .body-index {
   background-color: #ffffff;
   overflow-x: hidden;
+  
 }
 .body-index h1:hover {
   color: #29abe2;
@@ -139,6 +140,10 @@ h2 {
     /* background-color: #04AA6D; */
     color: #ed1e79;
   }
+
+  .main-content.project-wrapper {
+    padding: 0;
+  }  
   
   .main-content {
     flex: 1;
@@ -367,22 +372,35 @@ a.active, .dropdown2:hover .dropbtn2 {
   font-family: goose;
 }
 
+div.container {
+  text-align: center;
+}
+
+ul.myUL {
+  display: inline-block;
+  text-align: left;
+}
+
 /* Dropdown Containers */
 .dropdown, .dropdown2 {
-  position: relative;
-  display: inline-block;
-  z-index: 2000;
+  position: relative; /* <--- Add this (or uncomment it) */
+  /* display: inline-block; If needed to align containers next to each other */
+  text-align: center; /* This centers inline/inline-block children like the button */
+  z-index: 2000; /* Keep this for stacking */
 }
 
 /* Dropdown Content Styles */
 .dropdown-content, .dropdown-content2 {
-  display: block;
+
   position: absolute;
-  min-width: 160px;
+  min-width: 160px; /* Adjust as needed, or remove if width should be auto */
   z-index: 1;
-  border-radius: 20px;
-  font-family: goose-thin;
-  text-align: center;
+  border-radius: 20px; /* Keep */
+  font-family: goose-thin; /* Keep */
+
+  /* Centering magic */
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -545,12 +563,12 @@ a.active, .dropdown2:hover .dropbtn2 {
 .parent-container {
   position: relative;
   width: 100%;
-  height: 29vw;
+  height: 30vw;
 }
 
 .image-box {
   position: absolute;
-  top: 15%;
+  top: 20%;
   left: 50%;
   transform: translate(-48%, -15%);
   z-index: 2;
@@ -576,6 +594,8 @@ a.active, .dropdown2:hover .dropbtn2 {
   z-index: -1;
   width: 17vw;
   height: auto;
+  background: transparent; 
+
 }
 
 .video-box video {
@@ -588,4 +608,84 @@ marquee {
   margin-left: -10px;
   margin-right: -10px;
   width: calc(100% + 20px);
+}
+
+@keyframes swim-across {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+@keyframes fall-down {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.project-fish {
+  position: absolute;
+  top: 30vh;
+  left: 0;
+  width: 100px;
+  opacity: 0;
+}
+
+.falling-project {
+  position: absolute;
+  top: 0;
+  left: 50vw;
+  width: 100px;
+  opacity: 0;
+}
+
+.animate-swim {
+  animation: swim-across 5s linear forwards;
+}
+
+.animate-fall {
+  animation: fall-down 3s ease-in forwards;
+}
+
+
+.project-section {
+  margin-top: 4vh;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.project-box {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* #beachBottom {
+  width: 100%;
+  height: 150px;
+  background: url('scans/bones.jpg') no-repeat center;
+  background-size: cover;
+  display: none; 
+} */
+
+.beachBottom {
+  background: linear-gradient(
+    to top,
+    #d9c9a3 0%,   /* light sand */
+    #c2b280 50%,  /* medium sand */
+    #a6a191 100%  /* your original color at the bottom */
+  );  width: 120%;
+  height: 50px; /* Make it span the full width of its parent */
+  margin: 0;  
+  overflow-x: hidden;
+  margin-left: calc(var(--scrollbar-width) * -1); /* Pull it to the left */
+}
+
+.project-box2 img {
+  display: block;
+  margin: 0;
+
 }

@@ -9,6 +9,68 @@
         <link rel="fav icon" type="image/x-icon" href="favicon2.png">
         <script src="silly.js" defer></script>
 
+<style>
+  /* body.body-index {
+  background-color: rgb(23, 185, 5); 
+  transition: background-color 0.5s ease;
+} */
+
+  body{
+    margin: 0;
+    margin-bottom: 0;
+  }
+
+.main-content {
+    margin-top: 0;
+    padding-top: 0;
+}
+.parent-container {
+    margin-top: 50px;
+    padding-top: 0;
+    margin-bottom: 6%;
+}
+  .project-link:hover {
+    color: #ed1e79 !important;
+    transition: color 0.4s ease-in-out;
+  }
+
+  .project-link {
+    color:black;
+  }
+
+.main-content {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    overflow: hidden; /* Ensure no unintended space is caused by overflow */
+}
+
+.right-block, .left-block {
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.left-block img,.right-block img {
+   max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.main-content-split {
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+#header {
+  position: fixed; /* Fixed position - sit on top of the page */
+  top: 0;
+  width: 100%; /* Full width */
+  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
+}
+
+</style>
+
 
 
 <script type="module">
@@ -16,53 +78,105 @@
 
   new bubbleCursor();
 
+  // Define color constants outside the listener for clarity
+  const startBgColor = [255, 255, 255]; // White background
+  const midBgColor = [32, 118, 199];   // Light blue background
+  const endBgColor = [0, 18, 64];     // Dark blue background
 
-  window.addEventListener('scroll', function() {
-  const scrollPos = window.scrollY; // Get current scroll position
-  const image = document.getElementById('recedingImage');
-  
-  // Adjust the position of the image based on scroll
-  image.style.transform = `translate(${ -scrollPos / 10 }%, ${ -scrollPos / 10 }%)`;
-});
+  const startTextColor = [0, 0, 0];     // Black text
+  const endTextColor = [255, 255, 255]; // White text
+
+  // Get text elements once outside the listener for potential efficiency
+  // Note: If content inside main-content-split changes dynamically, you might need to query inside the listener
+  const textElements = document.querySelectorAll('.color-change, .color-change *');
+
+  // Get beach element once
+  const beach = document.getElementById('beachBottom'); // Make sure this ID exists in your HTML
+
+  // === SINGLE SCROLL EVENT LISTENER ===
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const maxScroll = docHeight - windowHeight;
+
+    // Ensure maxScroll is not zero to avoid division by zero
+    const scrollRatio = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0; // Clamp between 0 and 1
+
+    // --- Background Color Logic ---
+    let bgR, bgG, bgB;
+    if (scrollRatio < 0.5) {
+      // Transition between startBgColor and midBgColor
+      const adjustedRatio = scrollRatio * 2; // Normalize to 0-1 for this phase
+      bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
+      bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
+      bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
+    } else {
+      // Transition between midBgColor and endBgColor
+      const adjustedRatio = (scrollRatio - 0.5) * 2; // Normalize to 0-1 for this phase
+      bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
+      bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
+      bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
+    }
+    // Apply the calculated background color
+    document.body.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+
+
+    // --- Text Color Transition Logic ---
+    // Calculate interpolated text color based on the overall scrollRatio
+    let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
+    let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
+    let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
+
+    // Apply the calculated text color to all selected elements
+    textElements.forEach(el => {
+       // Avoid applying style to non-text elements like images if caught by '*'
+       if (el.tagName !== 'IMG') {
+           el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+       }
+    });
+
+
+    // --- Beach Visibility Logic ---
+    if (beach) { // Check if the element exists
+      if (scrollTop + windowHeight >= docHeight - 1) { // Show when very close to bottom
+        beach.style.display = 'block';
+      } else {
+        beach.style.display = 'none';
+      }
+    }
+
+  }); // --- End of the single scroll event listener ---
+
+  const projectLinks = document.querySelectorAll('.project-link');
+  const projectImage = document.getElementById('project-image');
+
+  projectLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const newImage = link.getAttribute('data-image');
+      projectImage.src = newImage;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      projectImage.src = "fishbowl.png"; // back to default
+    });
+  });
+
+// When the user scrolls down 50px from the top of the document, resize the header's font size
+// window.onscroll = function() {scrollFunction()};
+
+// function scrollFunction() {
+//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+//     document.getElementById("header").style.fontSize = "30px";
+//   } else {
+//     document.getElementById("header").style.fontSize = "90px";
+//   }
+// }
+
 
 </script>
 
-<!-- <style>
 
-#topMenu,
-#rayaMenu {
-  position: absolute;
-  width: 100%;
-  transition: all 0.3s ease; /* Smooth transition for movement */
-}
-
-/* When parent-container is scrolled past, make menus sticky */
-.parent-container.scrolled #topMenu,
-.parent-container.scrolled #rayaMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-/* Image effect to recede into the top left corner */
-.parent-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.parent-container img {
-  position: absolute;
-  transition: transform 0.5s ease-in-out;
-  transform-origin: top left;
-  width: 100%; /* Adjust as needed */
-  height: auto; /* Adjust as needed */
-}
-
-.parent-container.scrolled img {
-  transform: scale(0.8) translate(-20%, -20%);
-}
-
-</style> -->
 
 
 <!-- <div class="rayaMenu">
@@ -103,20 +217,6 @@
     </head>
 
     <body class="body-index">
-
-<!-- <div class="vibeKiller">
-  <div class="rayaVideo">
-      <video autoplay loop muted>
-        <source src="Rayawhitebackground.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-  </div>
-    <div class="movingWords "> 
-      <img src="rayaname.png" alt="My logo">
-  </div>
-</div> -->
-
-
       <div class="parent-container">
         <div class="image-box grow">
           <img src="rayaname.png" alt="Green Box Image" />
@@ -126,52 +226,97 @@
           <video src="Rayawhitebackground.mp4" autoplay muted loop></video>
         </div>
       </div>
-      <marquee style="font-family: goose;">Website Hand-coded by me!!</marquee>
+    
+    <div class="color-change">
 
-      <a href="https://github.com/coldravioli" target="_blank">
-        <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
-      </a>
+      <!-- <marquee style="font-family: goose;">Website Hand-coded by me!!</marquee><br> -->
+
+    <div class="main-content-split">
+      <div class="left-block">
+        <h2>Welcome!</h2>
+        <p>
+          Currently at <a href="https://arts.vcu.edu/" target="_blank">VCUarts</a> studying Graphic Design, with minors in both Computer Science and Media Studies (concentration in creative advertising).
+          <br><br>
+          Here are some quick links to my different pages in my portfolio!
+        </p>
+
+        <a href="design.html" class="project-link" data-image="fishbowl1.png" style=" font-size:2vw; font-family: moon;text-decoration:none;">Design Projects</a>
+        <br>
+
+        <a href="ads.html" class="project-link" data-image="fishbowl3.png" style="font-size:2vw; font-family: moon;text-decoration:none;"> Advertising Projects </a>
+    
+
+          
+  </div>
 
 
-    <!-- <div class="carousel-container haleypic">
-      <div class="carousel">
-        <div class="carousel-item">
-          <img src="clever/CleverTinyHomesAd1.jpg" alt="Image 2">
-        </div>
-        <div class="carousel-item">
-          <img src="clever/CleverTinyHomesAd2.jpg" alt="Image 3">
-        </div>
-        <div class="carousel-item">
-          <img src="clever/CleverTinyHomesAd3.jpg" alt="Image 4">
-        </div> -->
-        <!-- Add more carousel items here -->
+      <div class="right-block">
+        <img id="project-image" src="fishbowl.png" alt="Project Image">
       </div>
     </div>
 
-<!-- <div class="main-content-split">
-  <div class="left-block">
-    <h2>Hello!</h2>
-    <p>
-      Welcome to my page!
-    </p>
+    <div class="row main">
+      <div class="column">
+        <a href="digest.html">
+          <img src="scans2/Betterr.png" alt="Better">
+        </a>
+        <a href="guide.html">
+          <img src="scans2/guide2.png" alt="Sag">
+        </a>
+        <a href="digest.html">
+          <img src="scans2/sag.png" alt="Sag">
+        </a>
+ 
+
+      </div>
+
+      <div class="column">
+        <a href="bones.html">
+          <img src="scans/bent.png" alt="Bones">
+        </a>
+        <a href="water.html">
+          <img src="scans2/gamecase.png" alt="Game Case">
+        </a>
+        <a href="guide.html">
+          <img src="scans2/rgb.png" alt="RGB">
+        </a>
+
+      </div>
 
 
+      <div class="column">
+          <a href="guide.html">
+              <img src="scans/mapmeow.png" alt="Map Meow">
+            </a>
+        <a href="digest.html">
+          <img src="scans2/salt.png" alt="Salt">
+        </a>
+        <a href="guide.html">
+          <img src="scans2/insideguide.png" alt="Guide">
+        </a>
+
+      </div>
+    </div>
+
+
+    <!-- <div class="project-section">
+      <div class="project-box" style="background-color: #caffbf;"></div>
+      <div class="project-box" style="background-color: #9bf6ff;"></div>
+      <div class="project-box" style="background-color: #a0c4ff;"></div>
+      <div class="project-box" style="background-color: #bdb2ff;"></div>
+    </div> -->
   </div>
 
-  <div class="right-block">
+    <a href="https://github.com/coldravioli" target="_blank">
+      <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
+    </a>
 
-    <h2>Where am I?</h2>
-
-  </div>
-</div> -->
-
-
-    <!-- <h1 class="lato-thin">
-      Hello!
-    </h1>
-    <p>Hello!</p> -->
-          
-
+    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px;">
+      Website Hand-coded by me!
+      <!-- <br>
+      Last Update: April 25, 2025 -->
+    </a>
+    <div class="beachBottom"></div>
 
     </body>
 
