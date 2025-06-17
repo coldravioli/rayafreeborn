@@ -1,323 +1,564 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Homepage
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="design.css">
+<head>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
 
-        <link rel="fav icon" type="image/x-icon" href="favicon2.png">
-        <script src="silly.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="fav icon" type="image/x-icon" href="favicon2.png">
 
 <style>
-  /* body.body-index {
-  background-color: rgb(23, 185, 5); 
-  transition: background-color 0.5s ease;
-} */
-
-  body{
+  html, body {
     margin: 0;
-    margin-bottom: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    scroll-snap-type: y mandatory; /* 'y' for vertical snapping, 'mandatory' forces snap */
+    scroll-behavior: smooth; /* Optional: adds a smooth scroll animation when snapping */
   }
 
-.main-content {
-    margin-top: 0;
-    padding-top: 0;
+  @font-face { font-family: Moon; src: url('moon_get-Heavy.otf'); }
+  @font-face { font-family: goose; src: url('goose.ttf'); }
+  @font-face { font-family: goose-thin; src: url('goose-thin.ttf'); }
+  @font-face { font-family: goose-thin-italic; src: url('goose-thin-italic.ttf'); }
+  @font-face { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); }
+  @font-face { font-family: aurora; src: url('AURORA.otf'); }
+
+    p {
+        font-family: 'Lato', sans-serif;
+    }
+    h2 {
+        font-family: Moon;
+        font-size: clamp(1.5rem, 5vw, 8rem);
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    h3 {
+        font-family: caviar-italic;
+        font-size: 2vw;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    h4 {
+        font-family: aurora;
+        font-size: clamp(2rem, 10vw, 16rem);
+        color: red;
+        margin-top: -55px;
+    }
+
+
+
+  /* #div01: The "Red Block" - Your fixed, full-screen intro */
+  #div01 {
+    position: fixed; /* Stays in place */
+    left: 0;
+    top: 0;
+    background: white;
+    width: 100%;
+    height: 100vh; /* Takes up the full viewport height */
+    overflow: hidden;
+    transition: opacity 1s ease-out; /* Fade-out transition */
+    z-index: 10; /* Stays on top of other content initially */
+    display: flex;
+    flex-direction: column;
+  }
+
+  #div01  {
+    color: black;
+  }
+
+  /* Class to trigger the fade-out */
+  .setopacity {
+    opacity: 0;
+    pointer-events: none; /* Prevents interaction with the faded-out div */
+  }
+
+  /* --- NEW/MODIFIED STYLES FOR THE TRANSITION GIF --- */
+  #transition-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9; /* Lower than div01 initially, then adjusted by JS */
+    opacity: 0; /* Initially hidden */
+    pointer-events: none; /* Prevents interaction when hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade for the GIF */
+  }
+
+  #transition-animation.active {
+      opacity: 1; /* Fully visible when active */
+      z-index: 11; /* Temporarily higher than div01 to cover it during fade */
+      pointer-events: auto; /* Allow interaction if needed, but usually not for a transition GIF */
+  }
+
+  #transition-animation img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the GIF covers the whole screen */
+  }
+  /* --- END NEW STYLES --- */
+
+
+  /* #div02: The "Yellow Block" (Main content) */
+  #div02 {
+    position: relative; /* Scrolls normally */
+    width: 100%;
+    margin-top: 100vh;
+    background: white;
+    overflow: hidden;
+    z-index: 5;
+    scroll-snap-align: start; /* Make this element snap to the start (top) of the scroll container */
+
+  }
+
+  /* --- LAYOUT INSIDE THE BLOCKS --- */
+
+  .parent-container {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .main-page-layout {
+      display: flex;
+      width: 100%;
+      /* min-height: 120vh; */ /* This can be removed or adjusted. The content will define height. */
+      position: relative;
+      /* height: 100vh; */ /* REMOVE this if you want the main page to scroll beyond 100vh */
+      /* overflow-y: auto; */ /* REMOVE this if you want the body to handle main scrolling */
+      /* If you keep this, the middle and right partitions will stick within this 100vh area only.
+         Generally, you want the main page to scroll. */
+  }
+
+  .middle-partition {
+      flex: 0 0 65%;
+      padding: 2vw;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0; /* Sticks to the top of its *parent* (.main-page-layout) */
+      background-image: url('ads/absurd/colorpurple.png') !important;
+      height: 100vh; /* Set height to fill the viewport for correct scrolling */
+      overflow-y: auto; /* Enable internal scrolling for its content */
+  }
+
+  .middle-partition .content-block img{
+    height: auto;
+    width: 100%;
+  }
+
+  /* Make sure the sticky elements within div02 don't interfere with main scroll snap */
+  .middle-partition, .right-partition {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto; /* They still handle their own internal scroll if content overflows */
+  }
+
+  #sticker {
+      position: absolute; /* Changed from fixed to absolute */
+      bottom: 20px; /* Distance from the bottom of the right partition */
+      left: 20px; /* Distance from the left of the right partition */
+      width: 10vw; /* Responsive width based on viewport width */
+      height: auto; /* Maintain aspect ratio */
+      z-index: 998; /* A high z-index to ensure it's on top of content within the partition */
+      pointer-events: none; /* Allows clicks to pass through to content behind it if needed */
+  }
+
+  .right-partition {
+    flex: 0 0 35%;
+    box-sizing: border-box;
+    background-color: rgb(200, 230, 255);
+    transition: background-color 0.5s ease;
+    position: sticky;
+    top: 0; /* Sticks to the top of its *parent* (.main-page-layout) */
+    height: 100vh; /* Set height to fill the viewport for correct scrolling */
+    overflow-y: auto; /* Enable internal scrolling for its content */
+    overflow-x:hidden;
+    border: 5px solid #ccc; /* Example: 2px solid light gray border */
+    border-bottom: 5px solid #ccc; /* Example: 2px solid light gray border */
+    border-radius: 10px; /* Optional: adds rounded corners to the border */
+    position: relative;
+
+
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;     /* For Firefox */
 }
-.parent-container {
-    margin-top: 45px;
-    padding-top: 0;
-    margin-bottom: 6%;
+
+
+/* For Chrome, Safari, and Opera (Webkit browsers) */
+.right-partition::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
 }
-  .project-link:hover {
-    color: #ed1e79 !important;
+
+/* For Chrome, Safari, and Opera (Webkit browsers) */
+.middle-partition::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+  /* Styling for content WITHIN the right partition */
+  .right-partition .project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  .right-partition .project-link:hover {
+      transform: scale(1.02);
+      /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
+  }
+  .right-partition .content-block {
+    padding: 20px;
+    /* background: rgba(255,255,255,0.1); */
+    margin: 15px;
+    border-radius: 10px;
+  }
+  .right-partition .content-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  /* Keep specific h3 for right partition to override the general one */
+  .right-partition h3 {
+      font-family: caviar-italic;
+      font-size: 2vw;
+      margin-top: 0;
+  }
+
+  /* --- RESTORED ORIGINAL MENU STYLES --- */
+
+  /* Base styles for both menus */
+  .topMenu-base {
+    height: 6.5vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding-right: 2vw;
+    box-sizing: border-box;
+    font-family: goose-thin;
+    font-size: 1.2vw;
+  }
+
+  /* Menu in the intro screen */
+  #intro-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* Sticky menu that appears after scrolling */
+  #sticky-menu {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Links and Dropdown buttons */
+  .topMenu-base a, .topMenu-base .dropbtn2 {
+    color: black;
+    text-decoration: none;
+    padding: 14px 16px;
+    text-align: right;
+    display: block;
+  }
+
+  .topMenu-base a:hover, .topMenu-base .dropbtn2:hover {
+    color: #29abe2;
+    font-family: goose;
     transition: color 0.4s ease-in-out;
   }
 
-  .project-link {
-    color:black;
+  .topMenu-base .active-btn, .dropdown2:hover .dropbtn2 {
+    color: #29abe2;
+    font-family: goose;
   }
 
-.main-content {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    overflow: hidden; /* Ensure no unintended space is caused by overflow */
-}
+  /* Dropdown Button Specifics */
+  .dropbtn2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: goose-thin;
+    font-size: 1.2vw;
+    transition: color 0.7s ease-in-out;
+  }
 
-.right-block, .left-block {
-    padding-left: 2vw;
-    padding-right: 2vw;
-}
+  /* Dropdown Container */
+  .dropdown2 {
+    position: relative;
+  }
 
-.left-block img,.right-block img {
-   max-width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+  /* Dropdown Content Box */
+  .dropdown-content2 {
 
-.main-content-split {
-  padding-left: 6vw;
-  padding-right: 6vw;
-}
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #ffffffb4; /* Translucent white */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 20px;
+    font-family: goose-thin;
+    text-align: center;
 
-#header {
-  position: fixed; /* Fixed position - sit on top of the page */
-  top: 0;
-  width: 100%; /* Full width */
-  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
-}
+    /* Centering and animation setup */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease, transform 0.5s ease;
+  }
+
+  /* Show dropdown content on hover */
+  .dropdown2:hover .dropdown-content2 {
+    display: block; /* Make it appear */
+    opacity: 1;
+    max-height: 500px;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content2 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: goose-thin;
+  }
+
+  .dropdown-content2 a:hover {
+    color: #29abe2;
+    transition: color 0.4s ease-in-out;
+  }
+
+  .smaller {
+    height: 60px;
+  }
 
 </style>
 
+</head>
+<body>
+
+    <div id="div01">
+      <div class="topMenu2">
+        <div class="dropdown2">
+            <button class="dropbtn2 active-btn">PORTFOLIO</button>
+            <div class="dropdown-content2">
+              <a href="design.html">DESIGNS</a>
+              <a href="ads.html">ADS</a>
+              </div>
+          </div>
+
+        <div class="dropdown2">
+            <button class="dropbtn2">CONTACT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content2">
+              <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
+              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>
+
+          <a href="resume.html">RÉSUMÉ</a><br>
+
+          <a href="about.html">ABOUT</a>
+
+        </div>
+
+        <div class="parent-container">
+            <div class="image-box grow">
+                <img src="rayaname.png" alt="Raya Name Graphic" />
+            </div>
+            <div class="video-box">
+                <video src="Rayawhitebackground.mp4" autoplay muted loop></video>
+            </div>
+        </div>
+    </div>
+
+    <div id="transition-animation">
+        <img src="bubblefade.gif" alt="Transition Animation">
+    </div>
+
+    <div id="div02">
+        <div class="main-page-layout">
+            <div class="middle-partition">
+                <div class="content-block">
+                    <h4>Welcome to the LAB~</h4>
+                    <p>Hello! My name is Raya and I'm a designer. This is the middle column. You can place featured projects or an introduction here. This area scrolls with the main page, giving you plenty of space for case studies or other detailed content.</p>
+                    <img class='smaller' src="fun_pictures/rayaonrock.png" alt="Placeholder Image">
+                    <h3>Project Deep Dive</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+            <div class="right-partition">
+              <img id="sticker" src="sticker.png" alt="Sticker">
+
+
+                <a href="absurd.html" class="project-link">
+                    <div class="content-block">
+                        <h3>Absurd Snacks</h3>
+                        <img src="ads/absurd/packages2.png">
+                    </div>
+                </a>
+                <a href="guide.html" class="project-link">
+                    <div class="content-block">
+                        <h3>Field Guide</h3>
+                        <img src="scans2/guidecover.png" alt="Field Guide">
+                        <img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;">
+                    </div>
+                </a>
+                <a href="bones.html" class="project-link">
+                    <div class="content-block">
+                        <h3>BONES</h3>
+                        <img src="scans/bones.jpg" alt="Bones Project">
+                    </div>
+                </a>
+                <a href="digest.html" class="project-link">
+                    <div class="content-block">
+                        <h3>The Eater's Digest</h3>
+                        <img src="scans2/digest.png" alt="Eater's Digest">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://github.com/coldravioli" target="_blank">
+        <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link">
+    </a>
+    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px; z-index: 999;">
+        Website Hand-coded by me!
+    </a>
 
 
 <script type="module">
+  // Your bubble cursor effect
   import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-
   new bubbleCursor();
 
-  // Define color constants outside the listener for clarity
-  const startBgColor = [255, 255, 255]; // White background
-  const midBgColor = [32, 118, 199];   // Light blue background
-  const endBgColor = [0, 18, 64];     // Dark blue background
+  var _rys = jQuery.noConflict();
+  _rys(document).ready(function () {
+      const div01 = _rys('#div01');
+      const transitionGif = _rys('#transition-animation');
+      let gifTimeout; // To store the timeout ID for clearing
 
-  const startTextColor = [0, 0, 0];     // Black text
-  const endTextColor = [255, 255, 255]; // White text
+      _rys(window).scroll(function () {
+          const scrollTop = _rys(this).scrollTop();
 
-  // Get text elements once outside the listener for potential efficiency
-  // Note: If content inside main-content-split changes dynamically, you might need to query inside the listener
-  const textElements = document.querySelectorAll('.color-change, .color-change *');
+          // Define the scroll range where div01 fades out
+          const div01FadeStart = 10; // Start fading div01 almost immediately
+          const div01FadeEnd = 300; // div01 is fully faded at this point
 
-  // Get beach element once
-  const beach = document.getElementById('beachBottom'); // Make sure this ID exists in your HTML
+          // Calculate div01's target opacity based on scroll
+          let div01Opacity = 1;
+          if (scrollTop > div01FadeStart) {
+              div01Opacity = 1 - Math.min(1, (scrollTop - div01FadeStart) / (div01FadeEnd - div01FadeStart));
+          }
 
-  // === SINGLE SCROLL EVENT LISTENER ===
-  window.addEventListener('scroll', function () {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
-    const maxScroll = docHeight - windowHeight;
+          // Apply opacity to div01
+          div01.css('opacity', div01Opacity);
 
-    // Ensure maxScroll is not zero to avoid division by zero
-    const scrollRatio = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0; // Clamp between 0 and 1
+          // Control pointer-events for div01
+          if (div01Opacity <= 0.05) { // When almost invisible
+              div01.css('pointer-events', 'none');
+          } else {
+              div01.css('pointer-events', 'auto');
+          }
 
-    // --- Background Color Logic ---
-    let bgR, bgG, bgB;
-    if (scrollRatio < 0.5) {
-      // Transition between startBgColor and midBgColor
-      const adjustedRatio = scrollRatio * 2; // Normalize to 0-1 for this phase
-      bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
-      bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
-      bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
-    } else {
-      // Transition between midBgColor and endBgColor
-      const adjustedRatio = (scrollRatio - 0.5) * 2; // Normalize to 0-1 for this phase
-      bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
-      bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
-      bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
-    }
-    // Apply the calculated background color
-    document.body.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
-
-
-    // --- Text Color Transition Logic ---
-    // Calculate interpolated text color based on the overall scrollRatio
-    let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
-    let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
-    let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
-
-    // Apply the calculated text color to all selected elements
-    textElements.forEach(el => {
-       // Avoid applying style to non-text elements like images if caught by '*'
-       if (el.tagName !== 'IMG') {
-           el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
-       }
-    });
-
-
-    // --- Beach Visibility Logic ---
-    if (beach) { // Check if the element exists
-      if (scrollTop + windowHeight >= docHeight - 1) { // Show when very close to bottom
-        beach.style.display = 'block';
-      } else {
-        beach.style.display = 'none';
-      }
-    }
-
-  }); // --- End of the single scroll event listener ---
-
-  const projectLinks = document.querySelectorAll('.project-link');
-  const projectImage = document.getElementById('project-image');
-
-  projectLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      const newImage = link.getAttribute('data-image');
-      projectImage.src = newImage;
-    });
-
-    link.addEventListener('mouseleave', () => {
-      projectImage.src = "fishbowl.png"; // back to default
-    });
+          // Trigger GIF precisely when div01 starts fading and then hide it
+          // This logic is more robust than just checking fixed scroll points
+          if (div01Opacity < 0.99 && div01Opacity > 0.01) { // If div01 is currently fading
+              transitionGif.addClass("active");
+              // Clear any existing timeout to prevent flicker if user scrolls back and forth
+              if (gifTimeout) {
+                  clearTimeout(gifTimeout);
+              }
+          } else if (div01Opacity <= 0.01) { // If div01 is fully faded
+              // Add a slight delay before removing 'active' to ensure GIF plays fully or smoothly disappears
+              if (!transitionGif.hasClass("fade-out-scheduled")) {
+                  transitionGif.addClass("fade-out-scheduled");
+                  gifTimeout = setTimeout(() => {
+                      transitionGif.removeClass("active fade-out-scheduled");
+                  }, 500); // GIF visible for 0.5 seconds after div01 is gone
+              }
+          } else { // If div01 is fully visible (at the top)
+              transitionGif.removeClass("active fade-out-scheduled");
+              if (gifTimeout) {
+                  clearTimeout(gifTimeout);
+                  gifTimeout = null;
+              }
+          }
+      });
   });
 
-// When the user scrolls down 50px from the top of the document, resize the header's font size
-// window.onscroll = function() {scrollFunction()};
+  // --- SCRIPT FOR COLOR CHANGE ON RIGHT PARTITION ---
+  const rightPartition = document.querySelector('.right-partition');
 
-// function scrollFunction() {
-//   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-//     document.getElementById("header").style.fontSize = "30px";
-//   } else {
-//     document.getElementById("header").style.fontSize = "90px";
-//   }
-// }
+  if (rightPartition) {
+      // Use the internal scroll of the right partition itself
+      rightPartition.addEventListener('scroll', function () {
+          const scrollTop = rightPartition.scrollTop;
+          const contentHeight = rightPartition.scrollHeight;
+          const elementHeight = rightPartition.clientHeight;
 
+          const maxScroll = contentHeight - elementHeight;
+          let scrollRatio = 0;
+          if (maxScroll > 0) {
+              scrollRatio = scrollTop / maxScroll;
+          }
 
+          // The rest of your brilliant color-changing logic is the same!
+          const startBgColor = [200, 230, 255];
+          const midBgColor = [32, 118, 199];
+          const endBgColor = [0, 18, 64];
+          const startTextColor = [0, 0, 0];
+          const endTextColor = [255, 255, 255];
+
+          let bgR, bgG, bgB;
+          if (scrollRatio < 0.5) {
+            const adjustedRatio = scrollRatio * 2;
+            bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
+            bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
+            bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
+          } else {
+            const adjustedRatio = (scrollRatio - 0.5) * 2;
+            bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
+            bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
+            bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
+          }
+
+          rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+
+          let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
+          let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
+          let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
+
+          const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
+          textElements.forEach(el => {
+              if (el.tagName !== 'IMG') {
+                  el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+              }
+          });
+      });
+  }
 </script>
 
-
-
-
-<!-- <div class="rayaMenu">
-  <a href="https://rayafreeborn.com/">
-    <img src="rayaname.png" alt="GitHub Link">
-  </a>
-</div> -->
-
-<div class="topMenu2">
-  <div class="dropdown2">
-      <button class="dropbtn2 active-btn">PORTFOLIO</button>
-      <div class="dropdown-content2">
-        <a href="design.html">DESIGNS</a>
-        <a href="ads.html">ADS</a>
-        <!-- <a href="photos.html">PHOTOS</a> -->
-
-      </div>
-    </div>
-
-  <div class="dropdown2">
-      <button class="dropbtn2">CONTACT
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content2">
-        <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
-        <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
-      </div>
-    </div>      
-
-    <a href="resume.html">RÉSUMÉ</a><br>
-
-    <a href="about.html">ABOUT</a>
-
-  </div>
-
-
-        
-    </head>
-
-    <body class="body-index">
-      <div class="parent-container">
-        <div class="image-box grow">
-          <img src="rayaname.png" alt="Green Box Image" />
-        </div>
-        
-        <div class="video-box">
-          <video src="Rayawhitebackground.mp4" autoplay muted loop></video>
-        </div>
-      </div>
-    
-    <div class="color-change">
-
-      <!-- <marquee style="font-family: goose;">Website Hand-coded by me!!</marquee><br> -->
-
-    <div class="main-content-split">
-      <div class="left-block">
-        <h2>Welcome!</h2>
-        <p>
-          Currently at <a href="https://arts.vcu.edu/" target="_blank">VCUarts</a> studying Graphic Design, with minors in both Computer Science and Media Studies (concentration in creative advertising).
-          <br><br>
-          Here are some quick links to my different pages in my portfolio!
-        </p>
-
-        <a href="design.html" class="project-link" data-image="fishbowl1.png" style=" font-size:2vw; font-family: moon;text-decoration:none;">Design Projects</a>
-        <br>
-
-        <a href="ads.html" class="project-link" data-image="fishbowl3.png" style="font-size:2vw; font-family: moon;text-decoration:none;"> Advertising Projects </a>
-    
-
-          
-  </div>
-
-
-      <div class="right-block">
-        <img id="project-image" src="fishbowl.png" alt="Project Image">
-      </div>
-    </div>
-
-    <div class="row main">
-      <div class="column">
-        <a href="digest.html">
-          <img src="scans2/Betterr.png" alt="Better">
-        </a>
-        <a href="guide.html">
-          <img src="scans2/guide2.png" alt="Sag">
-        </a>
-        <a href="digest.html">
-          <img src="scans2/sag.png" alt="Sag">
-        </a>
- 
-
-      </div>
-
-      <div class="column">
-        <a href="bones.html">
-          <img src="scans/bent.png" alt="Bones">
-        </a>
-        <a href="water.html">
-          <img src="scans2/gamecase.png" alt="Game Case">
-        </a>
-        <a href="guide.html">
-          <img src="scans2/rgb.png" alt="RGB">
-        </a>
-
-      </div>
-
-
-      <div class="column">
-          <a href="guide.html">
-              <img src="scans/mapmeow.png" alt="Map Meow">
-            </a>
-        <a href="digest.html">
-          <img src="scans2/salt.png" alt="Salt">
-        </a>
-        <a href="guide.html">
-          <img src="scans2/insideguide.png" alt="Guide">
-        </a>
-
-      </div>
-    </div>
-
-
-    <!-- <div class="project-section">
-      <div class="project-box" style="background-color: #caffbf;"></div>
-      <div class="project-box" style="background-color: #9bf6ff;"></div>
-      <div class="project-box" style="background-color: #a0c4ff;"></div>
-      <div class="project-box" style="background-color: #bdb2ff;"></div>
-    </div> -->
-  </div>
-
-    <a href="https://github.com/coldravioli" target="_blank">
-      <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
-    </a>
-
-    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px;">
-      Website Hand-coded by me!
-      <!-- <br>
-      Last Update: April 25, 2025 -->
-    </a>
-    <div class="beachBottom"></div>
-
-    </body>
-
+</body>
 </html>

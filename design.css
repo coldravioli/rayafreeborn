@@ -6,6 +6,8 @@
 @font-face { font-family: goose-thin; src: url('goose-thin.ttf'); } 
 @font-face { font-family: goose-thin-italic; src: url('goose-thin-italic.ttf'); } 
 @font-face { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); } 
+@font-face { font-family: aurora; src: url('AURORA.otf'); } 
+
 
 
 /* body {
@@ -103,6 +105,13 @@ h2 {
     margin-bottom: 0;
     margin-top: 0;
 
+}
+
+h4 {
+  font-family: aurora;
+  font-size: clamp(2rem, 10vw, 16rem); /* min, dynamic, max */
+  color: red;
+  margin-top: -55px;
 }
 
   /* Sidebar nav */
@@ -343,6 +352,7 @@ h2 {
 a.active, .dropdown2:hover .dropbtn2 {
   color: #29abe2;
   font-family: goose;
+  z-index: 9;
 }
 
 /* Dropdown Button */
@@ -504,7 +514,7 @@ ul.myUL {
   width: 20vw;
   height: auto;
   object-fit: cover;
-  z-index: -1; /* Ensure the video stays behind other content */
+  z-index: 99999; /* Ensure the video stays behind other content */
 }
 
 .img-with-text {
@@ -564,6 +574,7 @@ ul.myUL {
   position: relative;
   width: 100%;
   height: 30vw;
+  background-color: white;
 }
 
 .image-box {
@@ -591,7 +602,7 @@ ul.myUL {
   top: 12%;
   left: 50%;
   transform: translate(10%, -15%);  
-  z-index: -1;
+  z-index: 1;
   width: 17vw;
   height: auto;
   background: transparent; 
@@ -689,3 +700,108 @@ marquee {
   margin: 0;
 
 }
+
+
+body.body-index {
+  overflow-y: auto; /* Allow the main page to scroll by default */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  background-color: white; /* Base background, will be overridden by JS */
+  padding: 2vw;
+}
+
+/* Container for the three main columns, only active for body-index */
+body.body-index .main-page-layout {
+  display: flex; /* This creates the columns only for body-index */
+  min-height: 100vh; /* Make sure it takes at least the full viewport height */
+  /* padding-top: 6.5vw; Push content down to account for fixed topMenu2 */
+  box-sizing: border-box; /* Include padding in height calculation */
+  background-color: white;
+  padding-bottom: 40px;
+  padding-top: 6.5vw; /* Push content down to account for fixed topMenu2 */
+
+}
+
+/* Styles for each partition, only active for body-index */
+body.body-index .left-partition,
+body.body-index .middle-partition,
+body.body-index .right-partition {
+  display: flex; /* Allows content inside to be flexed */
+  flex-direction: column; /* Stack content vertically within the partition */
+  box-sizing: border-box; /* Include padding in width/height */
+  padding: 1vw; /* General padding for all partitions */
+  /* Ensure partitions have a defined height for overflow-y to work correctly */
+  height: calc(100vh - 6.5vw - 2vw); /* Example: 100vh - topMenu height - main-page-layout top/bottom padding */
+  /* Adjust '2vw' if you have different top/bottom padding on .main-page-layout */
+}
+
+body.body-index .left-partition {
+  flex: 0 0 32.5%; /* Left partition takes 15% width, doesn't grow/shrink */
+  background-color: transparent; /* Or a solid color */
+  /* border-right: 1px solid #eee; */ /* Optional visual separation */
+  overflow-x: hidden; /* Prevent horizontal scroll from video/image overflowing */
+
+}
+
+body.body-index .middle-partition {
+  flex: 1; /* Middle partition takes up the remaining available space */
+  background-color: transparent; /* Or a solid color */
+  overflow-x: hidden; /* Prevent horizontal scroll from video/image overflowing */
+}
+
+body.body-index .right-partition {
+  flex: 0 0 35%; /* Right partition takes 25% width, doesn't grow/shrink */
+  /* THIS IS THE KEY CHANGE FOR HOVER SCROLL */
+  overflow-y: hidden; /* By default, no scrollbar */
+  transition: overflow-y 0.1s ease-in-out; /* Smooth transition for scrollbar appearance */
+  background-color: #C8E6FF;
+}
+
+body.body-index .right-partition:hover {
+  overflow-y: auto; /* Show scrollbar and enable internal scrolling on hover */
+}
+
+/* Optional: Style the scrollbar for consistency across browsers */
+body.body-index .right-partition::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+body.body-index .right-partition::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+body.body-index .right-partition::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Color on hover */
+}
+
+.right-partition .content-block {
+  /* Adjust this padding to make content align with the transparent part of your fishtank image */
+  padding: 0 20px 20px 20px; /* Example: 20px horizontal padding for content inside the tank */
+  /* margin-top: 50px; */
+}
+
+/* NEW/UPDATED styles for the fishtank overlay */
+.fishtank-overlay {
+  position: fixed; /* Stays fixed in the viewport */
+  right: 0; /* Align to the right edge of the viewport */
+  left: 55vw;
+  top: 80px; /* Align with the top of the main content area (adjust if your header/margin changes) */
+  width: 48.5vw; /* Match the width of the right-partition (35% of viewport width) */
+  height: 90%; /* Match the height of the right-partition */
+  pointer-events: none; /* Allow clicks/scrolls to pass through */
+  z-index: 3; /* Ensure it's on top of almost everything else */
+  /* margin-bottom: 100px; */
+}
+
+.fishtank-sticker {
+  position: fixed; /* Fixed relative to the viewport */
+  z-index: 1000; /* Higher than fishtank-overlay */
+  width: 8vw; /* Adjust initial size as needed. Will scale with viewport width */
+  height: auto; /* Preserve aspect ratio, prevents skewing */
+
+  /* Positioning to the bottom-left of the right-partition */
+  /* Left: Absolute left edge of RP (63.2vw) + padding from RP's inner frame */
+  left: calc(63.2vw + 1.5vw); /* 1.5vw is an example inner padding. Adjust visually. */
+
+  /* Bottom: Absolute bottom edge of RP (5vh - 2.25px) + padding from RP's inner frame */
+  bottom: calc(5vh - 2.25px + 1.5vw); /* 1.5vw is an example inner padding. Adjust visually. */
+}
+
