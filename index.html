@@ -20,6 +20,9 @@
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     scroll-snap-type: y mandatory; /* 'y' for vertical snapping, 'mandatory' forces snap */
     scroll-behavior: smooth; /* Optional: adds a smooth scroll animation when snapping */
+
+
+
   }
 
   @font-face { font-family: Moon; src: url('moon_get-Heavy.otf'); }
@@ -45,11 +48,13 @@
         margin-bottom: 0;
     }
     h4 {
-        font-family: aurora;
-        font-size: clamp(2rem, 10vw, 16rem);
-        color: red;
-        margin-top: -55px;
-    }
+    font-family: aurora; /* No longer applies to the image itself */
+    font-size: clamp(2rem, 10vw, 16rem); /* No longer applies to the image itself */
+    color: red; /* You might want to remove this if the image conveys the color */
+    margin-top: 0; /* Or margin-top: 20px; for some space */
+    margin-bottom: 0; /* Add this for consistent spacing below the h4 container */
+    text-align: center; /* Center the h4 container itself */
+}
 
 
 
@@ -149,6 +154,8 @@
       background-image: url('ads/absurd/colorpurple.png') !important;
       height: 100vh; /* Set height to fill the viewport for correct scrolling */
       overflow-y: auto; /* Enable internal scrolling for its content */
+      cursor: cell; /* Example cursor: a crosshair. Choose one that fits! */
+
   }
 
   .middle-partition .content-block img{
@@ -157,7 +164,7 @@
   }
 
   /* Make sure the sticky elements within div02 don't interfere with main scroll snap */
-  .middle-partition, .right-partition {
+  .middle-partition {
       position: sticky;
       top: 0;
       height: 100vh;
@@ -178,9 +185,10 @@
     flex: 0 0 35%;
     box-sizing: border-box;
     background-color: rgb(200, 230, 255);
+    /* background-image: url('ads/absurd/colorpurple.png') !important; */
     transition: background-color 0.5s ease;
-    position: sticky;
-    top: 0; /* Sticks to the top of its *parent* (.main-page-layout) */
+    /* position: sticky; */
+    top: 0;
     height: 100vh; /* Set height to fill the viewport for correct scrolling */
     overflow-y: auto; /* Enable internal scrolling for its content */
     overflow-x:hidden;
@@ -188,6 +196,8 @@
     border-bottom: 5px solid #ccc; /* Example: 2px solid light gray border */
     border-radius: 10px; /* Optional: adds rounded corners to the border */
     position: relative;
+    cursor: pointer; /* Example cursor: a hand pointer for clickable areas */
+
 
 
   -ms-overflow-style: none;  /* For Internet Explorer and Edge */
@@ -349,6 +359,18 @@
     height: 60px;
   }
 
+  .bubble-cursor {
+      z-index: 9999 !important; /* Extremely high z-index */
+  }
+
+  .welcome-image {
+    max-width: 70%; /* Adjust as needed, e.g., 50% or 60% */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures margin: auto works for centering */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+
 </style>
 
 </head>
@@ -398,8 +420,8 @@
         <div class="main-page-layout">
             <div class="middle-partition">
                 <div class="content-block">
-                    <h4>Welcome to the LAB~</h4>
-                    <p>Hello! My name is Raya and I'm a designer. This is my portfoio, and as you can see, it's under the works...</p>
+                  <h4 class="lab-welcome-title"><img src="text/welcome_drawing.png" alt="Welcome to the LAB" class="welcome-image"></h4>
+                  <p>Hello! My name is Raya and I'm a designer. This is my portfoio, and as you can see, it's under the works...</p>
                     <h2>Anyways...</h2>
                     <p>
                     Great design does more than communicate. Greater design engages, empowers, and resonates. I’m a designer, storyteller, and full-time sidequester who loves exploring the space where tech, design, and narrative come together.
@@ -410,34 +432,33 @@
             </div>
 
             <div class="right-partition">
-              <img id="sticker" src="sticker.png" alt="Sticker">
-
-
-                <a href="absurd.html" class="project-link">
-                    <div class="content-block">
-                        <h3>Absurd Snacks</h3>
-                        <img src="ads/absurd/packages2.png">
-                    </div>
-                </a>
-                <a href="guide.html" class="project-link">
-                    <div class="content-block">
-                        <h3>Field Guide</h3>
-                        <img src="scans2/guidecover.png" alt="Field Guide">
-                        <img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;">
-                    </div>
-                </a>
-                <a href="bones.html" class="project-link">
-                    <div class="content-block">
-                        <h3>BONES</h3>
-                        <img src="scans/bones.jpg" alt="Bones Project">
-                    </div>
-                </a>
-                <a href="digest.html" class="project-link">
-                    <div class="content-block">
-                        <h3>The Eater's Digest</h3>
-                        <img src="scans2/digest.png" alt="Eater's Digest">
-                    </div>
-                </a>
+              <a href="absurd.html" class="project-link">
+                <div class="content-block">
+                    <h3><img src="text/name_absurdsnacks.png" alt="Absurd Snacks" class="title-image"></h3>
+                    <img src="ads/absurd/packages2.png">
+                </div>
+            </a>
+            <a href="guide.html" class="project-link">
+                <div class="content-block">
+                    <h3><img src="text/name_fieldguide.png" alt="Field Guide" class="title-image"></h3>
+                    <img src="scans2/guidecover.png" alt="Field Guide">
+                    <img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;">
+                </div>
+            </a>
+            <a href="bones.html" class="project-link">
+                <div class="content-block">
+                    <h3><img src="text/name_bones.png" alt="BONES" class="title-image"></h3>
+                    <img src="scans/bones.jpg" alt="Bones Project">
+                </div>
+            </a>
+            <a href="digest.html" class="project-link">
+                <div class="content-block">
+                    <h3><img src="text/name_eatersdigest.png" alt="The Eater's Digest" class="title-image"></h3>
+                    <img src="scans2/digest.png" alt="Eater's Digest">
+                </div>
+            </a>
+            <img id="sticker" src="sticker.png" alt="Sticker">
+        </div>
             </div>
         </div>
     </div>
@@ -450,117 +471,114 @@
     </a>
 
 
-<script type="module">
-  // Your bubble cursor effect
-  import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-  new bubbleCursor();
-
-  var _rys = jQuery.noConflict();
-  _rys(document).ready(function () {
-      const div01 = _rys('#div01');
-      const transitionGif = _rys('#transition-animation');
-      let gifTimeout; // To store the timeout ID for clearing
-
-      _rys(window).scroll(function () {
-          const scrollTop = _rys(this).scrollTop();
-
-          // Define the scroll range where div01 fades out
-          const div01FadeStart = 10; // Start fading div01 almost immediately
-          const div01FadeEnd = 300; // div01 is fully faded at this point
-
-          // Calculate div01's target opacity based on scroll
-          let div01Opacity = 1;
-          if (scrollTop > div01FadeStart) {
-              div01Opacity = 1 - Math.min(1, (scrollTop - div01FadeStart) / (div01FadeEnd - div01FadeStart));
-          }
-
-          // Apply opacity to div01
-          div01.css('opacity', div01Opacity);
-
-          // Control pointer-events for div01
-          if (div01Opacity <= 0.05) { // When almost invisible
-              div01.css('pointer-events', 'none');
-          } else {
-              div01.css('pointer-events', 'auto');
-          }
-
-          // Trigger GIF precisely when div01 starts fading and then hide it
-          // This logic is more robust than just checking fixed scroll points
-          if (div01Opacity < 0.99 && div01Opacity > 0.01) { // If div01 is currently fading
-              transitionGif.addClass("active");
-              // Clear any existing timeout to prevent flicker if user scrolls back and forth
-              if (gifTimeout) {
-                  clearTimeout(gifTimeout);
+    <script type="module">
+      import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    
+      // Create the bubble cursor instance
+      const myBubbleCursor = new bubbleCursor();
+    
+      // Find the bubble cursor element and add a class for z-index control
+      // The 'bubble-cursor' class is added to the main canvas element created by the library
+      const bubbleCursorElement = document.querySelector('.cursor-canvas'); // The library creates a canvas with this class
+      if (bubbleCursorElement) {
+          bubbleCursorElement.classList.add('bubble-cursor');
+      }
+    
+      var _rys = jQuery.noConflict();
+      _rys(document).ready(function () {
+          const div01 = _rys('#div01');
+          const transitionGif = _rys('#transition-animation');
+          let gifTimeout;
+    
+          _rys(window).scroll(function () {
+              const scrollTop = _rys(this).scrollTop();
+    
+              const div01FadeStart = 10;
+              const div01FadeEnd = 300;
+    
+              let div01Opacity = 1;
+              if (scrollTop > div01FadeStart) {
+                  div01Opacity = 1 - Math.min(1, (scrollTop - div01FadeStart) / (div01FadeEnd - div01FadeStart));
               }
-          } else if (div01Opacity <= 0.01) { // If div01 is fully faded
-              // Add a slight delay before removing 'active' to ensure GIF plays fully or smoothly disappears
-              if (!transitionGif.hasClass("fade-out-scheduled")) {
-                  transitionGif.addClass("fade-out-scheduled");
-                  gifTimeout = setTimeout(() => {
-                      transitionGif.removeClass("active fade-out-scheduled");
-                  }, 500); // GIF visible for 0.5 seconds after div01 is gone
+    
+              div01.css('opacity', div01Opacity);
+    
+              if (div01Opacity <= 0.05) {
+                  div01.css('pointer-events', 'none');
+              } else {
+                  div01.css('pointer-events', 'auto');
               }
-          } else { // If div01 is fully visible (at the top)
-              transitionGif.removeClass("active fade-out-scheduled");
-              if (gifTimeout) {
-                  clearTimeout(gifTimeout);
-                  gifTimeout = null;
-              }
-          }
-      });
-  });
-
-  // --- SCRIPT FOR COLOR CHANGE ON RIGHT PARTITION ---
-  const rightPartition = document.querySelector('.right-partition');
-
-  if (rightPartition) {
-      // Use the internal scroll of the right partition itself
-      rightPartition.addEventListener('scroll', function () {
-          const scrollTop = rightPartition.scrollTop;
-          const contentHeight = rightPartition.scrollHeight;
-          const elementHeight = rightPartition.clientHeight;
-
-          const maxScroll = contentHeight - elementHeight;
-          let scrollRatio = 0;
-          if (maxScroll > 0) {
-              scrollRatio = scrollTop / maxScroll;
-          }
-
-          // The rest of your brilliant color-changing logic is the same!
-          const startBgColor = [200, 230, 255];
-          const midBgColor = [32, 118, 199];
-          const endBgColor = [0, 18, 64];
-          const startTextColor = [0, 0, 0];
-          const endTextColor = [255, 255, 255];
-
-          let bgR, bgG, bgB;
-          if (scrollRatio < 0.5) {
-            const adjustedRatio = scrollRatio * 2;
-            bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
-            bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
-            bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
-          } else {
-            const adjustedRatio = (scrollRatio - 0.5) * 2;
-            bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
-            bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
-            bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
-          }
-
-          rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
-
-          let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
-          let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
-          let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
-
-          const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
-          textElements.forEach(el => {
-              if (el.tagName !== 'IMG') {
-                  el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+    
+              if (div01Opacity < 0.99 && div01Opacity > 0.01) {
+                  transitionGif.addClass("active");
+                  if (gifTimeout) {
+                      clearTimeout(gifTimeout);
+                  }
+              } else if (div01Opacity <= 0.01) {
+                  if (!transitionGif.hasClass("fade-out-scheduled")) {
+                      transitionGif.addClass("fade-out-scheduled");
+                      gifTimeout = setTimeout(() => {
+                          transitionGif.removeClass("active fade-out-scheduled");
+                      }, 500);
+                  }
+              } else {
+                  transitionGif.removeClass("active fade-out-scheduled");
+                  if (gifTimeout) {
+                      clearTimeout(gifTimeout);
+                      gifTimeout = null;
+                  }
               }
           });
       });
-  }
-</script>
+    
+      const rightPartition = document.querySelector('.right-partition');
+    
+      if (rightPartition) {
+          rightPartition.addEventListener('scroll', function () {
+              const scrollTop = rightPartition.scrollTop;
+              const contentHeight = rightPartition.scrollHeight;
+              const elementHeight = rightPartition.clientHeight;
+    
+              const maxScroll = contentHeight - elementHeight;
+              let scrollRatio = 0;
+              if (maxScroll > 0) {
+                  scrollRatio = scrollTop / maxScroll;
+              }
+    
+              const startBgColor = [200, 230, 255];
+              const midBgColor = [32, 118, 199];
+              const endBgColor = [0, 18, 64];
+              const startTextColor = [0, 0, 0];
+              const endTextColor = [255, 255, 255];
+    
+              let bgR, bgG, bgB;
+              if (scrollRatio < 0.5) {
+                const adjustedRatio = scrollRatio * 2;
+                bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
+                bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
+                bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
+              } else {
+                const adjustedRatio = (scrollRatio - 0.5) * 2;
+                bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
+                bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
+                bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
+              }
+    
+              rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+    
+              let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
+              let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
+              let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
+    
+              const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
+              textElements.forEach(el => {
+                  if (el.tagName !== 'IMG') {
+                      el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+                  }
+              });
+          });
+      }
+    </script>
 
 </body>
 </html>
