@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="fav icon" type="image/x-icon" href="favicon2.png">
 
@@ -16,93 +17,108 @@
     margin: 0;
     padding: 0;
     background-color: white;
-    overflow-x: hidden;
+    /* overflow-x: hidden;  Keep this to prevent horizontal scroll */
     font-family: 'Lato', Arial, Helvetica, sans-serif;
-    scroll-snap-type: y mandatory; /* 'y' for vertical snapping, 'mandatory' forces snap */
-    scroll-behavior: smooth; /* Optional: adds a smooth scroll animation when snapping */
-
-
-
+    scroll-snap-type: y mandatory; /* Keep if you still want snapping sections */
+    scroll-behavior: smooth;
+    height: 100%; /* Ensure html and body take full height */
   }
 
   @font-face { font-family: Moon; src: url('moon_get-Heavy.otf'); }
-  @font-face { font-family: goose; src: url('goose.ttf'); }
-  @font-face { font-family: goose-thin; src: url('goose-thin.ttf'); }
-  @font-face { font-family: goose-thin-italic; src: url('goose-thin-italic.ttf'); }
-  @font-face { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); }
-  @font-face { font-family: aurora; src: url('AURORA.otf'); }
+  @font-family { font-family: goose; src: url('goose.ttf'); }
+  @font-family { font-family: goose-thin; src: url('goose-thin.ttf'); }
+  @font-family { font-family: goose-thin-italic; src: url('goose-thin-italic.ttf'); }
+  @font-family { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); }
+  @font-family { font-family: aurora; src: url('AURORA.otf'); }
 
-    p {
-        font-family: 'Lato', sans-serif;
-    }
-    h2 {
-        font-family: Moon;
-        font-size: clamp(1.5rem, 5vw, 8rem);
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-    h3 {
-        font-family: caviar-italic;
-        font-size: 2vw;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    h4 {
-    font-family: aurora; /* No longer applies to the image itself */
-    font-size: clamp(2rem, 10vw, 16rem); /* No longer applies to the image itself */
-    color: red; /* You might want to remove this if the image conveys the color */
-    margin-top: 0; /* Or margin-top: 20px; for some space */
-    margin-bottom: 0; /* Add this for consistent spacing below the h4 container */
-    text-align: center; /* Center the h4 container itself */
-}
+    p { font-family: 'Lato', sans-serif; }
+    h2 { font-family: Moon; font-size: clamp(1.5rem, 5vw, 8rem); margin: 0; }
+    h3 { font-family: caviar-italic; font-size: 2vw; margin: 0; }
+    h4 { font-family: aurora; font-size: clamp(2rem, 10vw, 16rem); color: red; margin: 0; text-align: center; }
 
+  /* --- Universal Fixed Menu Container (The Bar) --- */
+  #menu-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; /* Ensure it's above other content */
+    height: 6.5vw; /* This height should match your .topMenu2 height in design.css */
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: space-between; /* Pushes rayaMenu left, topMenu2 right */
 
+    /* Styles for the bar itself */
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  }
 
-  /* #div01: The "Red Block" - Your fixed, full-screen intro */
+  /* Specific overrides for .rayaMenu to control its fade-in effect and layout */
+  /* These rules will take precedence over those in design.css for this specific element. */
+  .rayaMenu {
+    opacity: 0; /* Initially hidden */
+    pointer-events: none; /* Non-interactive when hidden */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+
+    /* Override position and float to make it a flex item */
+    position: relative; /* Change from absolute for flex compatibility within #menu-container */
+    float: none; /* Disable float when in a flex container */
+
+    /* Adjust spacing as needed within the flex container */
+    padding-top: 0; /* Remove top padding as flexbox `align-items: center` handles vertical alignment */
+    padding-left: 2vw; /* Keep left padding for desired horizontal spacing */
+    z-index: 10; /* Keep high z-index if needed for dropdown layering, but within #menu-container's flow */
+  }
+
+  /* Override for topMenu2 to prevent it from taking 100% width and messing up flex layout */
+  .topMenu2 {
+    width: auto; /* Let it shrink to content size, allowing flex to space it */
+    flex-shrink: 1; /* Allow it to shrink if needed */
+    /* You might also consider removing or adjusting padding-right here
+         if it's causing extra space on the right, or rely on padding on #menu-container */
+  }
+
+  /* #div01: Splash Screen */
   #div01 {
-    position: fixed; /* Stays in place */
+    position: fixed;
     left: 0;
     top: 0;
     background: white;
     width: 100%;
-    height: 100vh; /* Takes up the full viewport height */
+    height: 100vh;
     overflow: hidden;
-    transition: opacity 1s ease-out; /* Fade-out transition */
-    z-index: 10; /* Stays on top of other content initially */
+    transition: opacity 1.5s ease-out;
+    z-index: 10;
     display: flex;
     flex-direction: column;
+    padding-top: 6.5vw; /* Adjust based on menu height */
+    box-sizing: border-box;
   }
 
-  #div01  {
-    color: black;
-  }
-
-  /* Class to trigger the fade-out */
-  .setopacity {
+  #div01.hidden {
     opacity: 0;
-    pointer-events: none; /* Prevents interaction with the faded-out div */
+    pointer-events: none;
   }
 
-  /* --- NEW/MODIFIED STYLES FOR THE TRANSITION GIF --- */
+  /* --- NEW: Transition GIF Styles --- */
   #transition-animation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9; /* Lower than div01 initially, then adjusted by JS */
-    opacity: 0; /* Initially hidden */
-    pointer-events: none; /* Prevents interaction when hidden */
-    transition: opacity 0.3s ease-in-out; /* Smooth fade for the GIF */
+    z-index: 9999; /* Above splash (10), below menu (100) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade for the GIF container */
   }
 
   #transition-animation.active {
-      opacity: 1; /* Fully visible when active */
-      z-index: 11; /* Temporarily higher than div01 to cover it during fade */
-      pointer-events: auto; /* Allow interaction if needed, but usually not for a transition GIF */
+      opacity: 1;
+      pointer-events: auto;
   }
 
   #transition-animation img {
@@ -110,256 +126,100 @@
       height: 100%;
       object-fit: cover; /* Ensures the GIF covers the whole screen */
   }
-  /* --- END NEW STYLES --- */
 
-
-  /* #div02: The "Yellow Block" (Main content) */
+  /* #div02: Main content */
   #div02 {
-    position: relative; /* Scrolls normally */
+    position: relative;
     width: 100%;
-    margin-top: 100vh;
     background: white;
     overflow: hidden;
     z-index: 5;
-    scroll-snap-align: start; /* Make this element snap to the start (top) of the scroll container */
-
+    scroll-snap-align: start;
+    padding-top: 6.5vw; /* Adjust based on menu height */
+    box-sizing: border-box;
   }
 
-  /* --- LAYOUT INSIDE THE BLOCKS --- */
-
-  .parent-container {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-
-  .main-page-layout {
-      display: flex;
-      width: 100%;
-      /* min-height: 120vh; */ /* This can be removed or adjusted. The content will define height. */
-      position: relative;
-      /* height: 100vh; */ /* REMOVE this if you want the main page to scroll beyond 100vh */
-      /* overflow-y: auto; */ /* REMOVE this if you want the body to handle main scrolling */
-      /* If you keep this, the middle and right partitions will stick within this 100vh area only.
-         Generally, you want the main page to scroll. */
-  }
+  /* --- Page Layouts --- */
+  .parent-container { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
+  .main-page-layout { display: flex; width: 100%; position: relative; }
 
   .middle-partition {
       flex: 0 0 65%;
       padding: 2vw;
       box-sizing: border-box;
       position: sticky;
-      top: 0; /* Sticks to the top of its *parent* (.main-page-layout) */
+      top: 6.5vw; /* Adjust based on menu height */
       background-image: url('ads/absurd/colorpurple.png') !important;
-      height: 100vh; /* Set height to fill the viewport for correct scrolling */
-      overflow-y: auto; /* Enable internal scrolling for its content */
-      cursor: cell; /* Example cursor: a crosshair. Choose one that fits! */
-
+      height: calc(100vh - 6.5vw); /* Adjust based on menu height */
+      overflow-y: auto;
+      cursor: cell;
   }
 
-  .middle-partition .content-block img{
-    height: auto;
-    width: 100%;
-  }
+  .middle-partition .content-block img{ height: auto; width: 100%; }
 
-  /* Make sure the sticky elements within div02 don't interfere with main scroll snap */
-  .middle-partition {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto; /* They still handle their own internal scroll if content overflows */
-  }
-
-  #sticker {
-      position: absolute; /* Changed from fixed to absolute */
-      bottom: 20px; /* Distance from the bottom of the right partition */
-      left: 20px; /* Distance from the left of the right partition */
-      width: 10vw; /* Responsive width based on viewport width */
-      height: auto; /* Maintain aspect ratio */
-      z-index: 998; /* A high z-index to ensure it's on top of content within the partition */
-      pointer-events: none; /* Allows clicks to pass through to content behind it if needed */
-  }
+  #sticker { position: absolute; bottom: 20px; left: 20px; width: 10vw; height: auto; z-index: 998; pointer-events: none; }
 
   .right-partition {
     flex: 0 0 35%;
     box-sizing: border-box;
     background-color: rgb(200, 230, 255);
-    /* background-image: url('ads/absurd/colorpurple.png') !important; */
     transition: background-color 0.5s ease;
-    /* position: sticky; */
-    top: 0;
-    height: 100vh; /* Set height to fill the viewport for correct scrolling */
-    overflow-y: auto; /* Enable internal scrolling for its content */
+    top: 6.5vw; /* Adjust based on menu height */
+    height: calc(100vh - 6.5vw); /* Adjust based on menu height */
+    overflow-y: auto;
     overflow-x:hidden;
-    border: 5px solid #ccc; /* Example: 2px solid light gray border */
-    border-bottom: 5px solid #ccc; /* Example: 2px solid light gray border */
-    border-radius: 10px; /* Optional: adds rounded corners to the border */
-    position: relative;
-    cursor: pointer; /* Example cursor: a hand pointer for clickable areas */
-
-
-
-  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
-    scrollbar-width: none;     /* For Firefox */
-}
-
-
-/* For Chrome, Safari, and Opera (Webkit browsers) */
-.right-partition::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar */
-}
-
-/* For Chrome, Safari, and Opera (Webkit browsers) */
-.middle-partition::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar */
-}
-
-  /* Styling for content WITHIN the right partition */
-  .right-partition .project-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  }
-  .right-partition .project-link:hover {
-      transform: scale(1.02);
-      /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
-  }
-  .right-partition .content-block {
-    padding: 20px;
-    /* background: rgba(255,255,255,0.1); */
-    margin: 15px;
+    border: 5px solid #ccc;
+    border-bottom: 5px solid #ccc;
     border-radius: 10px;
-  }
-  .right-partition .content-block img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  /* Keep specific h3 for right partition to override the general one */
-  .right-partition h3 {
-      font-family: caviar-italic;
-      font-size: 2vw;
-      margin-top: 0;
-  }
-
-  /* --- RESTORED ORIGINAL MENU STYLES --- */
-
-  /* Base styles for both menus */
-  .topMenu-base {
-    height: 6.5vw;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    padding-right: 2vw;
-    box-sizing: border-box;
-    font-family: goose-thin;
-    font-size: 1.2vw;
-  }
-
-  /* Menu in the intro screen */
-  #intro-menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  /* Sticky menu that appears after scrolling */
-  #sticky-menu {
     position: sticky;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 20;
-    border-bottom: 1px solid #eee;
-  }
-
-  /* Links and Dropdown buttons */
-  .topMenu-base a, .topMenu-base .dropbtn2 {
-    color: black;
-    text-decoration: none;
-    padding: 14px 16px;
-    text-align: right;
-    display: block;
-  }
-
-  .topMenu-base a:hover, .topMenu-base .dropbtn2:hover {
-    color: #29abe2;
-    font-family: goose;
-    transition: color 0.4s ease-in-out;
-  }
-
-  .topMenu-base .active-btn, .dropdown2:hover .dropbtn2 {
-    color: #29abe2;
-    font-family: goose;
-  }
-
-  /* Dropdown Button Specifics */
-  .dropbtn2 {
-    background: none;
-    border: none;
     cursor: pointer;
-    font-family: goose-thin;
-    font-size: 1.2vw;
-    transition: color 0.7s ease-in-out;
-  }
-
-  .smaller {
-    height: 60px;
-  }
-
-  .bubble-cursor {
-      z-index: 9999 !important; /* Extremely high z-index */
-  }
-
-  .welcome-image {
-    max-width: 70%; /* Adjust as needed, e.g., 50% or 60% */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensures margin: auto works for centering */
-    margin: 0 auto; /* Center the image horizontally */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+.right-partition::-webkit-scrollbar, .middle-partition::-webkit-scrollbar { display: none; }
 
+  .right-partition .project-link { display: block; text-decoration: none; color: inherit; transition: transform 0.2s ease-out; }
+  .right-partition .project-link:hover { transform: scale(1.02); }
+  .right-partition .content-block { padding: 20px; margin: 15px; border-radius: 10px; }
+  .right-partition .content-block img { width: 100%; height: auto; border-radius: 8px; }
+  .right-partition h3 { font-family: caviar-italic; font-size: 2vw; margin-top: 0; }
+  .welcome-image { max-width: 70%; height: auto; display: block; margin: 0 auto; }
 </style>
 
 </head>
 <body>
-
-    <div id="div01">
-      <div class="topMenu2">
-        <div class="dropdown2">
-            <button class="dropbtn2 active-btn">PORTFOLIO</button>
-            <div class="dropdown-content2">
-              <a href="design.html">DESIGNS</a>
-              <a href="ads.html">ADS</a>
-              </div>
-          </div>
-
-        <div class="dropdown2">
-            <button class="dropbtn2">CONTACT
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content2">
-              <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
-              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
-            </div>
-          </div>
-
-          <a href="resume.html">RÉSUMÉ</a><br>
-
-          <a href="about.html">ABOUT</a>
-
+    <div id="menu-container">
+        <div class="rayaMenu" id="raya-menu-fade-element">
+            <a href="https://rayafreeborn.com/">
+                <img src="rayaname.png" alt="Raya Name Link">
+            </a>
         </div>
 
+        <div class="topMenu2">
+            <div class="dropdown2">
+                <button class="dropbtn2 active-btn">PORTFOLIO</button>
+                <div class="dropdown-content2">
+                    <a href="design.html">DESIGNS</a>
+                    <a href="ads.html">ADS</a>
+                    </div>
+            </div>
+            <div class="dropdown2">
+                <button class="dropbtn2">CONTACT</button>
+                <div class="dropdown-content2">
+                    <a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LINKEDIN</a>
+                    <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+                </div>
+            </div>
+            <a href="resume.html">RÉSUMÉ</a><br>
+            <a href="about.html" class="active">ABOUT</a>
+        </div>
+    </div>
+
+    <div id="div01">
         <div class="parent-container">
-            <div class="image-box grow">
-                <img src="rayaname.png" alt="Raya Name Graphic" />
-            </div>
-            <div class="video-box">
-                <video src="Rayawhitebackground.mp4" autoplay muted loop></video>
-            </div>
+            <div class="image-box grow"><img src="rayaname.png" alt="Raya Name Graphic" /></div>
+            <div class="video-box"><video src="Rayawhitebackground.mp4" autoplay muted loop></video></div>
         </div>
     </div>
 
@@ -371,164 +231,107 @@
         <div class="main-page-layout">
             <div class="middle-partition">
                 <div class="content-block">
-                  <h4 class="lab-welcome-title"><img src="text/welcome_drawing.png" alt="Welcome to the LAB" class="welcome-image"></h4>
-                  <p>Hello! My name is Raya and I'm a designer. This is my portfoio, and as you can see, it's under the works...</p>
+                    <h4 class="lab-welcome-title"><img src="text/welcome_drawing.png" alt="Welcome to the LAB" class="welcome-image"></h4>
+                    <p>Hello! My name is Raya and I'm a designer. This is my portfolio, and as you can see, it's under the works...</p>
                     <h2>Anyways...</h2>
-                    <p>
-                    Great design does more than communicate. Greater design engages, empowers, and resonates. I’m a designer, storyteller, and full-time sidequester who loves exploring the space where tech, design, and narrative come together.
-                    </p>
-                    <p> My fascination with visual storytelling started early. At three, I taught myself to read while exploring the world of the game, Club Penguin. Seeing firsthand how digital worlds can spark curiosity has stuck with me. Today, I aim to create work that starts a conversation, building immersive experiences through branding, digital media, and interactive design.</p>
+                    <p>Great design does more than communicate. Greater design engages, empowers, and resonates. I’m a designer, storyteller, and full-time sidequester who loves exploring the space where tech, design, and narrative come together.</p>
+                    <p>My fascination with visual storytelling started early. At three, I taught myself to read while exploring the world of the game, Club Penguin. Seeing firsthand how digital worlds can spark curiosity has stuck with me. Today, I aim to create work that starts a conversation, building immersive experiences through branding, digital media, and interactive design.</p>
                     <img src="fun_pictures/rayaonrock.png" alt="Placeholder Image" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: 0; margin-bottom: 0;">
                 </div>
             </div>
-
             <div class="right-partition">
-              <a href="absurd.html" class="project-link">
-                <div class="content-block">
-                    <h3><img src="text/name_absurdsnacks.png" alt="Absurd Snacks" class="title-image"></h3>
-                    <img src="ads/absurd/packages2.png">
-                </div>
-            </a>
-            <a href="guide.html" class="project-link">
-                <div class="content-block">
-                    <h3><img src="text/name_fieldguide.png" alt="Field Guide" class="title-image"></h3>
-                    <img src="scans2/guidecover.png" alt="Field Guide">
-                    <img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;">
-                </div>
-            </a>
-            <a href="bones.html" class="project-link">
-                <div class="content-block">
-                    <h3><img src="text/name_bones.png" alt="BONES" class="title-image"></h3>
-                    <img src="scans/bones.jpg" alt="Bones Project">
-                </div>
-            </a>
-            <a href="digest.html" class="project-link">
-                <div class="content-block">
-                    <h3><img src="text/name_eatersdigest.png" alt="The Eater's Digest" class="title-image"></h3>
-                    <img src="scans2/digest.png" alt="Eater's Digest">
-                </div>
-            </a>
-            <img id="sticker" src="sticker.png" alt="Sticker">
-        </div>
+              <a href="absurd.html" class="project-link"><div class="content-block"><h3><img src="text/name_absurdsnacks.png" alt="Absurd Snacks" class="title-image"></h3><img src="ads/absurd/packages2.png"></div></a>
+              <a href="guide.html" class="project-link"><div class="content-block"><h3><img src="text/name_fieldguide.png" alt="Field Guide" class="title-image"></h3><img src="scans2/guidecover.png" alt="Field Guide"><img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;"></div></a>
+              <a href="bones.html" class="project-link"><div class="content-block"><h3><img src="text/name_bones.png" alt="BONES" class="title-image"></h3><img src="scans/bones.jpg" alt="Bones Project"></div></a>
+              <a href="digest.html" class="project-link"><div class="content-block"><h3><img src="text/name_eatersdigest.png" alt="The Eater's Digest" class="title-image"></h3><img src="scans2/digest.png" alt="Eater's Digest"></div></a>
+              <img id="sticker" src="sticker.png" alt="Sticker">
             </div>
         </div>
     </div>
 
-    <a href="https://github.com/coldravioli" target="_blank">
-        <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link">
-    </a>
-    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px; z-index: 999;">
-        Website Hand-coded by me!
-    </a>
-
+    <a href="https://github.com/coldravioli" target="_blank"><img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link"></a>
+    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px; z-index: 999;">Website Hand-coded by me!</a>
 
     <script type="module">
-      import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-    
-      // Create the bubble cursor instance
-      const myBubbleCursor = new bubbleCursor();
-    
-      // Find the bubble cursor element and add a class for z-index control
-      // The 'bubble-cursor' class is added to the main canvas element created by the library
-      const bubbleCursorElement = document.querySelector('.cursor-canvas'); // The library creates a canvas with this class
-      if (bubbleCursorElement) {
-          bubbleCursorElement.classList.add('bubble-cursor');
-      }
-    
-      var _rys = jQuery.noConflict();
-      _rys(document).ready(function () {
-          const div01 = _rys('#div01');
-          const transitionGif = _rys('#transition-animation');
-          let gifTimeout;
-    
-          _rys(window).scroll(function () {
-              const scrollTop = _rys(this).scrollTop();
-    
-              const div01FadeStart = 10;
-              const div01FadeEnd = 300;
-    
-              let div01Opacity = 1;
-              if (scrollTop > div01FadeStart) {
-                  div01Opacity = 1 - Math.min(1, (scrollTop - div01FadeStart) / (div01FadeEnd - div01FadeStart));
-              }
-    
-              div01.css('opacity', div01Opacity);
-    
-              if (div01Opacity <= 0.05) {
-                  div01.css('pointer-events', 'none');
-              } else {
-                  div01.css('pointer-events', 'auto');
-              }
-    
-              if (div01Opacity < 0.99 && div01Opacity > 0.01) {
-                  transitionGif.addClass("active");
-                  if (gifTimeout) {
-                      clearTimeout(gifTimeout);
-                  }
-              } else if (div01Opacity <= 0.01) {
-                  if (!transitionGif.hasClass("fade-out-scheduled")) {
-                      transitionGif.addClass("fade-out-scheduled");
-                      gifTimeout = setTimeout(() => {
-                          transitionGif.removeClass("active fade-out-scheduled");
-                      }, 500);
-                  }
-              } else {
-                  transitionGif.removeClass("active fade-out-scheduled");
-                  if (gifTimeout) {
-                      clearTimeout(gifTimeout);
-                      gifTimeout = null;
-                  }
-              }
-          });
-      });
-    
-      const rightPartition = document.querySelector('.right-partition');
-    
-      if (rightPartition) {
-          rightPartition.addEventListener('scroll', function () {
-              const scrollTop = rightPartition.scrollTop;
-              const contentHeight = rightPartition.scrollHeight;
-              const elementHeight = rightPartition.clientHeight;
-    
-              const maxScroll = contentHeight - elementHeight;
-              let scrollRatio = 0;
-              if (maxScroll > 0) {
-                  scrollRatio = scrollTop / maxScroll;
-              }
-    
-              const startBgColor = [200, 230, 255];
-              const midBgColor = [32, 118, 199];
-              const endBgColor = [0, 18, 64];
-              const startTextColor = [0, 0, 0];
-              const endTextColor = [255, 255, 255];
-    
-              let bgR, bgG, bgB;
-              if (scrollRatio < 0.5) {
-                const adjustedRatio = scrollRatio * 2;
-                bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * adjustedRatio);
-                bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * adjustedRatio);
-                bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * adjustedRatio);
-              } else {
-                const adjustedRatio = (scrollRatio - 0.5) * 2;
-                bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * adjustedRatio);
-                bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * adjustedRatio);
-                bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * adjustedRatio);
-              }
-    
-              rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
-    
-              let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
-              let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
-              let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
-    
-              const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
-              textElements.forEach(el => {
-                  if (el.tagName !== 'IMG') {
-                      el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
-                  }
-              });
-          });
-      }
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+
+        // --- SPLASH SCREEN & TRANSITION LOGIC ---
+        window.addEventListener('load', function () {
+    const splashScreen = document.getElementById('div01');
+    const transitionAnimation = document.getElementById('transition-animation');
+    const rayaMenuElement = document.getElementById('raya-menu-fade-element');
+
+    const SPLASH_SCREEN_DISPLAY_TIME = 2000; // Time splash screen is fully visible
+    const GIF_FADE_IN_DURATION = 800; // How long the GIF takes to fade in
+    const GIF_DISPLAY_DURATION = 170; // How long the GIF is fully visible/playing
+    const GIF_FADE_OUT_DURATION = 300; // How long the GIF takes to fade out
+
+    // Initially hide rayaMenu
+    rayaMenuElement.style.opacity = '0';
+    rayaMenuElement.style.pointerEvents = 'none';
+
+    // Step 1: Keep splash screen visible for a short period
+    setTimeout(() => {
+        // Step 2: Activate GIF fade-in
+        transitionAnimation.classList.add('active'); // This starts the opacity transition for GIF
+
+        // Step 3: Hide splash screen AFTER GIF starts to become visible
+        setTimeout(() => {
+            splashScreen.classList.add('hidden');
+        }, GIF_FADE_IN_DURATION / 2); // Hide splash after GIF is halfway faded in
+
+        // Step 4: After GIF has fully faded in and played, fade it out and show menu
+        setTimeout(() => {
+            transitionAnimation.classList.remove('active'); // This starts the opacity transition for GIF fade-out
+            // Show rayaMenu slightly before GIF completely disappears for smoother transition
+            setTimeout(() => {
+                rayaMenuElement.style.opacity = '1';
+                rayaMenuElement.style.pointerEvents = 'auto';
+            }, GIF_FADE_OUT_DURATION / 2); // Show menu halfway through GIF fade-out
+
+        }, GIF_FADE_IN_DURATION + GIF_DISPLAY_DURATION); // Total time until GIF starts to fade out
+
+    }, SPLASH_SCREEN_DISPLAY_TIME);
+});
+
+        // --- COLOR SCROLL EFFECT FOR RIGHT PARTITION ---
+        const rightPartition = document.querySelector('.right-partition');
+        if (rightPartition) {
+            rightPartition.addEventListener('scroll', function () {
+                const scrollTop = rightPartition.scrollTop;
+                const contentHeight = rightPartition.scrollHeight;
+                const elementHeight = rightPartition.clientHeight;
+                const maxScroll = contentHeight - elementHeight;
+                let scrollRatio = maxScroll > 0 ? scrollTop / maxScroll : 0;
+                const startBgColor = [200, 230, 255], midBgColor = [32, 118, 199], endBgColor = [0, 18, 64];
+                const startTextColor = [0, 0, 0], endTextColor = [255, 255, 255];
+                let bgR, bgG, bgB;
+                if (scrollRatio < 0.5) {
+                    const r = scrollRatio * 2;
+                    bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * r);
+                    bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * r);
+                    bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * r);
+                } else {
+                    const r = (scrollRatio - 0.5) * 2;
+                    bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * r);
+                    bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * r);
+                    bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * r);
+                }
+                rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+                let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
+                let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
+                let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
+                const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
+                textElements.forEach(el => { if (el.tagName !== 'IMG') { el.style.color = `rgb(${textR}, ${textG}, ${textB})`; } });
+            });
+        }
+
+          // --- BUBBLE CURSOR INITIALIZATION AND FIX ---
+  new bubbleCursor();
+  const cursorCanvas = document.querySelector('.cursor-canvas');
+  if (cursorCanvas) {
+    cursorCanvas.style.zIndex = '10000'; // Ensure bubbles are on top of everything else
+  }
     </script>
 
 </body>

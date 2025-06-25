@@ -310,7 +310,7 @@ h4 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  width: auto;
   flex-shrink: 0;
   padding-right: 2vw;
   font-weight: bold;
