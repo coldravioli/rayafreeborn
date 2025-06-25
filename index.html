@@ -15,13 +15,13 @@
 <style>
   html, body {
     margin: 0;
-    padding: 0;
+    padding: 0; /* No padding here, use padding-top on #div02 instead */
     background-color: white;
-    /* overflow-x: hidden;  Keep this to prevent horizontal scroll */
+    overflow-x: hidden;
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     scroll-snap-type: y mandatory; /* Keep if you still want snapping sections */
     scroll-behavior: smooth;
-    height: 100%; /* Ensure html and body take full height */
+    height: 100%; /* Important for proper body scrolling behavior */
   }
 
   @font-face { font-family: Moon; src: url('moon_get-Heavy.otf'); }
@@ -42,40 +42,31 @@
     top: 0;
     width: 100%;
     z-index: 100; /* Ensure it's above other content */
-    height: 6.5vw; /* This height should match your .topMenu2 height in design.css */
-    display: flex; /* Make it a flex container */
-    align-items: center; /* Vertically align items in the middle */
-    justify-content: space-between; /* Pushes rayaMenu left, topMenu2 right */
-
-    /* Styles for the bar itself */
-    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white background */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    height: 6.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background for blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   /* Specific overrides for .rayaMenu to control its fade-in effect and layout */
-  /* These rules will take precedence over those in design.css for this specific element. */
   .rayaMenu {
-    opacity: 0; /* Initially hidden */
-    pointer-events: none; /* Non-interactive when hidden */
-    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
-
-    /* Override position and float to make it a flex item */
-    position: relative; /* Change from absolute for flex compatibility within #menu-container */
-    float: none; /* Disable float when in a flex container */
-
-    /* Adjust spacing as needed within the flex container */
-    padding-top: 0; /* Remove top padding as flexbox `align-items: center` handles vertical alignment */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    float: none;
+    padding-top: 0; /* Adjusted for better alignment within fixed menu */
     padding-left: 2vw; /* Keep left padding for desired horizontal spacing */
-    z-index: 10; /* Keep high z-index if needed for dropdown layering, but within #menu-container's flow */
+    z-index: 10;
   }
 
   /* Override for topMenu2 to prevent it from taking 100% width and messing up flex layout */
   .topMenu2 {
-    width: auto; /* Let it shrink to content size, allowing flex to space it */
-    flex-shrink: 1; /* Allow it to shrink if needed */
-    /* You might also consider removing or adjusting padding-right here
-         if it's causing extra space on the right, or rely on padding on #menu-container */
+    width: auto;
+    flex-shrink: 1;
   }
 
   /* #div01: Splash Screen */
@@ -91,7 +82,7 @@
     z-index: 10;
     display: flex;
     flex-direction: column;
-    padding-top: 6.5vw; /* Adjust based on menu height */
+    padding-top: 0; /* Splash screen should cover the whole screen */
     box-sizing: border-box;
   }
 
@@ -110,10 +101,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Above splash (10), below menu (100) */
+    z-index: 9999; /* HIGHEST Z-INDEX: Ensures the GIF is on top of EVERYTHING */
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade for the GIF container */
+    transition: opacity 0.5s ease-in-out;
   }
 
   #transition-animation.active {
@@ -124,7 +115,7 @@
   #transition-animation img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensures the GIF covers the whole screen */
+      object-fit: cover;
   }
 
   /* #div02: Main content */
@@ -132,26 +123,40 @@
     position: relative;
     width: 100%;
     background: white;
-    overflow: hidden;
+    /* overflow: hidden;  This might cause issues if content extends too far. Remove if you see issues. */
     z-index: 5;
     scroll-snap-align: start;
-    padding-top: 6.5vw; /* Adjust based on menu height */
+    padding-top: 6.5vw; /* Pushes content down below the fixed menu */
     box-sizing: border-box;
+    /* min-height will be determined by content, not fixed to viewport */
   }
 
   /* --- Page Layouts --- */
-  .parent-container { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
-  .main-page-layout { display: flex; width: 100%; position: relative; }
+  .parent-container { 
+    flex-grow: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    top: 12%; 
+  }
+
+  .main-page-layout {
+      display: flex;
+      width: 100%;
+      position: relative;
+      min-height: calc(100vh - 6.5vw); /* Ensure this section fills remaining viewport height if content is short */
+  }
 
   .middle-partition {
-      flex: 0 0 65%;
+      flex: 0 0 65%; /* Take 65% width */
       padding: 2vw;
       box-sizing: border-box;
       position: sticky;
-      top: 6.5vw; /* Adjust based on menu height */
+      top: 6.5vw; /* Sticks below the fixed menu when scrolled */
       background-image: url('ads/absurd/colorpurple.png') !important;
-      height: calc(100vh - 6.5vw); /* Adjust based on menu height */
-      overflow-y: auto;
+      /* IMPORTANT: Remove fixed height and overflow-y: auto so content flows and creates page scroll */
+      /* height: calc(100vh - 6.5vw); */
+      /* overflow-y: auto; */
       cursor: cell;
   }
 
@@ -160,24 +165,29 @@
   #sticker { position: absolute; bottom: 20px; left: 20px; width: 10vw; height: auto; z-index: 998; pointer-events: none; }
 
   .right-partition {
-    flex: 0 0 35%;
+    flex: 0 0 35%; /* Take 35% width */
     box-sizing: border-box;
-    background-color: rgb(200, 230, 255);
+    background-color: rgb(200, 230, 255); /* Initial color */
     transition: background-color 0.5s ease;
-    top: 6.5vw; /* Adjust based on menu height */
-    height: calc(100vh - 6.5vw); /* Adjust based on menu height */
+    top: 6.5vw; /* Sticks below the fixed menu when scrolled */
+    position: sticky; /* Keep sticky position */
+
+    /* IMPORTANT: Keep fixed height and overflow-y: auto for independent scrolling */
+    height: calc(100vh - 6.5vw);
     overflow-y: auto;
     overflow-x:hidden;
     border: 5px solid #ccc;
     border-bottom: 5px solid #ccc;
     border-radius: 10px;
-    position: sticky;
     cursor: pointer;
+    /* Keep scrollbar hiding for this independent scroll area */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.right-partition::-webkit-scrollbar, .middle-partition::-webkit-scrollbar { display: none; }
+/* Apply scrollbar hiding specifically to the right partition */
+.right-partition::-webkit-scrollbar { display: none; }
+/* Remove .middle-partition::-webkit-scrollbar as it no longer scrolls independently */
 
   .right-partition .project-link { display: block; text-decoration: none; color: inherit; transition: transform 0.2s ease-out; }
   .right-partition .project-link:hover { transform: scale(1.02); }
@@ -237,6 +247,13 @@
                     <p>Great design does more than communicate. Greater design engages, empowers, and resonates. I’m a designer, storyteller, and full-time sidequester who loves exploring the space where tech, design, and narrative come together.</p>
                     <p>My fascination with visual storytelling started early. At three, I taught myself to read while exploring the world of the game, Club Penguin. Seeing firsthand how digital worlds can spark curiosity has stuck with me. Today, I aim to create work that starts a conversation, building immersive experiences through branding, digital media, and interactive design.</p>
                     <img src="fun_pictures/rayaonrock.png" alt="Placeholder Image" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: 0; margin-bottom: 0;">
+                     <p>This is additional content to make sure the middle section is long enough to cause scrolling on the main page. This is additional content to make sure the middle section is long enough to cause scrolling on the main page. This is additional content to make sure the middle section is long enough to cause scrolling on the main page.</p>
+                     <p>More content to extend the page height. More content to extend the page height. More content to extend the page height. More content to extend the page height.</p>
+                     <p>Even more content. Even more content. Even more content. Even more content. Even more content. Even more content. Even more content. Even more content.</p>
+                     <p>Scroll down further to see the effect! Scroll down further to see the effect! Scroll down further to see the effect!</p>
+                     <p>The middle partition content continues. The middle partition content continues. The middle partition content continues. The middle partition content continues.</p>
+                     <p>Final paragraph to ensure ample scroll. Final paragraph to ensure ample scroll. Final paragraph to ensure ample scroll.</p>
+                     <img src="fun_pictures/rayaonrock.png" alt="Placeholder Image" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: 0; margin-bottom: 0;">
                 </div>
             </div>
             <div class="right-partition">
@@ -245,6 +262,10 @@
               <a href="bones.html" class="project-link"><div class="content-block"><h3><img src="text/name_bones.png" alt="BONES" class="title-image"></h3><img src="scans/bones.jpg" alt="Bones Project"></div></a>
               <a href="digest.html" class="project-link"><div class="content-block"><h3><img src="text/name_eatersdigest.png" alt="The Eater's Digest" class="title-image"></h3><img src="scans2/digest.png" alt="Eater's Digest"></div></a>
               <img id="sticker" src="sticker.png" alt="Sticker">
+              <div class="content-block"><h3>Additional Project 1</h3><img src="ads/absurd/packages2.png"></div>
+              <div class="content-block"><h3>Additional Project 2</h3><img src="scans2/guidecover.png"></div>
+              <div class="content-block"><h3>Additional Project 3</h3><img src="scans/bones.jpg"></div>
+              <div class="content-block"><h3>Additional Project 4</h3><img src="scans2/digest.png"></div>
             </div>
         </div>
     </div>
@@ -257,55 +278,58 @@
 
         // --- SPLASH SCREEN & TRANSITION LOGIC ---
         window.addEventListener('load', function () {
-    const splashScreen = document.getElementById('div01');
-    const transitionAnimation = document.getElementById('transition-animation');
-    const rayaMenuElement = document.getElementById('raya-menu-fade-element');
+            const splashScreen = document.getElementById('div01');
+            const transitionAnimation = document.getElementById('transition-animation');
+            const rayaMenuElement = document.getElementById('raya-menu-fade-element');
 
-    const SPLASH_SCREEN_DISPLAY_TIME = 2000; // Time splash screen is fully visible
-    const GIF_FADE_IN_DURATION = 800; // How long the GIF takes to fade in
-    const GIF_DISPLAY_DURATION = 170; // How long the GIF is fully visible/playing
-    const GIF_FADE_OUT_DURATION = 300; // How long the GIF takes to fade out
+            const SPLASH_SCREEN_DISPLAY_TIME = 2000;
+            const GIF_FADE_IN_DURATION = 800;
+            const GIF_DISPLAY_DURATION = 170;
+            const GIF_FADE_OUT_DURATION = 300;
 
-    // Initially hide rayaMenu
-    rayaMenuElement.style.opacity = '0';
-    rayaMenuElement.style.pointerEvents = 'none';
+            // Initially hide rayaMenu
+            rayaMenuElement.style.opacity = '0';
+            rayaMenuElement.style.pointerEvents = 'none';
 
-    // Step 1: Keep splash screen visible for a short period
-    setTimeout(() => {
-        // Step 2: Activate GIF fade-in
-        transitionAnimation.classList.add('active'); // This starts the opacity transition for GIF
-
-        // Step 3: Hide splash screen AFTER GIF starts to become visible
-        setTimeout(() => {
-            splashScreen.classList.add('hidden');
-        }, GIF_FADE_IN_DURATION / 2); // Hide splash after GIF is halfway faded in
-
-        // Step 4: After GIF has fully faded in and played, fade it out and show menu
-        setTimeout(() => {
-            transitionAnimation.classList.remove('active'); // This starts the opacity transition for GIF fade-out
-            // Show rayaMenu slightly before GIF completely disappears for smoother transition
+            // Step 1: Keep splash screen visible for a short period
             setTimeout(() => {
-                rayaMenuElement.style.opacity = '1';
-                rayaMenuElement.style.pointerEvents = 'auto';
-            }, GIF_FADE_OUT_DURATION / 2); // Show menu halfway through GIF fade-out
+                // Step 2: Activate GIF fade-in
+                transitionAnimation.classList.add('active'); // This starts the opacity transition for GIF
 
-        }, GIF_FADE_IN_DURATION + GIF_DISPLAY_DURATION); // Total time until GIF starts to fade out
+                // Step 3: Hide splash screen AFTER GIF starts to become visible
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden');
+                }, GIF_FADE_IN_DURATION / 2); // Hide splash after GIF is halfway faded in
 
-    }, SPLASH_SCREEN_DISPLAY_TIME);
-});
+                // Step 4: After GIF has fully faded in and played, fade it out and show menu
+                setTimeout(() => {
+                    transitionAnimation.classList.remove('active'); // This starts the opacity transition for GIF fade-out
+                    // Show rayaMenu slightly before GIF completely disappears for smoother transition
+                    setTimeout(() => {
+                        rayaMenuElement.style.opacity = '1';
+                        rayaMenuElement.style.pointerEvents = 'auto';
+                    }, GIF_FADE_OUT_DURATION / 2); // Show menu halfway through GIF fade-out
 
-        // --- COLOR SCROLL EFFECT FOR RIGHT PARTITION ---
+                }, GIF_FADE_IN_DURATION + GIF_DISPLAY_DURATION); // Total time until GIF starts to fade out
+
+            }, SPLASH_SCREEN_DISPLAY_TIME);
+        });
+
+        // --- COLOR SCROLL EFFECT FOR RIGHT PARTITION (REVERTED TO PARTITION'S SCROLL) ---
         const rightPartition = document.querySelector('.right-partition');
         if (rightPartition) {
+            // Attach listener to the rightPartition itself, as it's the scroll container for its content
             rightPartition.addEventListener('scroll', function () {
                 const scrollTop = rightPartition.scrollTop;
                 const contentHeight = rightPartition.scrollHeight;
                 const elementHeight = rightPartition.clientHeight;
                 const maxScroll = contentHeight - elementHeight;
                 let scrollRatio = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
                 const startBgColor = [200, 230, 255], midBgColor = [32, 118, 199], endBgColor = [0, 18, 64];
                 const startTextColor = [0, 0, 0], endTextColor = [255, 255, 255];
                 let bgR, bgG, bgB;
+
                 if (scrollRatio < 0.5) {
                     const r = scrollRatio * 2;
                     bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * r);
@@ -318,11 +342,16 @@
                     bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * r);
                 }
                 rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+
                 let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
                 let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
                 let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
                 const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
-                textElements.forEach(el => { if (el.tagName !== 'IMG') { el.style.color = `rgb(${textR}, ${textG}, ${textB})`; } });
+                textElements.forEach(el => {
+                    if (el.tagName !== 'IMG' && !el.style.color) { // Only change if not an image and no inline style already
+                        el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+                    }
+                });
             });
         }
 
