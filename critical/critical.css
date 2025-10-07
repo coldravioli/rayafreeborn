@@ -123,3 +123,40 @@ h1 {
     0 0.1rem 0.5rem #0000004d,
     0 0.2rem 01.5rem #00000066,
 }
+
+#scroll-depth {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    clip-path: polygon(
+        30% 0%, 70% 0%, 
+        100% 30%, 100% 70%, 
+        70% 100%, 30% 100%, 
+        0% 70%, 0% 30%
+    ); /* Octagon shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Orbitron", sans-serif;;
+    font-weight: bold;
+    font-size: 16px;
+    color: black !important; 
+    z-index: 10000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+}
+
+#scroll-depth:hover {
+    transform: scale(1.1);
+}
+
+.orbitron {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }

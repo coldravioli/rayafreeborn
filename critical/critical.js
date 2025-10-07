@@ -37,3 +37,30 @@ window.addEventListener('scroll', () => {
     document.body.style.setProperty('--text-color', `rgb(${textR}, ${textG}, ${textB})`);
 });
 
+// --- SCROLL DEPTH CIRCLE ---
+document.addEventListener("DOMContentLoaded", () => {
+    // Create the circle if it doesn't exist
+    let scrollDepthCircle = document.getElementById('scroll-depth');
+    if (!scrollDepthCircle) {
+        scrollDepthCircle = document.createElement('div');
+        scrollDepthCircle.id = 'scroll-depth';
+        document.body.appendChild(scrollDepthCircle);
+    }
+
+    // Update number on scroll
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+        scrollDepthCircle.textContent = scrollPercent;
+    });
+
+    // Scroll to top on click
+    scrollDepthCircle.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
