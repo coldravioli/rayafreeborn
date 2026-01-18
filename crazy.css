@@ -1,0 +1,1132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@font-face { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); } 
+
+@font-face {
+  font-family: 'AcuminCondensedBlackItalic';
+  src: url('Acumin-VariableConcept-CondensedBlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'AcuminSemiCondensedExtraLightItalic';
+  src: url('Acumin-VariableConcept-SemiCondensedExtraLightItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Cursive';
+  src: local('Cursive'), local('Cursive Regular');
+}
+
+
+/* Add this at the very top of your CSS file */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #000;
+  background-color: #ffffff; /* keep this */
+  height: 100vh;
+  width: 100%;
+}
+
+.display-fancy {
+  font-family: 'Cursive', cursive;
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.slant-mama {
+  font-family: 'AcuminCondensedExtraLightItalic', sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffa7a7;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'AcuminCondensedBlackItalic', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+ 
+.section-center {
+  position: relative;
+  width: 100%;
+  height: auto; /* Let the content determine the height */
+  
+  display: flex; /* Use flexbox to center the image */
+  justify-content: center;
+  align-items: center;
+  
+  /* This controls the top spacing (for navbar) and bottom spacing (gap to grid) */
+  padding-top: 15vh; 
+  padding-bottom: 5vw; /* This gap will now shrink/grow with the screen width! */
+  
+  z-index: 6;
+}
+
+h1 {
+  font-family: 'Acumin Variable Concept', sans-serif;
+  font-weight: 800;
+  font-size: 7vw;
+  line-height: 1;
+  color: #ffa7a7;
+  text-align: center;
+}
+
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+}
+
+
+.menu-icon:checked + label,
+.menu-icon:not(:checked) + label{
+  position: fixed;
+  top: 63px;
+  right: 75px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 9999 !important;   /* <-- NEW */
+}
+.menu-icon:checked + label:before,
+.menu-icon:not(:checked) + label:before{
+  position: absolute;
+  content: '';
+  display: block;
+  width: 30px;
+  height: 20px;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  border-top: 2px solid #ececee;
+  border-bottom: 2px solid #ececee;
+  transition: border-width 100ms 1500ms ease, 
+              top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1), 
+              background-color 200ms ease,
+              transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:after,
+.menu-icon:not(:checked) + label:after{
+  position: absolute;
+  content: '';
+  display: block;
+  width: 22px;
+  height: 2px;
+  z-index: 20;
+  top: 10px;
+  right: 4px;
+  background-color: #ececee;
+  margin-top: -1px;
+  transition: width 100ms 1750ms ease, 
+              right 100ms 1750ms ease,
+              margin-top 100ms ease, 
+              transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:before{
+  top: 10px;
+  transform: rotate(45deg);
+  height: 2px;
+  background-color: #ececee;
+  border-width: 0;
+  transition: border-width 100ms 340ms ease, 
+              top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1), 
+              background-color 200ms 500ms ease,
+              transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu-icon:checked + label:after{
+  width: 30px;
+  margin-top: 0;
+  right: 0;
+  transform: rotate(-45deg);
+  transition: width 100ms ease,
+              right 100ms ease,  
+              margin-top 100ms 500ms ease, 
+              transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav{
+  position: fixed;
+  top: 33px;
+  right: 50px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  z-index: 9998 !important;   /* <-- NEW */
+  overflow: hidden;
+  box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3);
+  background-color: #abbdd1;
+  animation: border-transform 7s linear infinite;
+  transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),  
+              right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 250ms 1100ms ease,
+              width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes border-transform{
+    0%,100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; } 
+  14% { border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%; } 
+  28% { border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%; } 
+  42% { border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%; } 
+  56% { border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%; } 
+  70% { border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%; } 
+  84% { border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%; } 
+}
+
+.menu-icon:checked ~ .nav {
+  animation-play-state: paused;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 200%;
+  height: 200%;
+  transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),  
+              right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 250ms 700ms ease,
+              width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav ul{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 9999 !important;  /* <-- NEW */
+  text-align: center;
+  transform: translateY(-50%);
+  list-style: none;
+}
+.nav ul li{
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+  text-align: center;
+  list-style: none;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: all 250ms linear;
+}
+.nav ul li:nth-child(1){
+  transition-delay: 200ms;
+}
+.nav ul li:nth-child(2){
+  transition-delay: 150ms;
+}
+.nav ul li:nth-child(3){
+  transition-delay: 100ms;
+}
+.nav ul li:nth-child(4){
+  transition-delay: 50ms;
+}
+.nav ul li a{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9vh;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-weight: 800;
+  display: inline-block;
+  position: relative;
+  color: #ffffff;
+  transition: all 250ms linear;
+}
+.nav ul li a:hover{
+  text-decoration: none;
+  color: #10253d;
+}
+
+.nav ul li.blue a:hover{
+  text-decoration: none;
+  color: #29abe2;
+}
+
+.nav ul li.yellow a:hover{
+  text-decoration: none;
+  color: #fcee21;
+}
+
+.nav ul li.pink a:hover{
+  text-decoration: none;
+  color: #ed1e79;
+}
+
+
+.nav ul li a:after{
+  display: block;
+  position: absolute;
+  top: 50%;
+  content: '';
+  height: 2vh;
+  margin-top: -1vh;
+  width: 0;
+  left: 0;
+  background-color: #abbdd1;
+  opacity: 0.8;
+  transition: width 250ms linear;
+}
+.nav ul li a:hover:after{
+  width: 100%;
+}
+
+
+.menu-icon:checked ~ .nav  ul li {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 350ms ease,
+              transform 250ms ease;
+}
+.menu-icon:checked ~ .nav ul li:nth-child(1){
+  transition-delay: 1400ms;
+}
+.menu-icon:checked ~ .nav ul li:nth-child(2){
+  transition-delay: 1480ms;
+}
+.menu-icon:checked ~ .nav ul li:nth-child(3){
+  transition-delay: 1560ms;
+}
+.menu-icon:checked ~ .nav ul li:nth-child(4){
+  transition-delay: 1640ms;
+}
+
+.menu-icon:checked + label,
+.menu-icon:not(:checked) + label {
+  z-index: 9999 !important;
+}
+
+
+.logo {
+	position: absolute;
+	top: 7%;
+	left: 7%;
+	display: block;
+  z-index: 9997 !important;  /* <-- NEW */
+	transition: all 250ms linear;
+}
+.logo img {
+	height: 80px;
+	width: auto;
+	display: block;
+}
+
+
+
+@media screen and (max-width: 991px) {
+  .menu-icon:checked + label,
+  .menu-icon:not(:checked) + label{
+    right: 55px;
+  }
+  .logo {
+    left: 30px;
+  }
+  .nav{
+    right: 30px;
+  }
+  h1{
+    font-size: 9vw;
+    -webkit-text-stroke: 2px transparent;
+    text-stroke: 2px transparent;
+    -webkit-text-fill-color: #ffeba7;
+    text-fill-color: #ffeba7;
+    color: #ffeba7;
+  }
+  .nav ul li a{
+    font-size: 8vh;
+  }
+}
+
+.nav ul li.smaller a {
+  font-size: 3vh;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* 1. The Container (Keeps everything centered in the page) */
+.section-center {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15vh;
+  padding-bottom: 5vw; 
+  z-index: 1;
+}
+
+
+/* 2. The Parent Anchor (The Image) */
+.image-box {
+  position: relative; /* This makes it the "anchor" for the video */
+  width: 82vw;        /* The master size controller */
+  height: auto;
+  z-index: 1;         /* Sits on top of the video */
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3. The Child (The Video) */
+.video-box {
+  position: absolute; /* absolute relative to .image-box */
+  
+  /* Adjust these % values to place the video exactly where you want it on the word */
+  top: 9%;   
+  left: 50%;
+  
+  /* Use transform to fine-tune the centering */
+  transform: translate(10%, -20%); 
+  
+  /* Width is now a % of the image, so they scale perfectly together */
+  width: 25%;  /* Try 20% or 25% depending on how big you want it */
+  
+  z-index: -1; /* Puts it behind the image text */
+  height: auto;
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.resume-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px; /* pushes resume downward */
+  margin-bottom: 120px; /* breathing room */
+}
+
+/* Resume image */
+.resume-img {
+  width: 82vw;
+  max-width: 750px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Blob sits behind resume */
+.resume_blob {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 95vw;
+  max-width: 1000px;
+  aspect-ratio: 8.5 / 11;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  z-index: 1;
+
+  border-radius: 45% 60% 75% 50% / 75% 40% 60% 70%;
+  animation: blobMorph 8s ease-in-out infinite;
+}
+
+/* Morphing animation */
+@keyframes blobMorph {
+  0% {
+    border-radius: 35% 60% 55% 40% / 55% 40% 60% 45%;
+  }
+  50% {
+    border-radius: 60% 40% 40% 70% / 45% 65% 35% 55%;
+  }
+  100% {
+    border-radius: 35% 60% 55% 40% / 55% 40% 60% 45%;
+  }
+}
+
+/* 1. Updated Container: Made slightly wider to fit the larger video */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; /* Crucial: This allows the sticky element to slide */
+  max-width: 1200px; /* Increased from 1000px */
+  margin: 100px auto 50px;
+  padding: 20px;
+}
+
+/* 2. Updated Left Side: Larger & Sticky */
+.about-left {
+  /* Size Controls */
+  flex: 1 1 500px; /* Increased flex-basis (was 300px) */
+  max-width: 550px; /* Increased max-width (was 300px) */
+  margin-right: 60px; /* Increased margin for better spacing */
+  text-align: center;
+  
+  /* Sticky Controls */
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 120px; /* Adjusts how far from the top the video stops */
+  z-index: 10;
+  height: fit-content; /* Ensures the container doesn't stretch */
+}
+
+.about-left img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.about-right {
+  flex: 1 1 400px; /* Adjusted flex ratio slightly */
+}
+
+.about-right h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff7faa;
+}
+
+.about-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-right ul li {
+  background-color: #fff0f5;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.about-right ul li:hover {
+  transform: translateY(-3px);
+  background-color: #ffddee;
+}
+
+@media screen and (max-width: 991px) {
+  /* 1. Existing Nav/Logo fixes */
+  .menu-icon:checked + label,
+  .menu-icon:not(:checked) + label{
+    right: 55px;
+  }
+  .logo {
+    left: 30px;
+  }
+  .nav{
+    right: 30px;
+    z-index: 99;
+  }
+  h1{
+    font-size: 9vw;
+    -webkit-text-stroke: 2px transparent;
+    text-stroke: 2px transparent;
+    -webkit-text-fill-color: #ffeba7;
+    text-fill-color: #ffeba7;
+    color: #ffeba7;
+  }
+  .nav ul li a{
+    font-size: 8vh;
+  }
+
+  /* --- NEW FIXES BELOW --- */
+
+  /* 2. About Container: Stack vertically and reduce outer gaps */
+  .about-container {
+      flex-direction: column;
+      align-items: stretch; /* vital: forces items to fill width */
+      max-width: 100%;
+      margin-top: 50px; /* Reduced from 100px */
+      padding: 0 20px; /* Adds small safe-zone on edges */
+      z-index: 1000;
+  }
+
+  /* 3. Left Side (Video): Reset Sticky & Full Width */
+  .about-left {
+      margin-right: 0;
+      margin-bottom: 30px;
+      width: 100%;       /* Force full width */
+      max-width: 100%;   /* Remove the 550px limit */
+      flex: auto;        /* Allow it to grow */
+      
+      /* Disable Sticky on Mobile */
+      position: relative; 
+      top: 0;
+  }
+
+  /* 4. Right Side (Text): Full Width */
+  .about-right {
+      width: 100%;
+      flex: auto;
+      padding: 0;
+  }
+  
+  /* Optional: Make the list items feel larger on mobile */
+  .about-right ul li {
+      margin-bottom: 15px;
+  }
+}
+
+.about-left video.about-video {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover; 
+}
+
+.blue {
+  color: #29abe2;
+}
+
+.yellow {
+  color: #fcee21;
+}
+
+.pink {
+  color: #ed1e79;
+}
+
+.grid-gallery {
+  /* Use 90% so it has breathing room on the sides */
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  
+  display: grid;
+  
+  /* --- THE MAGIC LINE --- */
+  /* This creates the 3 -> 2 -> 1 behavior automatically */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  background-color: white;
+}
+
+/* Update the main item container */
+.grid-item {
+  background: transparent;
+  border: none;
+  padding: 0;
+  
+  /* Flexbox makes them stack vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* Make it work as a link */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The Gray Box (Now holding an image) */
+.grid-image-placeholder {
+  background: #f4f4f4;    /* Keep the gray background */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 100%;
+  height: 200px; /* Keep your fixed height */
+  
+  /* NEW: This clips the image to the rounded corners */
+  overflow: hidden; 
+  position: relative;
+  
+  transition: transform 0.2s ease; 
+}
+
+/* NEW: This forces the image to fill the box */
+.grid-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This creates the perfect crop */
+  display: block;
+}
+
+/* Style the Text below */
+.grid-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px 0 0 0;  /* small top margin, remove bottom margin */
+  line-height: 1.3;
+  color: #333;
+}
+
+.grid-title .small_text {
+  font-style: italic;
+  font-size: 0.85rem;
+  display: block;
+  opacity: calc(35%);
+  line-height: 1.2;
+  margin-top: 2px; /* spacing between main text and subtext */
+}
+
+/* Hover Effects */
+.grid-item:hover .grid-image-placeholder {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.grid-item:hover .grid-title {
+  color: #ffa7a7; /* Pink hover color */
+}
+
+/* When the screen is Tablet size or smaller */
+@media screen and (max-width: 768px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+  }
+}
+
+/* When the screen is Phone size */
+@media screen and (max-width: 480px) {
+  .grid-gallery {
+    grid-template-columns: 1fr; /* Switch to 1 column */
+  }
+}
+
+.gallery-title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Bold looks nice for headers */
+  font-size: 2rem;  /* Adjust size as needed */
+  color: #000;      /* Or use #ffa7a7 (pink) or #29abe2 (blue) */
+  
+  margin-top: 0;    /* The padding on section-center handles the top space */
+  margin-bottom: 30px; /* Pushes the grid down slightly */
+  
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  position: relative;
+  z-index: 10;
+}
+
+/* 1. The Section Wrapper */
+.scatter-section {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  overflow: hidden; /* Prevents scrollbars if an edge pokes out slightly */
+  padding: 50px 0;  /* Breathing room top/bottom */
+}
+
+/* 2. The Container */
+.scatter-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 60vh; /* Takes up 60% of the screen height */
+  min-height: 400px; 
+  margin: 0 auto;
+}
+
+/* 3. The Items (Base Style) */
+.scatter-item {
+  position: absolute;
+  
+  /* 1. Size is dynamic now! 25% of screen width, but never huge. */
+  width: 28vw; 
+  max-width: 320px; 
+  min-width: 200px; /* Never gets too tiny on mobile */
+  
+  height: auto;
+  
+  /* 2. Smooth Animation */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s; 
+  cursor: pointer;
+  
+  /* 3. Centering Anchor */
+  /* This ensures the image centers on the coordinates we give it below */
+  transform: translate(-50%, -50%);
+}
+
+.scatter-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Nice soft shadow around the shape */
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); 
+  transition: filter 0.3s ease;
+}
+
+/* --- 4. THE PILE ARRANGEMENT --- */
+/* We use Left/Top % to keep them tight and responsive */
+
+.item-1 {
+  /* Pushed further Left and Up */
+  left: 35%; 
+  top: 40%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  z-index: 1;
+}
+
+.item-2 {
+  /* Pushed further Right and Up */
+  left: 65%; 
+  top: 35%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  z-index: 2;
+}
+
+.item-3 {
+  /* Pushed to the Center-Left and Down */
+  left: 40%; 
+  top: 70%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  z-index: 3;
+}
+
+.item-4 {
+  /* Pushed to the Center-Right and Down */
+  left: 60%; 
+  top: 75%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  z-index: 4;
+}
+
+/* --- 5. THE GLITCH-FREE HOVER --- */
+
+.scatter-item:hover {
+  z-index: 100; /* Bring to front */
+  
+  /* IMPORTANT: We keep the translate(-50%, -50%) so it doesn't jump position. 
+     We only add Scale and reset Rotation. */
+  transform: translate(-50%, -50%) scale(1.15) rotate(0deg); 
+}
+
+.scatter-item:hover img {
+  /* Deeper shadow on hover */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3)); 
+}
+
+
+/* --- 6. MOBILE FIX --- */
+/* On phones, piles are annoying. Let's make a neat vertical stack. */
+@media screen and (max-width: 768px) {
+  .scatter-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+  
+  .scatter-item {
+    position: relative; /* Stop floating */
+    top: auto;
+    left: auto;
+    width: 70%; /* Good width for mobile */
+    max-width: 300px;
+    
+    /* Reset the transforms for mobile */
+    transform: none; 
+  }
+  
+  /* Re-add specific rotations just for style, but without the translate centering */
+  .item-1 { transform: rotate(-5deg); }
+  .item-2 { transform: rotate(3deg); }
+  .item-3 { transform: rotate(-3deg); }
+  .item-4 { transform: rotate(5deg); }
+  
+  /* Simple hover for mobile */
+  .scatter-item:hover {
+    z-index: 10;
+    transform: scale(1.05);
+  }
+}
+
+/* --- THE CONTAINER (The Kitchen Table) --- */
+.grid-image-placeholder {
+  background: #f4f4f4; /* Gray background if image doesn't load */
+  /* We don't need a border here anymore, the frame will handle it */
+  /* border: 1px solid #ddd; */ 
+  border-radius: 10px;
+  width: 100%;
+  height: 200px; 
+  position: relative; /* Vital for layering */
+  overflow: hidden;   /* Ensures nothing spills out of the rounded corners */
+  transition: transform 0.2s ease; 
+}
+
+/* --- 1. THE CONTAINER (The Tank) --- */
+.grid-image-placeholder {
+  /* Default settings for the background images */
+  background-color: #aaddff; /* Fallback blue water color */
+  background-size: cover;    /* Ensures the tank background fills the whole box */
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  border-radius: 10px;
+  width: 100%;
+  height: 200px; 
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease; 
+}
+
+/* --- 2. THE BACKGROUND ROTATION --- */
+/* This automatically cycles the backgrounds 1, 2, 3, 1, 2, 3... */
+
+/* Item 1, 4, 7... gets Tank 1 */
+.grid-item:nth-child(3n+1) .grid-image-placeholder {
+  background-image: url('tankbackground1.png');
+}a
+
+/* Item 2, 5, 8... gets Tank 2 */
+.grid-item:nth-child(3n+2) .grid-image-placeholder {
+  background-image: url('tankbackground2.png');
+}
+
+/* Item 3, 6, 9... gets Tank 3 */
+.grid-item:nth-child(3n+3) .grid-image-placeholder {
+  background-image: url('tankbackground3.png');
+}
+
+
+/* --- 3. THE PROJECT IMAGE (The "Fish") --- */
+.grid-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  
+  /* KEY CHANGE: 'contain' ensures the whole image is seen! */
+  /* It won't crop edges anymore. */
+  object-fit: contain; 
+  
+  display: block;
+  position: relative;
+  z-index: 1; 
+}
+
+
+/* --- 4. THE BUBBLES (Middle Layer) --- */
+.grid-image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-image: url('bubbles.gif'); 
+  background-size: cover;
+  
+  z-index: 5; /* On top of project image */
+  pointer-events: none; 
+  
+  opacity: 0.2; /* Faint bubbles */
+  transition: opacity 0.4s ease;
+}
+
+/* Hover: Darker bubbles */
+.grid-item:hover .grid-image-placeholder::before {
+  opacity: 0.5;
+}
+
+
+/* --- 5. THE FRAME (Top Layer) --- */
+/* The black borders to make it look like a tank structure */
+.grid-image-placeholder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* Very top */
+  pointer-events: none;
+  border-radius: 10px;
+
+  /* The Black Tank Frame Borders */
+  box-shadow: 
+    inset 0 15px 0 0 #222,  /* Top Thick Bar */
+    inset 0 -15px 0 0 #222, /* Bottom Thick Bar */
+    inset 5px 0 0 0 #222,   /* Left Thin Bar */
+    inset -5px 0 0 0 #222;  /* Right Thin Bar */
+}
+
+/* --- THE OPENING ANIMATION (Fake Nav) --- */
+.nav-intro {
+  position: fixed;
+  display: block;
+  z-index: 10000; /* Super high z-index to sit on top of everything */
+  
+  /* 1. END STATE (Where it lands: Top Right) */
+  top: 33px;
+  right: 50px;
+  width: 80px;
+  height: 80px;
+  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; /* Blob shape */
+  
+  /* The Physics: Copied from your .nav class so it moves the same way */
+  transition: top 350ms 500ms cubic-bezier(0.23, 1, 0.32, 1),  
+              right 350ms 500ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 250ms 500ms ease,
+              width 650ms 0ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 650ms 0ms cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 300ms 800ms ease; /* Fades out at the end */
+  
+  opacity: 0;         /* Hide it once it's done moving */
+  pointer-events: none; /* Let clicks pass through */
+}
+
+/* 2. START STATE (Huge & Centered) */
+/* We add this class in HTML so it starts big */
+.nav-intro.expanded {
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 200vmax; /* Huge to cover screen */
+  height: 200vmax;
+  opacity: 1;
+  transition: none; /* No transition at start so it appears instantly */
+}
+
+/* 3. COLORS */
+.nav-intro.blue { background-color: #29abe2; }
+.nav-intro.yellow { background-color: #fcee21; }
+.nav-intro.pink { background-color: #ed1e79; }
+
+/* Update this block in your CSS */
+#bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;  /* CHANGED: Brought to front so mouse can hit them */
+  overflow: hidden;
+  pointer-events: none; /* Vital: lets you click links through the empty space */
+}
+
+/* The actual bubble styling */
+.bubble {
+  position: absolute;
+  bottom: -100px; /* Start below the screen */
+  border-radius: 50%; /* Make it round */
+  /* We removed background and box-shadow here, JS will handle it! */
+  backdrop-filter: blur(2px); 
+  pointer-events: auto; /* Allows the mouse to interact with the bubble */
+  cursor: crosshair; /* Optional: changes cursor when hovering a bubble */
+  animation: floatUp linear forwards;
+  will-change: transform, opacity; /* Helps performance */
+}
+
+/* The floating animation */
+@keyframes floatUp {
+  0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+  }
+  10% {
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(-120vh) translateX(20px); /* Moves up and slightly right */
+      opacity: 0;
+  }
+}
+
+/* FULLSCREEN LANDING SECTION */
+#landing {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;  /* keeps body::before from blending over it */
+}
+
+
+
+.landing-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.landing-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.landing-title {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.landing-button {
+  position: absolute;
+  bottom: -150px;        /* moves button toward bottom center */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 28px;
+  background: rgba(255, 255, 255, 0);
+  color: black;
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+
+  padding: 0.8rem 2.5rem; /* oval shape */
+  border: 2px solid #ff9c8d; 
+  border-radius: 999px;   /* full oval */
+  background: transparent; /* no fill */
+  color: #ff9c8d;
+}
+
+.landing-button:hover {
+  opacity: 0.5;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* pushes the website content below the fold */
+#welcome {
+  padding-top: 5vh; /* or whatever looks good */
+}
+

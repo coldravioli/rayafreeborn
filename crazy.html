@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homepage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="crazy.css">
+		<link rel="fav icon" type="image/x-icon" href="favicon2.png">
+
+    </head>
+
+	<style>
+body {
+  position: relative;
+  margin: 0;
+}
+
+	  
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* background-image: url("cakebackground.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(10px);           /* blur WORKS here */
+  opacity: 0.35;                /* transparency */
+  z-index: -1;
+}
+
+	  </style>
+
+
+<body>
+
+	<!-- FULLSCREEN LANDING SECTION -->
+<section id="landing">
+    <img src="blue.png" class="landing-bg" alt="">
+   
+    <div class="landing-content">
+        <h1 class="landing-title, display-fancy">Raya Freeborn</h1>
+
+		<a href="folio.html" class="landing-button slant-mama">Portfolio</a>
+    </div>
+</section>
+
+<!-- START OF MAIN PAGE -->
+
+
+	<div id="bubble-container"></div>
+
+
+	<div class="page-transition"></div>
+	<a href="https://rayafreeborn.com" class="logo" target="_blank">
+		<img src="rayaname.png" alt="">
+	</a>
+
+  	<input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
+  	<label for="menu-icon"></label>
+  	<nav class="nav"> 		
+  		<ul class="pt-5">
+			<li class="blue"><a href="resume1.html">Résumé</a></li>
+  			<li class="yellow"><a href="folio.html">Portfolio</a></li>
+  			<li class="pink"><a href="me.html">About</a></li>
+			<li class="smaller">
+				<a href="https://www.linkedin.com/in/raya-freeborn-61840a24a/" target="_blank">LinkedIn</a>
+				<a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">Instagram</a>
+			</li>
+
+			</ul>
+  	</nav>
+
+	  <div class="section-center">
+		<div class="image-box grow">
+			<img src="rayaname.png" alt="Raya Name Graphic" />
+			
+			<div class="video-box">
+				<video src="Rayawhitebackground.mp4" autoplay muted loop></video>
+			</div>
+		</div>
+	</div>
+
+	<div class="scatter-section">
+		<h2 class="gallery-title">Selected Works</h2>
+		
+		<div class="scatter-container">
+			
+			<a href="project1.html" class="scatter-item item-1">
+				<img src="scans2/Betterr.png" alt="Project 1">
+			</a>
+	
+			<a href="project2.html" class="scatter-item item-2">
+				<img src="scans2/cover-food.png" alt="Project 2">
+			</a>
+	
+			<a href="project3.html" class="scatter-item item-3">
+				<img src="scans2/insideguide.png" alt="Project 3">
+			</a>
+	
+			<a href="project4.html" class="scatter-item item-4">
+				<img src="scans2/rgb.png" alt="Project 4">
+			</a>
+	
+		</div>
+	</div>
+
+	<h2 class="gallery-title">Awarded Content</h2>
+
+	<div class="grid-gallery">
+
+		<div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="scans2/gamecase.png" alt="Inside RBC Magazine">
+		  </div>
+		  <h3 class="grid-title">Inside RBC Magazine <br> 
+			<i class="small_text">Richard Bland College</i></h3>
+		</div>
+	  
+		<div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="scans/bones.jpg" alt="Risk ≠ Reward">
+		  </div>
+		  <h3 class="grid-title">Risk ≠ Reward <br>
+			<i class="small_text">Undergrad Juried Exhibition '25</i></h3>
+		</div>
+	  
+		<div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="scans2/black.png" alt="Project 3 thumbnail">
+		  </div>
+		  <h3 class="grid-title">An Ode To Maintenance <br>
+			<i class="small_text">Ours Talk Shop</i></h3>
+		</div>
+
+		<br>
+		<br>
+
+	  
+		<!-- <div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="image4.png" alt="Project 4 thumbnail">
+		  </div>
+		  <h3 class="grid-title">Project Four</h3>
+		</div>
+	  
+		<div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="image5.png" alt="Project 5 thumbnail">
+		  </div>
+		  <h3 class="grid-title">Project Five</h3>
+		</div>
+	  
+		<div class="grid-item">
+		  <div class="grid-image-placeholder">
+			<img src="image6.png" alt="Project 6 thumbnail">
+		  </div>
+		  <h3 class="grid-title">Project Six</h3> -->
+		</div>
+	  </div>
+	  
+
+
+	  <a href="https://github.com/coldravioli" target="_blank"><img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link"></a>
+	  <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px; z-index: 999;">Designed & Coded by Raya Freeborn.</a>  
+
+	  <script src="bubbles.js"></script>
+
+</body>
+
+</html>
