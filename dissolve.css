@@ -1,0 +1,175 @@
+/* Canvas behind everything */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* behind content */
+}
+
+/* Body and sections */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto 60px;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin: 60px 0 30px;
+}
+
+/* Mosaic grid */
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 15px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #333; /* placeholder bg */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.grid-item span.title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* Span multiple rows/columns */
+.span-2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Awards smaller grid */
+.small-grid {
+  grid-auto-rows: 150px;
+  gap: 10px;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional top padding so content doesn't overlap masthead */
+#masthead-placeholder {
+  height: 250px;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  overflow-x: hidden;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8fa4d8;
+  z-index: 1;
+  position: relative;
+}
+
+/* Canvas behind everything for sand effect */
+canvas#particleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.resume-container {
+  max-width: 700px;      /* smaller width */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 1;            /* above canvas */
+  position: relative;
+}
+
+.resume-container img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;      /* never too tall */
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  filter: invert(1);     /* invert for dark background */
+}
+
+.download-btn {
+  text-decoration: none;
+  color: #8fa4d8;
+  border: 2px solid #8fa4d8;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #8fa4d8;
+  color: #111;
+}
+
+/* small spacing at bottom */
+#masthead-placeholder {
+  height: 100px;
+}

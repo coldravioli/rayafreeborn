@@ -617,15 +617,15 @@ h1 {
 .grid-gallery {
   /* Use 90% so it has breathing room on the sides */
   width: 90%;
-  max-width: 900px;
+  max-width: 1400px;
   margin: 0 auto;
   
   display: grid;
   
   /* --- THE MAGIC LINE --- */
   /* This creates the 3 -> 2 -> 1 behavior automatically */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
   gap: 20px;
   position: relative;
   z-index: 10;
@@ -637,30 +637,30 @@ h1 {
   background: transparent;
   border: none;
   padding: 0;
-  
   /* Flexbox makes them stack vertically */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
+
   /* Make it work as a link */
   text-decoration: none;
   cursor: pointer;
+  height: 800;
 }
 
 /* The Gray Box (Now holding an image) */
 .grid-image-placeholder {
-  background: #f4f4f4;    /* Keep the gray background */
+  background: #f4f4f4;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width: 100%;
-  height: 200px; /* Keep your fixed height */
   
-  /* NEW: This clips the image to the rounded corners */
+  /* --- CHANGE THIS NUMBER --- */
+  height: 850px; /* Try increasing this (e.g., 800px, 900px) */
+  width: 100%;
+  height: 300px !important;
   overflow: hidden; 
   position: relative;
-  
   transition: transform 0.2s ease; 
 }
 
@@ -721,7 +721,6 @@ h1 {
   font-weight: 700; /* Bold looks nice for headers */
   font-size: 2rem;  /* Adjust size as needed */
   color: #000;      /* Or use #ffa7a7 (pink) or #29abe2 (blue) */
-  
   margin-top: 0;    /* The padding on section-center handles the top space */
   margin-bottom: 30px; /* Pushes the grid down slightly */
   
@@ -1073,11 +1072,24 @@ h1 {
 .landing-bg {
   position: absolute;
   inset: 0;
-  width: 100%;
+  width: 200%;      /* or 150%, depending on how long your image is */
   height: 100%;
   object-fit: cover;
   z-index: -1;
+
+  /* scrolling animation */
+  animation: scrollBg 30s linear infinite;
 }
+
+@keyframes scrollBg {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 
 .landing-content {
   position: absolute;

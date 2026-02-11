@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOME - Raya Freeborn</title>
+<link rel="stylesheet" href="dissolve.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- Placeholder to push content below masthead -->
+<div id="masthead-placeholder"></div>
+
+<!-- Selected Works Section -->
+<section id="projects">
+  <h2>Selected Works</h2>
+  <div class="mosaic-grid">
+    <div class="grid-item span-2 animate-on-scroll">Project 1</div>
+    <div class="grid-item animate-on-scroll">Project 2</div>
+    <div class="grid-item animate-on-scroll">Project 3</div>
+    <div class="grid-item span-2 animate-on-scroll">Project 4</div>
+    <div class="grid-item animate-on-scroll">Project 5</div>
+  </div>
+</section>
+
+<!-- Awarded Work Section -->
+<section id="awards">
+  <h2>Awarded Work</h2>
+  <div class="mosaic-grid small-grid">
+    <div class="grid-item animate-on-scroll">Award 1</div>
+    <div class="grid-item animate-on-scroll">Award 2</div>
+    <div class="grid-item animate-on-scroll">Award 3</div>
+  </div>
+</section>
+
+<!-- Sand dissolve masthead -->
+<script>
+  const pageWord = "RAYA FREEBORN";
+</script>
+<script src="sand.js"></script>
+
+<script>
+  // Call your function with the pageWord
+  createParticlesFromText(pageWord);
+  animate(); // start animation
+
+  // Scroll-trigger animation for grid
+  const scrollItems = document.querySelectorAll('.animate-on-scroll');
+  function handleScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+    scrollItems.forEach(item => {
+      const top = item.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        item.classList.add('in-view');
+      }
+    });
+  }
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', handleScroll);
+</script>
+
+</body>
+</html>

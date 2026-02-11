@@ -1,0 +1,789 @@
+@font-face {
+  font-family: "Positive System";
+  src: url("fonts/PositiveSystem.woff2") format("woff2"),
+       url("fonts/PositiveSystem.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.rubik-microbe-regular {
+  font-family: "Rubik Microbe", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+
+/* Navbar solid at top, fully transparent at bottom */
+#scrolling_navbar {
+  backdrop-filter: blur(10px);  /* frosted effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* soft shadow for depth */
+  border-bottom: none;
+}
+
+/* Keep brand and links visible */
+#scrolling_navbar .navbar-brand,
+#scrolling_navbar .nav-link {
+  color: #0000004a;
+  transition: color 0.3s ease;
+}
+
+#scrolling_navbar .nav-link:hover,
+#scrolling_navbar .nav-link.active {
+  color: #acbed1 !important;
+}
+
+/* Dropdown styling */
+#scrolling_navbar .dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#scrolling_navbar .dropdown-item:hover {
+  color: #acbed1;
+  background-color: transparent;
+}
+
+.nav-link.active {
+  color: #acbed1 !important;
+}
+
+.btn-success {
+  background-color: #acbed1(23, 109, 89) !important;
+  border: 2px solid white !important;
+}
+
+.btn-success:hover {
+  background-color: #acbed1 !important;
+
+}
+
+
+.bg-success {
+  background-color: #acbed1 !important;
+  opacity: 0.7;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.bg-dark {
+  background: linear-gradient(to top right, #80ffdb, #5390d9) !important;
+}
+
+.text-secondary {
+  color: rgba(143, 136, 136, 0.884) !important;
+  opacity: 0.8;
+}
+
+.bg-greenyellow {
+  background-color: #acbed1;
+  
+}
+
+.bg-violet {
+  background-color: violet;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.object-fit {
+  object-fit: cover;
+}
+
+/*
+.navbar-nav li>a:hover,.navbar-nav li>a:focus,.navbar-nav li.active {
+    color: rgb(23, 109, 73)
+}
+*/
+
+/*-------------------------
+           GALLERY
+-------------------------*/
+
+.modal-dialog {
+  text-align: left; /* you'll likely want this */
+  max-width: 100%;
+  width: auto !important;
+  display: inline-block;
+}
+
+.modal {
+  text-align: center;
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;          /* auto height to maintain aspect ratio */
+  object-fit: contain;    /* keep full image visible */
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: transparent;
+}
+@media (min-width: 576px) {
+  #gallery img {
+    height: 35vw;
+  }
+}
+@media (min-width: 992px) {
+  #gallery img {
+    height: 18vw;
+  }
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+}
+
+/* Titles and dates below images */
+.gallery-title {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.gallery-title h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000; /* Black titles */
+}
+
+.gallery-title small {
+  color: #acbed1;  /* Your chosen color for dates */
+  font-size: 0.85rem;
+  font-style: italic; /* Italic dates */
+}
+
+
+
+
+/* Ensure carousel images fit */
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 576px) {
+  .carousel-item img {
+    height: 600px;
+  }
+}
+
+* {
+  transition: 0.3s;
+}
+
+#gallery.custom {
+  padding: 0 15px;
+}
+#gallery.custom img {
+  display: block;
+  margin: 15px 0;
+  border-radius: 300px 30px 300px 300px;
+}
+#gallery.custom img:hover {
+  border-radius: 30px 90px 30px 30px;
+}
+
+#exampleModal.custom .modal-content {
+  background: none;
+  border: none;
+}
+#exampleModal.custom .modal-header {
+  border: none;
+}
+#exampleModal.custom .modal-header button {
+  background: none;
+  border-radius: 100px 100px 0 0;
+  padding: 5px 10px;
+  opacity: 1;
+  position: relative;
+  top: 3px;
+  border: solid 2px white;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .modal-header button {
+    top: 15px;
+  }
+}
+#exampleModal.custom .modal-header button:hover {
+  top: 3px;
+}
+#exampleModal.custom .modal-header span {
+  color: white;
+}
+#exampleModal.custom .modal-body {
+  padding: 0;
+  border: none;
+  position: relative;
+}
+#exampleModal.custom .modal-body::before,
+#exampleModal.custom .modal-body::after {
+  content: "";
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: absolute;
+  background: white;
+  border-radius: 3px 10px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::before,
+  #exampleModal.custom .modal-body::after {
+    border-radius: 3px 30px;
+    height: 100px;
+    width: 100px;
+  }
+}
+#exampleModal.custom .modal-body::before {
+  top: -5px;
+  left: -5px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::before {
+    top: -15px;
+    left: -15px;
+  }
+}
+#exampleModal.custom .modal-body::after {
+  bottom: -5px;
+  right: -5px;
+  z-index: -1;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .modal-body::after {
+    bottom: -15px;
+    right: -15px;
+  }
+}
+#exampleModal.custom .modal-footer {
+  border: none;
+  margin-top: 60px;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .modal-footer {
+    margin-top: 40px;
+  }
+}
+#exampleModal.custom .modal-footer .btn {
+  margin: auto;
+  border: solid 2px white;
+  background: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+}
+#exampleModal.custom .modal-footer .btn:hover {
+  background: white;
+  color: #acbed1 ;
+}
+#exampleModal.custom .carousel-control-prev,
+#exampleModal.custom .carousel-control-next {
+  font-size: 2em;
+  top: auto;
+  opacity: 1;
+  bottom: -52px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-prev,
+  #exampleModal.custom .carousel-control-next {
+    top: 0;
+    opacity: 0.5;
+    bottom: 0;
+  }
+}
+#exampleModal.custom .carousel-control-next-icon,
+#exampleModal.custom .carousel-control-prev-icon {
+  height: 30px;
+  width: 30px;
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-prev {
+    left: -90px;
+  }
+}
+@media (min-width: 768px) {
+  #exampleModal.custom .carousel-control-next {
+    right: -90px;
+  }
+}
+#exampleModal.custom .carousel-indicators {
+  bottom: -60px;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .carousel-indicators {
+    bottom: -30px;
+  }
+}
+#exampleModal.custom .carousel-indicators li {
+  height: 30px;
+  border-radius: 100px;
+  background: none;
+  border: solid 2px white;
+}
+@media (min-width: 992px) {
+  #exampleModal.custom .carousel-indicators li {
+    height: 10px;
+  }
+}
+#exampleModal.custom .carousel-indicators li:hover {
+  background: white;
+}
+#exampleModal.custom .carousel-indicators li.active {
+  background: white;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+  color: #acbed1; /* highlight color */
+
+}
+
+.navbar {
+  font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+  font-weight: 500; /* Medium weight */
+}
+
+h2 {
+  font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+  font-weight: 500; /* Medium weight */
+
+}
+
+h5 {
+  font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+  font-weight: 500; /* Medium weight */
+  color: #acbed1;
+}
+
+/* Style the awards lists */
+ul.list-unstyled {
+  font-size: 0.7rem;      /* Slightly smaller text */
+  line-height: 1.6;        /* More spacing between lines */
+  list-style-type: disc;    /* Add bullet points */
+  padding-left: 1.25rem;    /* Space for bullets */
+  text-align: left;         /* Left-align text */
+  margin-bottom: 0;         /* Remove bottom margin from the list itself */
+}
+
+/* Color the bullet points */
+ul.list-unstyled li::marker {
+  color: #acbed1;          /* Accent color for bullets */
+}
+
+ul.list-unstyled li {
+  margin-bottom: 0.5rem;   /* Extra spacing between list items */
+}
+
+ul.list-unstyled h5 {
+  font-size: 1rem;          /* Smaller column titles if h5 is inside */
+  margin-bottom: 0.5rem;
+}
+
+.award-date {
+  font-style: italic;      /* Italicize the dates */
+  color: #acbed1;          /* Same accent color as bullets */
+}
+
+
+
+
+/* Remove the weird top bar / extra triangle space */
+.navbar .dropdown-toggle::after {
+  display: inline-block;   /* ensure + shows */
+  content: "+";            /* our plus sign */
+  font-weight: bold;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  border: none !important; /* remove any border/line */
+  box-shadow: none !important; /* remove any shadow */
+  color: #acbed1; /* highlight color */
+
+}
+
+.navbar-brand {
+  font-family: "Rubik Microbe", system-ui;
+  font-size: 3rem; /* adjust as needed */
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase; /* optional */
+  text-align: center;
+  color: #acbed1 !important;
+
+}
+
+h1 {
+
+  font-family: "Rubik Microbe", system-ui;
+  text-transform: uppercase;
+  line-height: 0.75;
+  font-weight: 900;
+  letter-spacing: -0.9rem;
+
+
+}
+
+h2 {
+  color: #acbed1;
+}
+
+/* 1. The Section Wrapper */
+.scatter-section {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  overflow: hidden; /* Prevents scrollbars if an edge pokes out slightly */
+  padding: 50px 0;  /* Breathing room top/bottom */
+}
+
+/* 2. The Container */
+.scatter-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 60vh; /* Takes up 60% of the screen height */
+  min-height: 400px; 
+  margin: 0 auto;
+}
+
+.scatter-item {
+  position: absolute;
+
+  /* Bigger size */
+  width: 50vw;      /* up from 28vw */
+  max-width: 400px; /* up from 320px */
+  min-width: 250px; /* up from 200px */
+
+  height: auto;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s; 
+  cursor: pointer;
+
+  transform: translate(-50%, -50%);
+}
+
+
+.scatter-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Nice soft shadow around the shape */
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); 
+  transition: filter 0.3s ease;
+}
+
+/* --- 4. THE PILE ARRANGEMENT --- */
+/* We use Left/Top % to keep them tight and responsive */
+
+.item-1 {
+  left: 30%; 
+  top: 35%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  z-index: 1;
+}
+
+.item-2 {
+  left: 70%; 
+  top: 30%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  z-index: 2;
+}
+
+.item-3 {
+  left: 35%; 
+  top: 70%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  z-index: 3;
+}
+
+.item-4 {
+  left: 65%; 
+  top: 75%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  z-index: 4;
+}
+
+
+/* --- 5. THE GLITCH-FREE HOVER --- */
+
+/* Tooltip bubble like resume button */
+.scatter-item::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: 110%; /* Above the image */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #acbed1; /* Same as resume button */
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 25px; /* Rounded like button */
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 200;
+}
+
+
+
+.scatter-item:hover {
+  z-index: 100; /* Bring to front */
+  
+  /* IMPORTANT: We keep the translate(-50%, -50%) so it doesn't jump position. 
+     We only add Scale and reset Rotation. */
+  transform: translate(-50%, -50%) scale(1.15) rotate(0deg); 
+}
+
+.scatter-item:hover img {
+  /* Deeper shadow on hover */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3)); 
+}
+
+/* Floating tooltip */
+.scatter-tooltip {
+  position: fixed;
+  pointer-events: none; /* So it doesn’t block clicks */
+  background-color: #acbed1;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 1000;
+  transform: translate(-50%, -150%); /* Offset above cursor */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+
+/* --- 6. MOBILE FIX --- */
+/* On phones, piles are annoying. Let's make a neat vertical stack. */
+@media screen and (max-width: 768px) {
+  .scatter-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+  
+  .scatter-item {
+    position: relative; /* Stop floating */
+    top: auto;
+    left: auto;
+    width: 70%; /* Good width for mobile */
+    max-width: 300px;
+    
+    /* Reset the transforms for mobile */
+    transform: none; 
+  }
+  
+  /* Re-add specific rotations just for style, but without the translate centering */
+  .item-1 { transform: rotate(-5deg); }
+  .item-2 { transform: rotate(3deg); }
+  .item-3 { transform: rotate(-3deg); }
+  .item-4 { transform: rotate(5deg); }
+  
+  /* Simple hover for mobile */
+  .scatter-item:hover {
+    z-index: 10;
+    transform: scale(1.05);
+  }
+}
+
+/* Show bubble on hover */
+.pile-item-wrapper:hover .pile-label {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#home {
+  background-image: url('image/home.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.home-video {
+  width: 400px;          /* base width */
+  max-width: 80vw;       /* responsive max width */
+  border-radius: 15px;   /* rounded corners */
+  display: block;
+  margin: 0 auto 1rem;   /* center and margin bottom */
+}
+
+@media (min-width: 768px) {
+  .home-video {
+    width: 500px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-video {
+    width: 600px;
+  }
+}
+
+
+footer .footer-name {
+  font-family: "Rubik Microbe", system-ui;
+  text-transform: uppercase;
+  line-height: 0.75;
+  font-weight: 900;
+  letter-spacing: -0.6rem;
+  color: #ffffff;
+
+  /* FORCE SIZE OVERRIDE */
+  font-size: clamp(8rem, 14vw, 12rem) !important;
+}
+
+
+footer {
+  background: #acbed1;
+  padding: 3rem 2rem;
+}
+
+footer .container {
+  max-width: none !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* HOME scrolling image */
+.home-scroll {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #ffffff00;
+}
+
+.scroll-track {
+  display: flex;
+  width: max-content;
+  animation: scrollBones 40s linear infinite;
+}
+
+.scroll-track img {
+  height: 85vh;
+  width: auto;
+  margin-right: 120px;
+}
+
+@keyframes scrollBones {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.resume-btn {
+  background-color: #acbed1;
+  border: 2px solid #acbed1;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+    font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+
+}
+
+.resume-btn:hover {
+  background-color: transparent;
+  color: #acbed1;
+  border: 2px solid #acbed1;
+}
+
+.dot-divider {
+  display: flex;
+  justify-content: space-between; /* spread dots across full width */
+  width: 100%; /* full width of the page */
+  max-width: 1200px; /* optional: keeps them from stretching too far on huge screens */
+  margin: 50px auto; /* centers the row */
+  padding: 0 70px; /* side padding */
+}
+
+.dot-divider span {
+  width: 12px;  /* increased size */
+  height: 12px; /* increased size */
+  background-color: #acbed1;
+  border-radius: 50%;
+  animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+/* stagger animation for all dots */
+.dot-divider span:nth-child(1)  { animation-delay: 0s; }
+.dot-divider span:nth-child(2)  { animation-delay: 0.1s; }
+.dot-divider span:nth-child(3)  { animation-delay: 0.2s; }
+.dot-divider span:nth-child(4)  { animation-delay: 0.3s; }
+.dot-divider span:nth-child(5)  { animation-delay: 0.4s; }
+.dot-divider span:nth-child(6)  { animation-delay: 0.5s; }
+.dot-divider span:nth-child(7)  { animation-delay: 0.6s; }
+.dot-divider span:nth-child(8)  { animation-delay: 0.7s; }
+.dot-divider span:nth-child(9)  { animation-delay: 0.8s; }
+.dot-divider span:nth-child(10) { animation-delay: 0.9s; }
+.dot-divider span:nth-child(11) { animation-delay: 1s; }
+.dot-divider span:nth-child(12) { animation-delay: 1.1s; }
+.dot-divider span:nth-child(13) { animation-delay: 1.2s; }
+.dot-divider span:nth-child(14) { animation-delay: 1.3s; }
+.dot-divider span:nth-child(15) { animation-delay: 1.4s; }
+.dot-divider span:nth-child(16) { animation-delay: 1.5s; }
+
+@keyframes dotBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Blurry, light, transparent GIF background */
+body {
+  position: relative;
+  font-family: "Neue Haas Grotesk Display Pro", sans-serif;
+  margin: 0;
+  height: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  z-index: -1;
+  pointer-events: none;
+
+  background: url("../gradient-background.gif") center/cover no-repeat;
+
+  /* Effects */
+  filter: blur(30px) brightness(1.2);
+  opacity: 0.35; /* <- transparency! Lower = more see-through */
+  transform: scale(1.1); /* hides blurred edges */
+}
+
+/* Optional soft white overlay to smooth further */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.1); /* adjust alpha for more lightness */
+}
