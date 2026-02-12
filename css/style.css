@@ -458,7 +458,7 @@ h2 {
   position: absolute;
 
   /* Bigger size */
-  width: 50vw;      /* up from 28vw */
+  width: 80vw;      /* up from 28vw */
   max-width: 400px; /* up from 320px */
   min-width: 250px; /* up from 200px */
 
@@ -483,17 +483,19 @@ h2 {
 /* We use Left/Top % to keep them tight and responsive */
 
 .item-1 {
-  left: 30%; 
-  top: 35%;
+  left: 34%; 
+  top: 38%;
   transform: translate(-50%, -50%) rotate(-15deg);
   z-index: 1;
+  width: 30vw;
 }
 
 .item-2 {
   left: 70%; 
-  top: 30%;
+  top: 40%;
   transform: translate(-50%, -50%) rotate(10deg);
   z-index: 2;
+  width: 90vw;
 }
 
 .item-3 {
@@ -508,6 +510,15 @@ h2 {
   top: 75%;
   transform: translate(-50%, -50%) rotate(15deg);
   z-index: 4;
+
+}
+
+.item-5 {
+  left: 65%; 
+  top: 75%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  z-index: 4;
+  width: 90vw;
 }
 
 
@@ -752,11 +763,14 @@ footer .container {
   }
 }
 
+
+
 /* Blurry, light, transparent GIF background */
 body {
   position: relative;
-  font-family: "Neue Haas Grotesk Display Pro", sans-serif;
-  margin: 0;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-weight: 400;
+  font-style: normal;  margin: 0;
   height: 100%;
 }
 

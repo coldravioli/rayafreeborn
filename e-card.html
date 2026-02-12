@@ -46,7 +46,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav fw-bold">
           <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#about">About</a>
@@ -105,7 +105,7 @@
 
             <div class="d-grid gap-3 d-flex flex-column justify-content-center align-items-center col-xl-8 col-lg-8 col-md-8 m-4">
                 <div>
-                    <p class="fs-6 text-justify">Led the design and art direction for Inside RBC, the college’s official 70-page magazine, managing cohesive layouts and visuals for both print and digital editions. Oversaw the full production process from concept to final publication, ensuring consistent branding and storytelling across a large-scale, multi-section issue. Distributed worldwide to alumni, faculty, and board members, each edition communicates the college’s story with clarity and impact, incorporating custom illustrations, photography, and interactive elements to engage readers.</p>
+                    <p class="fs-6 text-justify">Designed the visual identity and layout for a hybrid digital business card with an embedded screen for Jesse Vaughan Productions, tailored for executive and administrative use. Produced a limited run of 50 units, ensuring consistent branding, high-quality visuals, and a seamless integration of digital and physical elements, creating a modern, functional networking tool.</p>
                 </div>
 
                 <!-- <figure class="text-center">
@@ -146,7 +146,7 @@
       <div class="col-sm-6 col-lg-6">
         <div class="rounded-5 overflow-hidden">
           <img class="w-100 h-100 object-fit img-fluid gallery-img"
-               src="image/rbc/pecan.png"
+               src="image/boyd/boydd4.png"
                data-bs-toggle="modal"
                data-bs-target="#rbcModal"
                data-bs-slide-to="1"
@@ -175,39 +175,37 @@
       </div>
     </div>
   </div>
-
-  <!-- RBC Modal Carousel -->
-  <div class="modal fade" id="rbcModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content bg-transparent border-0">
-        <div class="modal-header border-0">
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-0">
-          <div id="rbcCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="image/rbc/cover.png" class="d-block w-100" alt="Cover">
-              </div>
-              <div class="carousel-item">
-                <img src="image/rbc/pecan.png" class="d-block w-100" alt="Pecan">
-              </div>
-              <div class="carousel-item">
-                <img src="image/boyd/boyd3.png" class="d-block w-100" alt="Omni">
-              </div>
-              <div class="carousel-item">
-                <img src="image/boyd.png" class="d-block w-100" alt="Triplet">
-              </div>
+<!-- RBC Modal Carousel -->
+<div class="modal fade" id="rbcModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="rbcCarousel" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="image/boyd/boyd2.png" class="d-block w-100" alt="Cover">
             </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#rbcCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#rbcCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+            <div class="carousel-item">
+              <img src="image/boyd/boydd4.png" class="d-block w-100" alt="Pecan">
+            </div>
+            <div class="carousel-item">
+              <img src="image/boyd/boyd3.png" class="d-block w-100" alt="Omni">
+            </div>
+            <div class="carousel-item">
+              <img src="image/boyd/boyd1.png" class="d-block w-100" alt="Triplet">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#rbcCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#rbcCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
           </div>
         </div>
       </div>
@@ -254,16 +252,16 @@
     </div>
 
     <script>
-        function switchStyle() {
-        if (document.getElementById('styleSwitch').checked) {
-            document.getElementById('gallery').classList.add("custom");
-            document.getElementById('exampleModal').classList.add("custom");
-        } else {
-            document.getElementById('gallery').classList.remove("custom");
-            document.getElementById('exampleModal').classList.remove("custom");
-        }
-        };
-        
+      const galleryImages = document.querySelectorAll('.gallery-img');
+      const modalCarousel = document.getElementById('rbcCarousel');
+    
+      galleryImages.forEach((img, idx) => {
+        img.addEventListener('click', () => {
+          const carousel = bootstrap.Carousel.getInstance(modalCarousel) 
+                         || new bootstrap.Carousel(modalCarousel, { ride: false });
+          carousel.to(idx);
+        });
+      });
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
