@@ -12,23 +12,48 @@
   font-style: normal;
 }
 
+.argent-pixel {
+  font-family: "argent-pixel-cf", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.argent-pixel-italic {
+  font-family: "argent-pixel-cf", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
 
 
+/* * {
+  scrollbar-width: auto;
+  scrollbar-color: #acbed1 #ffffff;
+} */
+
+/* hide page scrollbar */
+html { scrollbar-width: none; } /* Firefox */
+body { -ms-overflow-style: none; } /* IE and Edge */
+body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Chrome */
+/* end hide page scrollbar */
 
 
 /* Navbar solid at top, fully transparent at bottom */
-#scrolling_navbar {
-  backdrop-filter: blur(10px);  /* frosted effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* soft shadow for depth */
+/* #scrolling_navbar {
+  backdrop-filter: blur(10px);  
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
   border-bottom: none;
-}
+} */
+
+
 
 /* Keep brand and links visible */
 #scrolling_navbar .navbar-brand,
 #scrolling_navbar .nav-link {
-  color: #0000004a;
+  color: #000000a1;
   transition: color 0.3s ease;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 #scrolling_navbar .nav-link:hover,
@@ -71,7 +96,7 @@
 }
 
 .bg-dark {
-  background: linear-gradient(to top right, #80ffdb, #5390d9) !important;
+  background: linear-gradient(to top right, #6735d1, #0f5ab7) !important;
 }
 
 .text-secondary {
@@ -353,9 +378,9 @@
 }
 
 h2 {
-  font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
-  font-weight: 500; /* Medium weight */
-
+  font-family: "Argent Pixel CF", sans-serif !important;
+  font-size: 3rem;
+  background: red;
 }
 
 h5 {
@@ -366,7 +391,7 @@ h5 {
 
 /* Style the awards lists */
 ul.list-unstyled {
-  font-size: 0.7rem;      /* Slightly smaller text */
+  font-size: 0.9rem;      /* Slightly smaller text */
   line-height: 1.6;        /* More spacing between lines */
   list-style-type: disc;    /* Add bullet points */
   padding-left: 1.25rem;    /* Space for bullets */
@@ -620,11 +645,133 @@ h2 {
   opacity: 1;
 }
 
-#home {
-  background-image: url('image/home.jpg');
-  background-size: cover;
-  background-position: center;
+/* ===============================
+   HOME FULL SCREEN IMAGE
+================================= */
+
+/* The stretched image */
+.home-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  z-index: 0;
 }
+
+
+
+#home {
+  position: relative;
+  min-height: 85vh; /* not full 100vh anymore */
+  /* background: #f4f4f4; */
+  overflow: hidden;
+  padding-top: 2rem; /* tiny breathing room */
+}
+
+.home-hero {
+  position: relative; /* remove sticky for now */
+  padding: 2rem 5vw 0 5vw;
+  z-index: 2;
+
+}
+
+.hero-name {
+  font-size: clamp(4rem, 11vw, 12rem);
+  font-weight: 800;
+  line-height: 0.85;
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+.hero-sub {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  margin-top: 2rem;
+  max-width: 600px;
+}
+
+/* FADE OUT GRADIENT */
+
+.fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 244, 244, 0) 0%,
+    rgba(244, 244, 244, 1) 100%
+  );
+
+  pointer-events: none;
+}
+
+.home-feature {
+  padding: 6vw;
+  background: white;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.feature-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.feature-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-text {
+  background: #111;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.home-projects {
+  padding: 6vw;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-text {
+  background: #111;
+  color: white;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
 .home-video {
   width: 400px;          /* base width */
@@ -671,6 +818,24 @@ footer .container {
   padding-right: 1rem;
 }
 
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footer-icon {
+  width: 50px;   /* 👈 bigger */
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-icon:hover {
+  /* transform: scale(1.1); */
+  opacity: 0.5;
+}
+
 /* HOME scrolling image */
 .home-scroll {
   height: 100vh;
@@ -707,7 +872,7 @@ footer .container {
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
-    font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+  font-family: "argent-pixel-cf", sans-serif;
 
 }
 
@@ -764,7 +929,6 @@ footer .container {
 }
 
 
-
 /* Blurry, light, transparent GIF background */
 body {
   position: relative;
@@ -772,6 +936,7 @@ body {
   font-weight: 400;
   font-style: normal;  margin: 0;
   height: 100%;
+  
 }
 
 body::before {
@@ -781,7 +946,7 @@ body::before {
   left: -40px;
   right: -40px;
   bottom: -40px;
-  z-index: -1;
+  z-index: -99;
   pointer-events: none;
 
   background: url("../gradient-background.gif") center/cover no-repeat;
@@ -792,12 +957,143 @@ body::before {
   transform: scale(1.1); /* hides blurred edges */
 }
 
-/* Optional soft white overlay to smooth further */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.1); /* adjust alpha for more lightness */
+  z-index: -98;
+
+  background-image: url("/image/Rayafreebornstack.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;   /* Forces stretch */
+  background-position: center;
+}
+
+/* ================= ARCHIVE ================= */
+
+.archive-vibe {
+  padding: 6rem 2rem;
+}
+
+.archive-vibe-inner {
+  max-width: 70%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;   /* rounded corners */
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.archive-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.archive-subtitle {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0.6;
+}
+
+.archive-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Preview Row */
+
+.archive-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.archive-preview-right img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+
+.archive-preview-right img:hover {
+  transform: scale(1.05);
+}
+
+.material-type {
+  font-size: 0.75rem;
+  color: #acbed1;
+}
+
+/* ================= DROPDOWN ================= */
+
+.archive-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.archive-item.active .archive-content {
+  max-height: 2000px;
+  opacity: 1;
+  padding-top: 2.5rem;
+}
+
+.archive-content-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.archive-large-image img {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+}
+/* ================= IMAGE MORPH ================= */
+
+.image-morph-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.image-morph-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.morph-image {
+  position: fixed;
+  object-fit: contain;
+  z-index: 1000;
+  cursor: zoom-out;
+  transition: all 0.4s ease;
+}
+
+.archive-item:hover .archive-preview-left h3 {
+  color: #acbed1;
+  transition: color 0.3s ease;
+    transform: scale(1.03);
+    background-color: rgba(172, 190, 209, 0.05);
+    font-family: argent-pixel;
+  
+}
+
+.archive-item:hover {
+  transform: scale(1.03);
+  background-color: rgba(172, 190, 209, 0.05);
 }
