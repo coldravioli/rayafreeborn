@@ -378,9 +378,9 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
 h2 {
-  font-family: "Argent Pixel CF", sans-serif !important;
-  font-size: 3rem;
-  background: red;
+  font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
+  font-weight: 500; /* Medium weight */
+
 }
 
 h5 {
@@ -872,7 +872,7 @@ footer .container {
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
-  font-family: "argent-pixel-cf", sans-serif;
+    font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
 
 }
 
@@ -1089,7 +1089,6 @@ body::after {
   transition: color 0.3s ease;
     transform: scale(1.03);
     background-color: rgba(172, 190, 209, 0.05);
-    font-family: argent-pixel;
   
 }
 
