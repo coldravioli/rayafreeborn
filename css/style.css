@@ -813,9 +813,23 @@ footer .footer-name {
 }
 
 
+
 footer {
   background: #acbed1;
   padding: 3rem 2rem;
+
+  position: relative;
+
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  margin-bottom: -2vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 👈 pushes content to bottom */
 }
 
 footer .container {
