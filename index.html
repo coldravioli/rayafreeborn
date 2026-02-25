@@ -139,20 +139,23 @@
   const white = document.querySelector(".home-stack.white");
   const homeSection = document.querySelector("#home");
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const fadeEnd = homeSection.offsetHeight; 
-    const progress = Math.min(scrollY / fadeEnd, 1);
+  // 👇 FORCE correct starting state
+  purple.style.opacity = "1";
+  white.style.opacity = "0";
 
-    // Hero fades normally
+  window.addEventListener("scroll", () => {
+    const rect = homeSection.getBoundingClientRect();
+    const height = window.innerHeight;
+
+    let progress = 1 - (rect.bottom / height);
+    progress = Math.min(Math.max(progress, 0), 1);
+
     hero.style.opacity = 1 - progress;
 
-    // Smooth crossfade between images
-    white.style.opacity = 1 - progress;
-    purple.style.opacity = progress;
+    purple.style.opacity = 1 - progress;
+    white.style.opacity = progress;
   });
 </script>
-
 
 
 
