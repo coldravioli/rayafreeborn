@@ -667,6 +667,7 @@ h2 {
   /* background: #f4f4f4; */
   overflow: hidden;
   padding-top: 2rem; /* tiny breathing room */
+  z-index: -99;
 }
 
 .home-hero {
@@ -957,7 +958,46 @@ body::before {
   transform: scale(1.1); /* hides blurred edges */
 }
 
-body::after {
+.home-purple-bg {
+  position: fixed;   /* stays sticky */
+  inset: 0;
+  z-index: -98;
+
+  background-image: url("/image/Rayafreebornstack.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+
+  pointer-events: none;
+  opacity: 1;
+
+  /* ONLY visible in home initially */
+}
+
+.home-stack {
+  position: fixed;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  pointer-events: none;
+  z-index: -98;
+  transition: opacity 0.5s ease;
+}
+
+/* Purple — default visible */
+.home-stack.purple {
+  background-image: url("/image/rayastackblue.png");
+  opacity: 1;
+}
+
+/* White — default hidden */
+.home-stack.white {
+  background-image: url("/image/Rayafreebornstack.png");
+  opacity: 0;
+}
+
+/* body::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -968,9 +1008,9 @@ body::after {
 
   background-image: url("/image/Rayafreebornstack.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;   /* Forces stretch */
+  background-size: 100% 100%;  
   background-position: center;
-}
+} */
 
 /* ================= ARCHIVE ================= */
 

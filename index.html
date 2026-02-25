@@ -117,12 +117,17 @@
 
 <section id="home" class="home-scroll">
 
-  <!-- <img src="image/Rayafreebornstack.png" class="home-bg-image" /> -->
+  <div class="home-blue-bg"></div>
+
+  <!-- Purple version (visible first) -->
+  <div class="home-stack purple"></div>
+
+  <!-- White version (hidden at start) -->
+  <div class="home-stack white"></div>
 
   <div class="home-hero">
-    <h1 class="hero-name" style="color: #acbed1;">RAYA FREEBORN</h1>
     <p class="hero-sub">
-      designer & outdoor-enthusiast from southwest virginia.
+      designer <b style="font-size: clamp(0.9rem, 0.5vw, 0.5rem); color: #acbed1;">&</b> outdoor-enthusiast.
     </p>
   </div>
 
@@ -130,16 +135,21 @@
 
 <script>
   const hero = document.querySelector(".home-hero");
+  const purple = document.querySelector(".home-stack.purple");
+  const white = document.querySelector(".home-stack.white");
+  const homeSection = document.querySelector("#home");
 
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
-    const fadeStart = 0;
-    const fadeEnd = window.innerHeight * 0.6;
+    const fadeEnd = homeSection.offsetHeight; 
+    const progress = Math.min(scrollY / fadeEnd, 1);
 
-    let opacity = 1 - scrollY / fadeEnd;
-    opacity = Math.max(opacity, 0);
+    // Hero fades normally
+    hero.style.opacity = 1 - progress;
 
-    hero.style.opacity = opacity;
+    // Smooth crossfade between images
+    white.style.opacity = 1 - progress;
+    purple.style.opacity = progress;
   });
 </script>
 
