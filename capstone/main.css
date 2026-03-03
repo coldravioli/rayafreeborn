@@ -33,7 +33,7 @@ body {
     white-space: pre-wrap;
     font-size: 18px;
     line-height: 1.5;
-    border-right: 2px solid #ffffff; 
+    border-right: 2px solid rgb(24, 237, 0); 
     animation: blink 1s infinite;
 }
 
@@ -42,7 +42,7 @@ body {
         border-color: transparent;
     }
     50% {
-        border-color: #ffffff;
+        border-color: rgb(24, 237, 0);
     }
 }
 
