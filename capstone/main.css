@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family:"cofo-sans-pixel";
+    src:url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+    }
+  
+    @import url("https://p.typekit.net/p.css?s=1&k=ebe0xbp&ht=tk&f=39494.39495.39500.39501.39504.39505.39508.39509.58279.59172.59173&a=117800583&app=typekit&e=css");
+
+body {
+    background-color: rgb(8, 8, 22);
+    font-family: "cofo-sans-pixel", sans-serif !important;
+    text-transform: uppercase;
+      color: rgb(24, 237, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative; 
+    flex-direction: column; 
+}
+
+.terminal {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.terminal-text {
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 1.5;
+    border-right: 2px solid #ffffff; 
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ffffff;
+    }
+}
+
+#clear-button {
+    display: none; 
+    position: absolute; 
+    bottom: 40%;
+    left: 50%; 
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 5px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px 20px;
+}
+
+#clear-button:hover {
+    background-color: lightblue;
+}
