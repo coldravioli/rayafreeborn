@@ -26,14 +26,14 @@ function typeText() {
         setTimeout(typeText, 700); 
       } else {
         terminalElement.classList.remove("blink"); 
-        // clearButton.style.display = 'block'; 
+        clearButton.style.display = 'block'; 
       }
     }, 2000); 
   }
 }
 
 clearButton.addEventListener('click', () => {
-  window.location.href = 'room.html'; 
+  window.location.href = 'website.html'; 
 });
 
 window.onload = typeText;
