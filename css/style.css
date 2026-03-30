@@ -508,7 +508,7 @@ h5 {
 ul.list-unstyled {
   font-size: 0.9rem;      /* Slightly smaller text */
   line-height: 1.6;        /* More spacing between lines */
-  list-style-type: disc;    /* Add bullet points */
+  list-style-type: square;    /* Add bullet points */
   padding-left: 1.25rem;    /* Space for bullets */
   text-align: left;         /* Left-align text */
   margin-bottom: 0;         /* Remove bottom margin from the list itself */
