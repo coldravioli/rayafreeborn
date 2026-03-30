@@ -1,39 +1,75 @@
-const phrase1 = "Our website is currently in the works."; 
-const phrase2 = "...";
-const phrase3 = "Please come back later.";
-
-const texts = [phrase1, phrase2, phrase3];
-
+const texts = ["identify.", "stabilize.", "redistribute.", "welcome to f.i.h."];
 const terminalElement = document.querySelector(".terminal-text");
-const clearButton = document.getElementById("clear-button");
+const nameInput = document.getElementById("nameInput");
+const enterButton = document.getElementById("enterButton");
 
 let currentTextIndex = 0;
-let i = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-function typeText() {
-  if (i < texts[currentTextIndex].length) {
-    terminalElement.innerHTML += texts[currentTextIndex].charAt(i);
-    i++;
-    setTimeout(typeText, 60);
+// ================= TERMINAL TYPING LOOP =================
+function handleTerminal() {
+  const currentFullText = texts[currentTextIndex];
+
+  if (!isDeleting) {
+    // Typing
+    terminalElement.innerText = currentFullText.substring(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === currentFullText.length) {
+      isDeleting = true;
+      setTimeout(handleTerminal, 1500); // Pause at end
+    } else {
+      setTimeout(handleTerminal, 80);
+    }
   } else {
-    terminalElement.classList.add("blink"); 
-    setTimeout(() => {
-      currentTextIndex++;
-      if (currentTextIndex < texts.length) {
-        terminalElement.innerHTML = ''; 
-        terminalElement.classList.remove("blink"); 
-        i = 0; 
-        setTimeout(typeText, 700); 
-      } else {
-        terminalElement.classList.remove("blink"); 
-        clearButton.style.display = 'block'; 
-      }
-    }, 2000); 
+    // Deleting
+    terminalElement.innerText = currentFullText.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+      currentTextIndex = (currentTextIndex + 1) % texts.length;
+      setTimeout(handleTerminal, 500);
+    } else {
+      setTimeout(handleTerminal, 50);
+    }
   }
 }
 
-clearButton.addEventListener('click', () => {
-  window.location.href = 'website.html'; 
+// ================= BUTTON & FLASH LOGIC =================
+enterButton.addEventListener("click", () => {
+  const nameValue = nameInput.value.trim();
+
+  // 1. Requirement: Only work if input has text
+  if (nameValue !== "") {
+    // 2. Flash Initializing Effect
+    enterButton.disabled = true;
+    enterButton.innerText = "INITIALIZING...";
+    enterButton.style.backgroundColor = "#ffffff";
+    enterButton.style.color = "#000000";
+
+    // 3. Save name
+    sessionStorage.setItem("fihUser", nameValue);
+
+    // 4. Redirect after 1 second
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 1000);
+    
+  } else {
+    // Feedback for empty input
+    nameInput.style.borderColor = "red";
+    setTimeout(() => { nameInput.style.borderColor = "#00ff00"; }, 500);
+  }
 });
 
-window.onload = typeText;
+// Keypress listener for "Enter" key
+nameInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    enterButton.click();
+  }
+});
+
+// Start the terminal loop
+window.onload = handleTerminal;

@@ -160,3 +160,61 @@ h1 {
     font-optical-sizing: auto;
     font-style: normal;
   }
+
+  #clear-button {
+    display: none;
+  
+    background: transparent;
+    border: none;
+    padding: 0;
+  
+    cursor: pointer;
+  }
+  
+  /* control image size */
+  #clear-button img {
+    width: 120px; /* adjust */
+    height: auto;
+  
+    opacity: 0.85;
+    transition: 
+      opacity 0.3s ease,
+      transform 0.2s ease,
+      filter 0.3s ease;
+  }
+  
+  /* hover = glow + slight lift */
+  #clear-button:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px #00ff9c);
+  }
+  
+  /* click feel */
+  #clear-button:active img {
+    transform: scale(0.95);
+  }
+
+  .transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    background: radial-gradient(circle at center, #00ff88 0%, #001a0f 40%, #000 100%);
+    
+    opacity: 0;
+    transform: scale(1.2);
+    pointer-events: none;
+    z-index: 9999;
+  
+    transition: 
+      opacity 0.8s ease,
+      transform 1s ease;
+  }
+
+  .transition-overlay.active {
+    opacity: 1;
+    transform: scale(1);
+  }

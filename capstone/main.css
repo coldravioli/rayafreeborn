@@ -47,21 +47,106 @@ body {
 }
 
 #clear-button {
-    display: none; 
-    position: absolute; 
-    bottom: 40%;
-    left: 50%; 
-    transform: translateX(-50%);
+    display: none;
+  
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    background-color: #6aff00;
-    color: #ffffff;
-    font-size: 16px;
+    padding: 0;
+  
     cursor: pointer;
-    transition: background-color 0.3s;
-    padding: 10px 20px;
+  }
+  
+  /* control image size */
+  #clear-button img {
+    width: 120px; /* adjust */
+    height: auto;
+  
+    opacity: 0.85;
+    transition: 
+      opacity 0.3s ease,
+      transform 0.2s ease,
+      filter 0.3s ease;
+  }
+  
+  /* hover = glow + slight lift */
+  #clear-button:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px #00ff9c);
+  }
+  
+  /* click feel */
+  #clear-button:active img {
+    transform: scale(0.95);
+  }
+
+  #nameInput, #enterButton {
+    display: none; /* The script will turn this on when finished */
+    margin-top: 20px;
+    background: black;
+    color: #00ff00; /* Terminal Green */
+    border: 1px solid #00ff00;
+    padding: 5px;
+    font-family: monospace;
 }
 
-#clear-button:hover {
-    background-color: lightblue;
+.terminal-text {
+    min-height: 1.2em;
+    display: inline-block;
+}
+
+/* Center the terminal content */
+.terminal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+}
+
+/* Ensure the input bar is on a new line and centered */
+.input-wrapper {
+    margin-top: 20px;
+    display: none; /* JS will show this later */
+}
+
+#nameInput {
+    display: block;
+    margin: 0 auto 10px auto; /* Centers the bar and adds space below */
+    text-align: center;
+}
+
+/* Position the Skip Button in the bottom right */
+#skipButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: rgba(0, 255, 0, 0.5); /* Faded terminal green */
+    font-family: monospace;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+#skipButton:hover {
+    color: #00ff00;
+}
+
+#enterButton {
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 5px 20px;
+    cursor: pointer;
+    font-family: monospace;
+    transition: all 0.2s ease;
+}
+
+#enterButton:hover {
+    background: #00ff00;
+    color: black;
 }

@@ -1127,7 +1127,7 @@ body::before {
   inset: 0;
   z-index: -98;
 
-  background-image: url("/capstone/images/fih.png");
+  background-image: url("/capstone/images/trying.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -1157,13 +1157,13 @@ body::before {
 
 /* Purple — default visible */
 .home-stack.purple {
-  background-image: url("/capstone/images/fih.png");
+  background-image: url("/capstone/images/trying.png");
   opacity: 1;
 }
 
 /* White — default hidden */
 .home-stack.white {
-  background-image: url("/capstone/images/fih_white.png");
+  background-image: url("/capstone/images/fih.png");
   opacity: 0;
 }
 
@@ -1305,4 +1305,21 @@ body::before {
 .archive-item:hover {
   transform: scale(1.03);
   background-color: rgba(172, 190, 209, 0.05);
+}
+
+body {
+  /* Set the initial state */
+  background-color: black;
+  /* Smooth out the transition as the script updates the color */
+  transition: background-color 0.1s ease-out;
+}
+
+/* Optional: Ensure your text remains readable during the transition */
+#works h2, #about h2, .archive-title {
+  transition: color 0.1s ease-out;
+}
+
+/* If the background becomes white, you might want your text to become dark */
+body.is-light {
+  color: #222;
 }

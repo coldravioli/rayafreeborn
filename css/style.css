@@ -635,6 +635,7 @@ h2 {
   transform: translate(-50%, -50%) rotate(-15deg);
   z-index: 1;
   width: 30vw;
+  
 }
 
 .item-2 {
@@ -689,6 +690,7 @@ h2 {
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   z-index: 200;
+  
 }
 
 
@@ -713,10 +715,40 @@ h2 {
   background-color: #acbed1;
   color: white;
   padding: 6px 14px;
-  border-radius: 25px;
+  clip-path: polygon(
+    0px calc(100% - 16px),
+    4px calc(100% - 16px),
+    4px calc(100% - 8px),
+    8px calc(100% - 8px),
+    8px calc(100% - 4px),
+    16px calc(100% - 4px),
+    16px 100%,
+    calc(100% - 16px) 100%,
+    calc(100% - 16px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 16px),
+    100% calc(100% - 16px),
+    100% 16px,
+    calc(100% - 4px) 16px,
+    calc(100% - 4px) 8px,
+    calc(100% - 8px) 8px,
+    calc(100% - 8px) 4px,
+    calc(100% - 16px) 4px,
+    calc(100% - 16px) 0px,
+    16px 0px,
+    16px 4px,
+    8px 4px,
+    8px 8px,
+    4px 8px,
+    4px 16px,
+    0px 16px
+  );
   font-size: 0.85rem;
   white-space: nowrap;
   z-index: 1000;
+  font-family: "scandia-line-web", sans-serif;
   transform: translate(-50%, -150%); /* Offset above cursor */
   transition: opacity 0.2s ease, transform 0.2s ease;
   opacity: 0;
@@ -1277,4 +1309,62 @@ body::before {
 .archive-item:hover {
   transform: scale(1.03);
   background-color: rgba(172, 190, 209, 0.05);
+}
+
+.pixel-corners {
+  clip-path: polygon(
+    0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px
+  );
+}
+
+.amp {
+  font-size: clamp(0.9rem, 0.5vw, 0.5rem);
+  color: #acbed1;
+  font-family: "cofo-sans-pixel", sans-serif !important;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
 }

@@ -183,9 +183,10 @@ Hiiiiiiiiiiiii~ welcome to my code!
 
   <div class="home-hero">
     <p class="hero-sub">
-
+      Welcome, <span class="user-name"></span>.
     </p>
   </div>
+
 
 </section>
 
@@ -212,34 +213,11 @@ Hiiiiiiiiiiiii~ welcome to my code!
     white.style.opacity = progress;
   });
 </script>
-
-
-
-
-        
-        <div class="dot-divider">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
         
         
         <section class="container py-5" id="works">
           <div class="container">
-            <h2 class="text-center fw-bolder mb-4">Selected Works</h2>
+            <h2 class="text-center fw-bolder mb-4">Shop</h2>
         
             <div class="scatter-section">
               <div class="scatter-container">
@@ -307,7 +285,7 @@ Hiiiiiiiiiiiii~ welcome to my code!
         <section class="archive-vibe" id="archive">
           <div class="archive-vibe-inner">
         
-            <h2 class="archive-title">Archive</h2>
+            <h2 class="archive-title">Specimen</h2>
             <p class="archive-subtitle">Additional works and explorations.</p>
         
             <!-- ================= PROJECTS ================= -->
@@ -836,6 +814,23 @@ Hiiiiiiiiiiiii~ welcome to my code!
       });
       
       </script>
+
+<h1 id="welcome-message">Loading...</h1>
+<script>
+  // When the home page loads, grab the name and put it in the span
+  window.addEventListener("DOMContentLoaded", () => {
+    const userNameSpan = document.querySelector(".user-name");
+    const savedName = sessionStorage.getItem("fihUser");
+
+    if (savedName) {
+      userNameSpan.innerText = savedName;
+    } else {
+      userNameSpan.innerText = "visitor"; // Fallback if they skipped the terminal
+    }
+  });
+</script>
+
+<script src="evil_color.js"></script>
 
 
 </body>

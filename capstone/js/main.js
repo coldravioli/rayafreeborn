@@ -22,3 +22,8 @@ galleryImages.forEach(img => {
     modalInstance.show();
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.querySelector(".type-text");
+  el.textContent = "hello";
+});
