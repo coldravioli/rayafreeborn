@@ -531,9 +531,21 @@ ul.list-unstyled h5 {
 .award-date {
   font-style: italic;      /* Italicize the dates */
   color: #acbed1;          /* Same accent color as bullets */
+  margin-bottom: 0.2rem; /* brings the next line closer */
+
 }
 
+.not-award-date {
+  color: #acbed1;
+  font-family: "cofo-sans-pixel", sans-serif !important;
+  text-transform: uppercase;
+  font-size: x-small;;
+}
 
+.award-date,
+.not-award-date {
+  margin: 0;
+}
 
 
 /* Remove the weird top bar / extra triangle space */
@@ -554,7 +566,7 @@ ul.list-unstyled h5 {
   font-size: 3rem; /* adjust as needed */
   font-weight: normal;
   letter-spacing: 2px;
-  text-transform: uppercase; /* optional */
+  text-transform: uppercase;
   text-align: center;
   color: #acbed1 !important;
 

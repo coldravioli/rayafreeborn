@@ -561,8 +561,6 @@ ul.list-unstyled h5 {
 }
 
 
-
-
 /* Remove the weird top bar / extra triangle space */
 .navbar .dropdown-toggle::after {
   display: inline-block;   /* ensure + shows */
