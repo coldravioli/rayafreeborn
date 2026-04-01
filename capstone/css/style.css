@@ -162,7 +162,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 
 #scrolling_navbar .nav-link:hover,
 #scrolling_navbar .nav-link.active {
-  color: #acbed1 !important;
+  color: rgb(24, 237, 0);
 }
 
 /* Dropdown styling */
@@ -283,7 +283,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 
 .gallery-title small {
-  color: #acbed1;  /* Your chosen color for dates */
+  color: rgb(24, 237, 0);
   font-size: 0.85rem;
   font-style: italic; /* Italic dates */
 }
@@ -411,7 +411,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 }
 #exampleModal.custom .modal-footer .btn:hover {
   background: white;
-  color: #acbed1 ;
+  color: rgb(24, 237, 0);
 }
 #exampleModal.custom .carousel-control-prev,
 #exampleModal.custom .carousel-control-next {
@@ -522,6 +522,7 @@ body::-webkit-scrollbar, body::-webkit-scrollbar-button { display: none; } /* Ch
 h2 {
   font-family: "Heiti TC", "Heiti TC Medium", sans-serif;
   font-weight: 500; /* Medium weight */
+  color: rgb(24, 237, 0);
 
 }
 
@@ -602,7 +603,7 @@ h1 {
 }
 
 h2 {
-  color: #acbed1;
+  color: rgb(24, 237, 0);
   font-family: "cofo-sans-pixel", sans-serif !important;
   text-transform: uppercase;
 }
@@ -957,7 +958,7 @@ footer .footer-name {
   }
 
 footer {
-  background: #acbed1;
+  color: rgb(24, 237, 0);
   padding: 3rem 2rem;
 
   position: relative;
@@ -1029,8 +1030,8 @@ footer .container {
 }
 
 .resume-btn {
-  background-color: #acbed1;
-  border: 2px solid #acbed1;
+  color: rgb(24, 237, 0);
+  color: rgb(24, 237, 0);
   text-transform: uppercase;
   font-family: "cofo-sans-pixel", sans-serif !important;
   color: white;
@@ -1043,7 +1044,7 @@ footer .container {
 .resume-btn:hover {
   background-color: transparent;
   color: #acbed1;
-  border: 2px solid #acbed1;
+  color: rgb(24, 237, 0);
 }
 
 .dot-divider {
@@ -1294,7 +1295,7 @@ body::before {
 }
 
 .archive-item:hover .archive-preview-left h3 {
-  color: #acbed1;
+  color: rgb(24, 237, 0);
   transition: color 0.3s ease;
     transform: scale(1.03);
     background-color: rgba(172, 190, 209, 0.05);
