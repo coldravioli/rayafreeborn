@@ -836,7 +836,7 @@ h2 {
   font-size: clamp(1.2rem, 2vw, 2rem);
   margin-top: 2rem;
   max-width: 600px;
-  color: greenyellow;
+  color: rgb(24, 237, 0);
 }
 
 /* FADE OUT GRADIENT */

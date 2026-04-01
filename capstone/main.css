@@ -11,10 +11,10 @@
     @import url("https://p.typekit.net/p.css?s=1&k=ebe0xbp&ht=tk&f=39494.39495.39500.39501.39504.39505.39508.39509.58279.59172.59173&a=117800583&app=typekit&e=css");
 
 body {
-    background-color: rgb(8, 8, 22);
+    background-color: rgb(0, 0, 0);
     font-family: "cofo-sans-pixel", sans-serif !important;
     text-transform: uppercase;
-      color: rgb(24, 237, 0);
+    color: rgb(24, 237, 0);
     display: flex;
     justify-content: center;
     align-items: center;
