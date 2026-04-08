@@ -10,10 +10,6 @@ const userName = savedName;
 const output = document.getElementById("output");
 const input = document.getElementById("input");
 
-// --------------------
-// AUDIO (soft beep)
-// --------------------
-
 let audioCtx;
 
 function playBeep() {
@@ -35,10 +31,6 @@ function playBeep() {
     oscillator.start();
     oscillator.stop(audioCtx.currentTime + 0.03);
 }
-
-// --------------------
-// TEXT OUTPUT
-// --------------------
 
 function addLine(text, className = "bot", speed = 20) {
     const line = document.createElement("p");
@@ -112,10 +104,6 @@ function addThinkingLine(finalText, className = "bot") {
     typeDots();
 }
 
-// --------------------
-// NAVIGATION BUTTON
-// --------------------
-
 function showNavigationButton(label, hash) {
     const wrapper = document.createElement("div");
     wrapper.className = "nav-wrapper";
@@ -135,19 +123,11 @@ function showNavigationButton(label, hash) {
     output.scrollTop = output.scrollHeight;
 }
 
-// --------------------
-// INITIAL BOOT
-// --------------------
-
 addLine("F.I.H. SYSTEM ONLINE...", "bot");
 
 setTimeout(() => {
     addLine(`Hello, ${userName}. How may I help you today?`, "bot");
 }, 800);
-
-// --------------------
-// INPUT HANDLER
-// --------------------
 
 input.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
@@ -160,10 +140,6 @@ input.addEventListener("keydown", function (e) {
         handleResponse(value.toLowerCase());
     }
 });
-
-// --------------------
-// RESPONSE ENGINE
-// --------------------
 
 function handleResponse(inputText) {
 
@@ -210,10 +186,6 @@ function handleResponse(inputText) {
     }
 }
 
-// --------------------
-// FAKE LOADING
-// --------------------
-
 function fakeLoading(callback) {
     const phrases = [
         "Loading...",
@@ -237,10 +209,6 @@ function fakeLoading(callback) {
     }, 800 + Math.random() * 1200);
 }
 
-// --------------------
-// CHOICES + ROUTING
-// --------------------
-
 function showChoices(options) {
     const wrapper = document.createElement("div");
     wrapper.className = "choices";
@@ -256,12 +224,11 @@ function showChoices(options) {
 
             fakeLoading(() => {
 
-                // FIRST LEVEL
                 if (opt === "Freshwater") {
                     addLine("Freshwater specimens available.", "bot");
 
                     setTimeout(() => {
-                        addLine("Proceed with acquisition?", "bot");
+                        addLine("Would you still like to proceed?", "bot");
                         showChoices(["Yes", "No"]);
                     }, 800);
 
