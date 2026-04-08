@@ -6,9 +6,22 @@
     <title>FIH Website</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
+<style>
+.neon-png {
+  /*1. Core light (white), 2. Immediate color, 3. Wide halo */
+  filter: drop-shadow(0 0 2px #fff) 
+          drop-shadow(0 0 7px rgb(24, 237, 0)) 
+          drop-shadow(0 0 100px rgb(24, 237, 0));
+  
+  /* Optional: Enhance color vibrancy */
+  /* brightness: 1.2; */
+}
+</style>
+
 <body>
     <div class="terminal">
-        <div class="terminal-text"></div><br>
+        <div class="terminal-text neon-png"></div><br>
     <!-- name input -->
     <input 
         type="text" 

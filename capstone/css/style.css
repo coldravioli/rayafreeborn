@@ -608,21 +608,19 @@ h2 {
   text-transform: uppercase;
 }
 
-/* 1. The Section Wrapper */
 .scatter-section {
   width: 100%;
   position: relative;
   z-index: 10;
-  overflow: hidden; /* Prevents scrollbars if an edge pokes out slightly */
-  padding: 50px 0;  /* Breathing room top/bottom */
+  overflow: hidden; 
+  padding: 50px 0; 
 }
 
-/* 2. The Container */
 .scatter-container {
   position: relative;
   width: 100%;
   max-width: 1000px;
-  height: 60vh; /* Takes up 60% of the screen height */
+  height: 60vh;
   min-height: 400px; 
   margin: 0 auto;
 }
@@ -693,21 +691,16 @@ h2 {
   z-index: 4;
   width: 90vw;
 }
-
-
-/* --- 5. THE GLITCH-FREE HOVER --- */
-
-/* Tooltip bubble like resume button */
 .scatter-item::after {
   content: attr(data-name);
   position: absolute;
-  bottom: 110%; /* Above the image */
+  bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #acbed1; /* Same as resume button */
+  background-color: #acbed1;
   color: #fff;
   padding: 6px 14px;
-  border-radius: 25px; /* Rounded like button */
+  border-radius: 25px;
   font-size: 0.85rem;
   white-space: nowrap;
   opacity: 0;
@@ -822,6 +815,9 @@ h2 {
   position: relative; /* remove sticky for now */
   padding: 2rem 5vw 0 5vw;
   z-index: 2;
+  color: rgb(24, 237, 0);
+  text-transform: uppercase;
+  font-family: "cofo-sans-pixel", sans-serif !important;
 
 }
 
@@ -831,6 +827,7 @@ h2 {
   line-height: 0.85;
   margin: 0;
   letter-spacing: -3px;
+  
 }
 
 .hero-sub {
@@ -1138,6 +1135,21 @@ body::before {
   /* ONLY visible in home initially */
 }
 
+.neon-png {
+  /*1. Core light (white), 2. Immediate color, 3. Wide halo */
+  filter: drop-shadow(0 0 2px #fff) 
+          drop-shadow(0 0 7px rgb(24, 237, 0)) 
+          drop-shadow(0 0 100px rgb(24, 237, 0));
+
+          /* brightness: 1.2; */
+}
+
+.neon-png2 {
+  filter: drop-shadow(0 0 2px #fff) 
+          drop-shadow(0 0 7px rgb(255, 255, 255)) 
+          drop-shadow(0 0 100px rgb(24, 237, 0));
+}
+
 .home-stack {
   position: fixed;
   top: -2px;
@@ -1319,7 +1331,16 @@ body {
   transition: color 0.1s ease-out;
 }
 
-/* If the background becomes white, you might want your text to become dark */
 body.is-light {
   color: #222;
 }
+
+/* input:focus, 
+input[type="text"]:focus, 
+input[type="Type a message..."]:focus, 
+input[type="password"]:focus, 
+input[type="tel"]:focus {
+    outline: none;
+    border: 2px solid rgb(117, 126, 255);
+    box-shadow: 0 0 5px rgba(0, 0, 75, 0.353);
+} */

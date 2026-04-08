@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CHAT</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<style>
+
+body {
+  background-image: url("images/globe.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("images/globe.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%;
+
+  filter: blur(12px);
+  opacity: 0.6;
+
+  z-index: -1;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+
+</style>
+
+<body class="neon-png">
+    <div id="chat" >
+        <div id="output" class="neon-png"></div>
+      
+        <div id="input-line">
+          <span class="neon-png">>></span>
+          <input id="input" type="text" autocomplete="on" />
+        </div>
+      </div>
+    <script src="chat.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // When the home page loads, grab the name and put it in the span
+        window.addEventListener("DOMContentLoaded", () => {
+          const userNameSpan = document.querySelector(".user-name");
+          const savedName = sessionStorage.getItem("fihUser");
+      
+          if (savedName) {
+            userNameSpan.innerText = savedName;
+          } else {
+            userNameSpan.innerText = "visitor"; // Fallback if they skipped the terminal
+          }
+        });
+      
+        let userName = sessionStorage.getItem("fihUser") || "User";
+      
+      // update span
+      const nameSpan = document.querySelector(".user-name");
+      if (nameSpan) {
+        nameSpan.textContent = userName;
+      }
+      
+      </script>
+
+</body>
+</html>
