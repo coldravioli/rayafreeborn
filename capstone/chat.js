@@ -2,6 +2,7 @@
 // USER NAME FROM STORAGE
 // --------------------
 const savedName = sessionStorage.getItem("fihUser") || "User";
+const userName = savedName;
 
 // --------------------
 // ELEMENTS
@@ -12,7 +13,6 @@ const input = document.getElementById("input");
 // --------------------
 // AUDIO (soft beep)
 // --------------------
-
 
 let audioCtx;
 
@@ -36,6 +36,10 @@ function playBeep() {
     oscillator.stop(audioCtx.currentTime + 0.03);
 }
 
+// --------------------
+// TEXT OUTPUT
+// --------------------
+
 function addLine(text, className = "bot", speed = 20) {
     const line = document.createElement("p");
     line.className = className;
@@ -48,9 +52,7 @@ function addLine(text, className = "bot", speed = 20) {
             line.textContent += text.charAt(i);
             i++;
 
-            if (className === "bot") {
-                playBeep();
-            }
+            if (className === "bot") playBeep();
 
             output.scrollTop = output.scrollHeight;
             setTimeout(typeChar, speed);
@@ -60,9 +62,16 @@ function addLine(text, className = "bot", speed = 20) {
     typeChar();
 }
 
-/* =========================
-   THINKING LINE (... + PAUSE)
-========================= */
+function addUserLine(text) {
+    const line = document.createElement("p");
+    line.textContent = text;
+    output.appendChild(line);
+    output.scrollTop = output.scrollHeight;
+}
+
+// --------------------
+// THINKING LINE
+// --------------------
 
 function addThinkingLine(finalText, className = "bot") {
     const line = document.createElement("p");
@@ -80,10 +89,7 @@ function addThinkingLine(finalText, className = "bot") {
             output.scrollTop = output.scrollHeight;
             setTimeout(typeDots, 450);
         } else {
-            // pause after dots
-            setTimeout(() => {
-                typeRest(finalText);
-            }, 900);
+            setTimeout(() => typeRest(finalText), 900);
         }
     }
 
@@ -106,9 +112,32 @@ function addThinkingLine(finalText, className = "bot") {
     typeDots();
 }
 
-/* =========================
-   INITIAL BOOT
-========================= */
+// --------------------
+// NAVIGATION BUTTON
+// --------------------
+
+function showNavigationButton(label, hash) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "nav-wrapper";
+
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = "nav-btn";
+    btn.className = "choice-btn";
+
+
+    btn.addEventListener("click", () => {
+        window.location.href = "store.html#" + hash;
+    });
+
+    wrapper.appendChild(btn);
+    output.appendChild(wrapper);
+    output.scrollTop = output.scrollHeight;
+}
+
+// --------------------
+// INITIAL BOOT
+// --------------------
 
 addLine("F.I.H. SYSTEM ONLINE...", "bot");
 
@@ -116,9 +145,9 @@ setTimeout(() => {
     addLine(`Hello, ${userName}. How may I help you today?`, "bot");
 }, 800);
 
-/* =========================
-   INPUT HANDLER
-========================= */
+// --------------------
+// INPUT HANDLER
+// --------------------
 
 input.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
@@ -128,21 +157,13 @@ input.addEventListener("keydown", function (e) {
         input.value = "";
 
         addUserLine(">> " + value);
-
         handleResponse(value.toLowerCase());
     }
 });
 
-function addUserLine(text) {
-    const line = document.createElement("p");
-    line.textContent = text;
-    output.appendChild(line);
-    output.scrollTop = output.scrollHeight;
-}
-
-/* =========================
-   RESPONSE ENGINE
-========================= */
+// --------------------
+// RESPONSE ENGINE
+// --------------------
 
 function handleResponse(inputText) {
 
@@ -156,104 +177,49 @@ function handleResponse(inputText) {
             addLine("F.I.H. stands for Future Ichykoid Habitation.", "bot");
 
             setTimeout(() => {
-                addLine("F.I.H. specializes in the collection, refinement, and homing of advanced ichthyoid specimens originating in the New River. By aligning biological innovation with controlled environments, we make accelerated evolution accessible.", "bot");
+                addLine("F.I.H. specializes in the collection, refinement, and homing of advanced ichthyoid specimens originating in the New River.", "bot");
             }, 800);
         });
 
     } else if (
         inputText.includes("buy") ||
         inputText.includes("fish") ||
-        inputText.includes("stuff") ||
+        inputText.includes("mutated") ||
+        inputText.includes("saltwater") ||
+        inputText.includes("fresh") ||
         inputText.includes("thing") ||
-        inputText.includes("item") ||
         inputText.includes("specimen")
+
     ) {
         fakeLoading(() => {
             addLine(`What type of specimen are you looking for, ${userName}?`, "bot");
 
             setTimeout(() => {
-                showDropdown([
+                showChoices([
                     "Freshwater",
                     "Saltwater",
-                    "Mutated Class C"
+                    "Mutated"
                 ]);
             }, 600);
         });
 
-    } else if (inputText.includes("price")) {
-        fakeLoading(() => {
-            addLine("Our prices start at $10.", "bot");
-        });
-
-    } else if (inputText.includes("shipping")) {
-        fakeLoading(() => {
-            addLine("Shipping cost depends on location.", "bot");
-        });
-
-    } else if (
-        inputText.includes("fuck") ||
-        inputText.includes("hate") ||
-        inputText.includes("ass") ||
-        inputText.includes("ignorant") ||
-        inputText.includes("stupid") ||
-        inputText.includes("balls") ||
-        inputText.includes("shit")
-    ) {
-        fakeLoading(() => {
-            addLine("Input flagged. Please maintain appropriate language.", "bot");
-        });
-
-    } else if (
-        inputText.includes("store") ||
-        inputText.includes("shop") ||
-        inputText.includes("place") ||
-        inputText.includes("location") ||
-        inputText.includes("market")
-    ) {
-        fakeLoading(() => {
-            addLine("Shop opens on May, 8, 2026. Future purchases can be found on storefront.", "bot");
-        });
-
-    } else if (
-        inputText.includes("wrong") ||
-        inputText.includes("bad") ||
-        inputText.includes("torture") ||
-        inputText.includes("evil") ||
-        inputText.includes("awful") ||
-        inputText.includes("safe") ||
-        inputText.includes("not good")
-    ) {
-        fakeLoading(() => {
-            addLine(`${userName}, I understand your concern, but F.I.H. is designed to help.`, "bot");
-        });
-
-    } else if (
-        inputText.includes("help") ||
-        inputText.includes("aid")
-    ) {
-        fakeLoading(() => {
-            addLine(`We intercept emergent species before uncontrolled spread. We stabilize viable specimens in contained habitats. We regulate reproduction. And we prepare them for controlled domestic integration.`, "bot");
-        });
-
     } else {
         fakeLoading(() => {
-            addThinkingLine(" I don't understand.", "bot");
+            addThinkingLine("I don't understand.", "bot");
         });
     }
 }
 
-/* =========================
-   FAKE LOADING
-========================= */
+// --------------------
+// FAKE LOADING
+// --------------------
 
 function fakeLoading(callback) {
     const phrases = [
         "Loading...",
-        "Should've said that since the beginning...",
         "Interesting...",
-        "Oh... okay...",
         "Interpreting request...",
-        "Wasting my time..."
+        "Processing..."
     ];
 
     const text = phrases[Math.floor(Math.random() * phrases.length)];
@@ -271,68 +237,83 @@ function fakeLoading(callback) {
     }, 800 + Math.random() * 1200);
 }
 
-/* =========================
-   DROPDOWN SYSTEM
-========================= */
+// --------------------
+// CHOICES + ROUTING
+// --------------------
 
-function showDropdown(options) {
+function showChoices(options) {
     const wrapper = document.createElement("div");
-    const select = document.createElement("select");
-
-    const defaultOption = document.createElement("option");
-    defaultOption.textContent = "-- select --";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-
-    select.appendChild(defaultOption);
+    wrapper.className = "choices";
 
     options.forEach(opt => {
-        const option = document.createElement("option");
-        option.textContent = opt;
-        select.appendChild(option);
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.className = "choice-btn";
+
+        btn.addEventListener("click", () => {
+            addUserLine(">> " + opt);
+            wrapper.remove();
+
+            fakeLoading(() => {
+
+                // FIRST LEVEL
+                if (opt === "Freshwater") {
+                    addLine("Freshwater specimens available.", "bot");
+
+                    setTimeout(() => {
+                        addLine("Proceed with acquisition?", "bot");
+                        showChoices(["Yes", "No"]);
+                    }, 800);
+
+                } else if (opt === "Saltwater") {
+                    addLine("Saltwater specimens require additional containment.", "bot");
+
+                    setTimeout(() => {
+                        addLine("Continue?", "bot");
+                        showChoices(["Continue", "Cancel"]);
+                    }, 800);
+
+                } else if (opt === "Mutated") {
+                    addLine("Warning: Mutations are unstable.", "bot");
+
+                    setTimeout(() => {
+                        addLine("Liability waiver required.", "bot");
+                        showChoices(["Accept Risk", "Decline"]);
+                    }, 800);
+                }
+
+                else if (opt === "Yes") {
+                    addLine("Access granted.", "bot");
+                    setTimeout(() => {
+                        showNavigationButton("Buy freshwater", "freshwater");
+                    }, 600);
+
+                } else if (opt === "Continue") {
+                    addLine("Access granted.", "bot");
+                    setTimeout(() => {
+                        showNavigationButton("Buy saltwater", "saltwater");
+                    }, 600);
+
+                } else if (opt === "Accept Risk") {
+                    addLine("Access granted.", "bot");
+                    setTimeout(() => {
+                        showNavigationButton("Buy mutated", "mutated");
+                    }, 600);
+
+                } else if (opt === "No" || opt === "Cancel" || opt === "Decline") {
+                    addLine("Request terminated.", "bot");
+                }
+
+                else {
+                    addLine(`"${opt}" logged.`, "bot");
+                }
+
+            });
+        });
+
+        wrapper.appendChild(btn);
     });
 
-    wrapper.appendChild(select);
     output.appendChild(wrapper);
     output.scrollTop = output.scrollHeight;
-
-    select.addEventListener("change", function () {
-        const choice = this.value;
-
-        addUserLine(">> " + choice);
-        wrapper.remove();
-
-        fakeLoading(() => {
-
-            if (choice === "Freshwater") {
-                addLine("Freshwater specimens available.", "bot");
-
-                setTimeout(() => {
-                    addLine("Proceed with acquisition?", "bot");
-                    showDropdown(["Yes", "No"]);
-                }, 800);
-
-            } else if (choice === "Saltwater") {
-                addLine("Saltwater specimens require additional containment.", "bot");
-
-                setTimeout(() => {
-                    addLine("Continue?", "bot");
-                    showDropdown(["Continue", "Cancel"]);
-                }, 800);
-
-            } else if (choice === "Mutated Class C") {
-                addLine("Warning: Class C mutations are unstable.", "bot");
-
-                setTimeout(() => {
-                    addLine("Liability waiver required.", "bot");
-                    showDropdown(["Accept Risk", "Decline"]);
-                }, 800);
-                
-
-            } else {
-                addLine(`"${choice}" logged. Preparing next step...`, "bot");
-            }
-
-        });
-    });
 }
