@@ -1179,23 +1179,6 @@ body::before {
   opacity: 0;
 }
 
-/* body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: -98;
-
-  background-image: url("/image/Rayafreebornstack.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;  
-  background-position: center;
-} */
-
-/* ================= ARCHIVE ================= */
-
 .archive-vibe {
   padding: 6rem 2rem;
 }
@@ -1344,3 +1327,114 @@ input[type="tel"]:focus {
     border: 2px solid rgb(117, 126, 255);
     box-shadow: 0 0 5px rgba(0, 0, 75, 0.353);
 } */
+
+/* ===============================
+   HERO BUTTONS (BIG + CLEAN)
+================================= */
+
+.home-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.home-btn {
+  padding: 1.2rem 2.8rem;
+  border: 2px solid rgb(24, 237, 0);
+  color: rgb(24, 237, 0);
+  text-decoration: none;
+
+  font-family: "cofo-sans-pixel", sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+
+  font-size: 1.2rem;
+
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+
+  box-shadow: 0 0 20px rgba(24,237,0,0.15);
+}
+
+.home-btn:hover {
+  background: rgb(24, 237, 0);
+  color: black;
+  transform: translateY(-3px);
+}
+
+/* ===============================
+   TERMINAL (KEEP YOUR VIBE)
+================================= */
+
+.terminal-window {
+  position: absolute;
+  right: 4vw;
+  bottom: 6vh;
+
+  width: min(420px, 90vw);
+
+  background: rgba(0,0,0,0.8);
+  border: 1px solid rgba(24,237,0,0.4);
+
+  border-radius: 12px;
+
+  backdrop-filter: blur(12px);
+
+  color: rgb(24, 237, 0);
+
+  font-family: "cofo-sans-pixel", sans-serif !important;
+}
+
+.terminal-topbar {
+  display: flex;
+  gap: 6px;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.terminal-topbar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(24, 237, 0);
+  opacity: 0.7;
+}
+
+.terminal-content {
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.terminal-content ul {
+  margin-left: 1.2rem;
+}
+
+.terminal-blink {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* MOBILE FIX */
+@media (max-width: 900px) {
+  .terminal-window {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 3rem auto;
+  }
+
+  .home-actions {
+    flex-direction: column;
+  }
+
+  .home-btn {
+    text-align: center;
+  }
+}

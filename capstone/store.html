@@ -23,8 +23,8 @@ body {
   color: rgb(24,237,0);
   font-family: "cofo-sans-pixel", monospace;
   text-transform: uppercase;
-  overflow: hidden; 
-  font-size: 14px;
+  overflow: hidden;
+  font-size: clamp(14px, 0.8vw, 22px);
 }
 
 .tank {
@@ -32,7 +32,7 @@ body {
   bottom: 0;
   left: 0;
   width: 67%;
-  height: 240px;
+  height: clamp(240px, 24vh, 420px);
   border-top: 2px solid rgb(24,237,0);
   overflow: hidden;
   transition: background 0.8s ease;
@@ -40,21 +40,20 @@ body {
 }
 
 .header {
-  padding: 20px;
-  font-size: 22px;
+  padding: clamp(20px, 2vw, 40px);
+  font-size: clamp(22px, 1.8vw, 48px);
   text-shadow: 0 0 10px rgba(24,237,0,0.8);
 }
 
-/* Moved UI to sit right above the tank */
 .system-ui {
   position: fixed;
-  bottom: 245px; 
-  left: 20px;
-  width: 220px;
-  font-size: 12px;
+  bottom: clamp(250px, 25vh, 430px);
+  left: clamp(20px, 2vw, 40px);
+  width: clamp(220px, 18vw, 420px);
+  font-size: clamp(12px, 0.9vw, 20px);
   z-index: 5;
-  background: black;
-  padding: 5px;
+  background: rgba(255, 255, 255, 0);
+  padding: clamp(5px, 1vw, 15px);
 }
 
 .bar {
@@ -71,34 +70,37 @@ body {
   transition: 0.5s;
 }
 
-.wrap { display: flex; height: 100vh; }
+.wrap { 
+  display: flex; 
+  height: 100vh; 
+}
 
 .store {
   width: 67%;
-  padding: 20px;
+  padding: clamp(20px, 2vw, 40px);
   box-sizing: border-box;
-  overflow-y: auto; 
-  height: calc(100vh - 300px); /* Keep grid from hitting the quality bar */
+  overflow-y: auto;
+  height: calc(100vh - clamp(300px, 28vh, 500px));
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: clamp(10px, 1vw, 24px);
   width: 100%;
   margin-top: 10px;
 }
 
 .item {
   border: 1px solid rgba(24,237,0,0.4);
-  padding: 12px;
+  padding: clamp(12px, 1vw, 24px);
   cursor: pointer;
-  min-height: 45px;
+  min-height: clamp(45px, 5vh, 90px);
   display: flex;
   align-items: center;
   transition: all 0.2s ease;
   text-shadow: 0 0 5px rgba(24,237,0,0.3);
-  font-size: 12px;
+  font-size: clamp(12px, 0.95vw, 24px);
 }
 
 .item:hover {
@@ -121,8 +123,8 @@ body {
 }
 
 .cart-header {
-  padding: 15px;
-  font-size: 16px;
+  padding: clamp(15px, 1.5vw, 30px);
+  font-size: clamp(16px, 1vw, 28px);
   border-bottom: 1px solid rgba(24,237,0,0.3);
   flex-shrink: 0;
 }
@@ -136,8 +138,8 @@ body {
 
 .cart-items {
   flex-grow: 1;
-  overflow-y: auto; 
-  padding: 15px;
+  overflow-y: auto;
+  padding: clamp(15px, 1.5vw, 30px);
   scrollbar-width: thin;
   scrollbar-color: rgb(24,237,0) transparent;
 }
@@ -145,14 +147,14 @@ body {
 .cart-item {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
-  padding: 8px 0;
+  font-size: clamp(13px, 0.9vw, 22px);
+  padding: clamp(8px, 0.8vw, 18px) 0;
   border-bottom: 1px solid rgba(24,237,0,0.1);
 }
 
 .cart-bottom {
-  padding: 15px;
-  font-size: 16px;
+  padding: clamp(15px, 1.5vw, 30px);
+  font-size: clamp(16px, 1vw, 28px);
   border-top: 1px solid rgba(24,237,0,0.3);
   background: black;
   flex-shrink: 0;
@@ -164,14 +166,16 @@ button {
   background: transparent;
   border: 1px solid rgb(24,237,0);
   color: rgb(24,237,0);
-  padding: 12px;
+  padding: clamp(12px, 1vw, 22px);
   cursor: pointer;
   font-family: inherit;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: clamp(13px, 0.9vw, 22px);
 }
 
-button:hover { background: rgba(24,237,0,0.2); }
+button:hover { 
+  background: rgba(24,237,0,0.2); 
+}
 
 .fish {
   position: absolute;
@@ -180,11 +184,15 @@ button:hover { background: rgba(24,237,0,0.2); }
   z-index: 2;
 }
 
-.fish.dead { background: rgb(255,0,0) !important; opacity: 0.75; }
+.fish.dead { 
+  background: rgb(255,0,0) !important; 
+  opacity: 0.75; 
+}
 
 .bubble {
   position: absolute;
-  width: 6px; height: 6px;
+  width: 6px; 
+  height: 6px;
   border-radius: 50%;
   border: 1px solid currentColor;
   animation: rise 3s linear forwards;
@@ -211,27 +219,40 @@ button:hover { background: rgba(24,237,0,0.2); }
 }
 
 #collapseMsg {
-  position: absolute; left: 50%; top: 50%;
+  position: absolute; 
+  left: 50%; 
+  top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px; color: rgb(255,0,0);
-  z-index: 999; white-space: nowrap;
+  font-size: clamp(28px, 2vw, 56px);
+  color: rgb(255,0,0);
+  z-index: 999; 
+  white-space: nowrap;
   text-shadow: 0 0 10px rgba(255,0,0,0.5);
 }
 
 .help-btn {
-  position: fixed; bottom: 20px; right: 20px;
-  width: 60px; height: 60px;
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px;
+  width: clamp(60px, 4vw, 90px);
+  height: clamp(60px, 4vw, 90px);
   border: 2px solid rgb(24,237,0);
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 40px; color: rgb(24,237,0);
-  text-decoration: none; z-index: 100;
-  background: black; box-shadow: 0 0 15px rgba(24,237,0,0.4);
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: clamp(40px, 3vw, 56px);
+  color: rgb(24,237,0);
+  text-decoration: none; 
+  z-index: 100;
+  background: black; 
+  box-shadow: 0 0 15px rgba(24,237,0,0.4);
 }
 
 .petri-dish {
   position: relative;
-  width: 160px; height: 160px;
+  width: clamp(160px, 14vw, 280px);
+  height: clamp(160px, 14vw, 280px);
   border: 3px solid rgb(24,237,0);
   border-radius: 50%;
   margin: 40px auto;
@@ -241,38 +262,88 @@ button:hover { background: rgba(24,237,0,0.2); }
 
 .item-ball {
   position: fixed;
-  width: 16px; height: 16px;
+  width: clamp(16px, 1vw, 28px);
+  height: clamp(16px, 1vw, 28px);
   background: rgb(24,237,0);
   border-radius: 50%;
   z-index: 2000;
   box-shadow: 0 0 8px rgb(24,237,0);
-  /* Direct travel transition */
-  transition: all 0.6s ease-in-out; 
+  transition: all 0.6s ease-in-out;
 }
 
-.checkout-overlay { display: none; padding: 20px; text-align: center; overflow-y: auto; height: 100%; }
+.checkout-overlay { 
+  display: none; 
+  padding: clamp(20px, 2vw, 40px); 
+  text-align: center; 
+  overflow-y: auto; 
+  height: 100%; 
+}
 
 .checkout-overlay input {
-  width: 100%; background: black; border: 1px solid rgb(24,237,0);
-  color: rgb(24,237,0); padding: 12px; margin: 10px 0;
-  box-sizing: border-box; font-family: inherit;
+  width: 100%; 
+  background: black; 
+  border: 1px solid rgb(24,237,0);
+  color: rgb(24,237,0); 
+  padding: clamp(12px, 1vw, 22px); 
+  margin: 10px 0;
+  box-sizing: border-box; 
+  font-family: inherit;
+  font-size: clamp(13px, 1vw, 22px);
 }
 
-#email-error { color: #ff0000; font-size: 14px; margin-bottom: 10px; display: none; text-shadow: 0 0 5px red; }
+#email-error { 
+  color: #ff0000; 
+  font-size: clamp(14px, 1vw, 20px);
+  margin-bottom: 10px; 
+  display: none; 
+  text-shadow: 0 0 5px red; 
+}
 
-.hidden { display: none !important; }
+.hidden { 
+  display: none !important; 
+}
+
+@media (min-width: 1800px) {
+
+  .grid {
+    gap: 20px;
+  }
+
+  .fish {
+    transform: scale(1.8);
+    transform-origin: center;
+  }
+
+  .bubble {
+    transform: scale(1.5);
+  }
+
+  .seaweed {
+    width: 10px;
+  }
+
+}
+
+.neon-png {
+  /*1. Core light (white), 2. Immediate color, 3. Wide halo */
+  filter: drop-shadow(0 0 2px #fff) 
+          drop-shadow(0 0 7px rgb(24, 237, 0)) 
+          drop-shadow(0 0 100px rgb(24, 237, 0));
+
+          /* brightness: 1.2; */
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="header">NEW RIVER / ECOLOGICAL DATABASE</div>
+<div class="header ">F.i.h. store</div>
 
 <div class="wrap">
-  <div class="store">
-    <h2>Fish selection</h2>
-    <div class="grid">
+  <div class="store neon-">
+    <h2 class="neon-png">Fish selection</h2>
+    <div class="grid neon-png">
       <div class="item" onclick="addFish('smallmouth bass')">smallmouth bass</div>
       <div class="item" onclick="addFish('largemouth bass')">largemouth bass</div>
       <div class="item" onclick="addFish('bluegill')">bluegill</div>
@@ -288,30 +359,30 @@ button:hover { background: rgba(24,237,0,0.2); }
     </div>
   </div>
 
-  <div class="cart">
-    <div class="cart-header">river system</div>
+  <div class="cart neon-png">
+    <div class="cart-header neon-png">F.I.H. CHECKOUT</div>
     <div id="cart-ui-container">
       <div class="cart-items" id="cart"></div>
       <div class="cart-bottom">
         total: $<span id="total">0</span>
-        <button onclick="checkout()">checkout</button>
-        <button onclick="restart()">restart ecosystem</button>
+        <button class="neon-png" onclick="checkout()">checkout</button>
+        <button class="neon-png" onclick="restart()">restart tank</button>
       </div>
     </div>
 
     <div id="checkout-overlay" class="checkout-overlay">
-      <div class="petri-dish" id="petriDish"></div>
-      <div id="credentials-form">
-        <p>ENTER BIOLOGICAL CREDENTIALS</p>
+      <div class="petri-dish neon-png" id="petriDish"></div>
+      <div id="credentials-form" class="neon-png">
+        <p>ENTER CREDENTIALS</p>
         <input type="text" placeholder="NAME" id="userName">
         <input type="email" placeholder="EMAIL" id="userEmail">
         <div id="email-error">ERROR FALSE</div>
         <button onclick="submitOrder()">SUBMIT DATA</button>
       </div>
       <div id="thank-you-msg" class="hidden">
-        <p>THANK YOU FOR YOUR ORDER.</p>
-        <p style="font-size: 11px; opacity: 0.8;">FURTHER INFORMATION WILL BE SENT.<br>WE WILL GET BACK TO YOU SOON.</p>
-        <button onclick="window.location.href='#'" style="margin-top: 20px;">LEARN MORE ABOUT FIH</button>
+        <p class="neon-png">THANK YOU FOR YOUR ORDER.</p>
+        <p style="font-size: 11px; opacity: 0.8;" class="neon-png">FURTHER INFORMATION WILL BE SENT.<br>WE WILL GET BACK TO YOU SOON.</p>
+        <button onclick="window.location.href='about.html'" style="margin-top: 20px;" class="neon-png">LEARN MORE ABOUT FIH</button>
       </div>
     </div>
   </div>
@@ -319,12 +390,12 @@ button:hover { background: rgba(24,237,0,0.2); }
 
 <div class="system-ui">
   water quality
-  <div class="bar"><div class="fill" id="qualityFill"></div></div>
+  <div class="bar"><div class="fill neon-png" id="qualityFill"></div></div>
   <div id="qualityText">stable</div>
 </div>
 
-<div class="tank" id="tank"></div>
-<a href="chat.html" class="help-btn">?</a>
+<div class="tank neon-png" id="tank"></div>
+<a href="chat.html" class="help-btn neon-png">?</a>
 
 <script>
 
@@ -427,62 +498,122 @@ function submitOrder() {
 function spawnFish(type, id){
   const tank = document.getElementById("tank");
   const f = document.createElement("div");
-  f.className = "fish"; f.id = id;
+  f.className = "fish"; 
+  f.id = id;
+
   const scale = fishData[type];
-  f.style.width = (12*scale)+"px"; f.style.height = (8*scale)+"px";
+  f.style.width = (12*scale)+"px"; 
+  f.style.height = (8*scale)+"px";
+
   tank.appendChild(f);
   animateFish(f);
 }
 
 function animateFish(f){
-  let x = Math.random()*100, y = Math.random()*200, dx = (Math.random()-0.5)*0.4, dy = (Math.random()-0.5)*0.3, fallSpeed = 0;
+  let x = Math.random()*100,
+      y = Math.random()*200,
+      dx = (Math.random()-0.5)*0.4,
+      dy = (Math.random()-0.5)*0.3,
+      fallSpeed = 0;
+
   function move(){
+
+    const tankHeight = document.getElementById("tank").offsetHeight - 40;
+
     if(deadState){
-      f.classList.add("dead"); fallSpeed += 0.02; y += fallSpeed;
-      x += (Math.random()-0.5)*0.2; f.style.left = x + "%"; f.style.top = y + "px";
-      if(y < 300) requestAnimationFrame(move); return;
+      f.classList.add("dead");
+      fallSpeed += 0.02;
+      y += fallSpeed;
+
+      x += (Math.random()-0.5)*0.2;
+
+      f.style.left = x + "%";
+      f.style.top = y + "px";
+
+      if(y < tankHeight){
+        requestAnimationFrame(move);
+      }
+
+      return;
     }
-    x += dx; y += dy;
-    if(x < 0 || x > 90) dx *= -1; if(y < 0 || y > 200) dy *= -1;
-    f.style.left = x + "%"; f.style.top = y + "px";
+
+    x += dx;
+    y += dy;
+
+    if(x < 0 || x > 90) dx *= -1;
+    if(y < 0 || y > tankHeight) dy *= -1;
+
+    f.style.left = x + "%";
+    f.style.top = y + "px";
+
     requestAnimationFrame(move);
   }
+
   move();
 }
 
 function spawnBubble(){
   const b=document.createElement("div");
-  b.className="bubble"; b.style.left=Math.random()*100+"%"; b.style.bottom="0px";
+  b.className="bubble";
+  b.style.left=Math.random()*100+"%";
+  b.style.bottom="0px";
   document.getElementById("tank").appendChild(b);
   setTimeout(()=>b.remove(),3000);
 }
 
 function spawnSeaweed(){
   const s=document.createElement("div");
-  s.className="seaweed"; s.style.left=Math.random()*100+"%"; s.style.height=(30+Math.random()*90)+"px";
+  s.className="seaweed";
+  s.style.left=Math.random()*100+"%";
+  s.style.height=(30+Math.random()*90)+"px";
   document.getElementById("tank").appendChild(s);
 }
 
 function updateWater(){
   let q = Math.max(0, 100 - ecosystemLoad);
+
   const fill = document.getElementById("qualityFill");
   fill.style.width = q + "%";
+
   const txt = document.getElementById("qualityText");
-  if(q > 70){ txt.innerText = "stable"; fill.style.background = "rgb(24,237,0)"; } 
-  else if(q > 50){ txt.innerText = "warning"; fill.style.background = "rgb(255,230,0)"; } 
-  else if(q > 30){ txt.innerText = "unstable"; fill.style.background = "rgb(255,140,0)"; } 
-  else { txt.innerText = "TOXIC RIVER"; fill.style.background = "rgb(255,0,0)"; }
-  if(q === 0 && !deadState){ deadState = true; showCollapse(); }
+
+  if(q > 70){
+    txt.innerText = "stable";
+    fill.style.background = "rgb(24,237,0)";
+  } 
+  else if(q > 50){
+    txt.innerText = "warning";
+    fill.style.background = "rgb(255,230,0)";
+  } 
+  else if(q > 30){
+    txt.innerText = "unstable";
+    fill.style.background = "rgb(255,140,0)";
+  } 
+  else {
+    txt.innerText = "TOXIC RIVER";
+    fill.style.background = "rgb(255,0,0)";
+  }
+
+  if(q === 0 && !deadState){
+    deadState = true;
+    showCollapse();
+  }
 }
 
 function showCollapse(){
   if(document.getElementById("collapseMsg")) return;
+
   const m = document.createElement("div");
-  m.id = "collapseMsg"; m.innerText = "ECOSYSTEM COLLAPSE";
+  m.id = "collapseMsg";
+  m.innerText = "ECOSYSTEM COLLAPSE";
+
   document.getElementById("tank").appendChild(m);
 }
 
-function restart(){ location.reload(); }
+function restart(){
+  location.reload();
+}
+
 </script>
 
 </body>
