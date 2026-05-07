@@ -5,11 +5,20 @@ const savedName = sessionStorage.getItem("fihUser") || "User";
 const userName = savedName;
 
 // --------------------
+// STATE
+// --------------------
+let awaitingSignature = false;
+let failedAttempts = 0;
+
+// --------------------
 // ELEMENTS
 // --------------------
 const output = document.getElementById("output");
 const input = document.getElementById("input");
 
+// --------------------
+// AUDIO (soft beep)
+// --------------------
 let audioCtx;
 
 function playBeep() {
@@ -25,13 +34,15 @@ function playBeep() {
 
     oscillator.type = "square";
     oscillator.frequency.setValueAtTime(800 + Math.random() * 200, audioCtx.currentTime);
-
     gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
 
     oscillator.start();
     oscillator.stop(audioCtx.currentTime + 0.03);
 }
 
+// --------------------
+// TEXT OUTPUT
+// --------------------
 function addLine(text, className = "bot", speed = 20) {
     const line = document.createElement("p");
     line.className = className;
@@ -64,7 +75,6 @@ function addUserLine(text) {
 // --------------------
 // THINKING LINE
 // --------------------
-
 function addThinkingLine(finalText, className = "bot") {
     const line = document.createElement("p");
     line.className = className;
@@ -104,15 +114,16 @@ function addThinkingLine(finalText, className = "bot") {
     typeDots();
 }
 
+// --------------------
+// NAVIGATION BUTTON
+// --------------------
 function showNavigationButton(label, hash) {
     const wrapper = document.createElement("div");
     wrapper.className = "nav-wrapper";
 
     const btn = document.createElement("button");
     btn.textContent = label;
-    btn.className = "nav-btn";
     btn.className = "choice-btn";
-
 
     btn.addEventListener("click", () => {
         window.location.href = "store.html#" + hash;
@@ -129,23 +140,81 @@ setTimeout(() => {
     addLine(`Hello, ${userName}. How may I help you today?`, "bot");
 }, 800);
 
+// --------------------
+// INPUT HANDLER
+// --------------------
 input.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
         const value = input.value.trim();
         if (!value) return;
 
         input.value = "";
-
         addUserLine(">> " + value);
-        handleResponse(value.toLowerCase());
+
+        // 🔥 SIGNATURE MODE
+        if (awaitingSignature) {
+            handleSignature(value);
+        } else {
+            handleResponse(value.toLowerCase());
+        }
     }
 });
 
+// --------------------
+// SIGNATURE HANDLER
+// --------------------
+function handleSignature(value) {
+    const signature = value.trim().toLowerCase();
+    const expected = userName.trim().toLowerCase();
+
+    awaitingSignature = false;
+
+    if (signature === expected) {
+        addLine("Signature verified.", "bot");
+
+        setTimeout(() => {
+            addLine("Access granted.", "bot");
+            showNavigationButton("Enter freshwater inventory", "freshwater");
+        }, 800);
+
+    } else {
+        failedAttempts++;
+
+        addLine("Signature mismatch.", "bot");
+
+        setTimeout(() => {
+            addLine("Identity could not be confirmed.", "bot");
+        }, 600);
+
+        if (failedAttempts >= 2) {
+            setTimeout(() => {
+                addLine("Repeated failure detected.", "bot");
+            }, 1200);
+        }
+
+        if (failedAttempts >= 3) {
+            setTimeout(() => {
+                addLine("Monitoring enabled.", "bot");
+            }, 1800);
+        }
+
+        setTimeout(() => {
+            addLine("DO YOU UNDERSTAND THE REQUIREMENTS?", "bot");
+            showChoices(["Retry Verification", "Abort"]);
+        }, 2000);
+    }
+}
+
+// --------------------
+// RESPONSE LOGIC
+// --------------------
 function handleResponse(inputText) {
 
-    if (inputText.includes("hello")) {
+    if (inputText.includes("hello") ||
+    inputText.includes("hi") ||
+    inputText.includes("ih")) {
         fakeLoading(() => {
-            addLine("Hi. State your request.", "bot");
+            addLine(`Hello, ${userName}. Are you interested in purchasing fish? If so, please inquire.`, "bot");
         });
 
     } else if (inputText.includes("fih")) {
@@ -156,40 +225,38 @@ function handleResponse(inputText) {
                 addLine("F.I.H. specializes in the collection, refinement, and homing of advanced ichthyoid specimens originating in the New River.", "bot");
             }, 800);
         });
+    }
 
-    } else if (
+    // BUY FLOW
+    else if (
         inputText.includes("buy") ||
         inputText.includes("fish") ||
-        inputText.includes("mutated") ||
-        inputText.includes("saltwater") ||
-        inputText.includes("fresh") ||
-        inputText.includes("thing") ||
-        inputText.includes("specimen")
-
+        inputText.includes("specimen") ||
+        inputText.includes("yes")
     ) {
         fakeLoading(() => {
-            addLine(`What type of specimen are you looking for, ${userName}?`, "bot");
+            addLine(`Only freshwater specimens are available, ${userName}.`, "bot");
 
             setTimeout(() => {
-                showChoices([
-                    "Freshwater",
-                    "Saltwater",
-                    "Mutated"
-                ]);
-            }, 600);
+                addLine("Before proceeding, verification is required.", "bot");
+                showChoices(["Proceed"]);
+            }, 700);
         });
+    }
 
-    } else {
+    else {
         fakeLoading(() => {
-            addThinkingLine("I don't understand.", "bot");
+            addThinkingLine("I don't understand. Do you want to purchase fish?", "bot");
         });
     }
 }
 
+// --------------------
+// FAKE LOADING
+// --------------------
 function fakeLoading(callback) {
     const phrases = [
         "Loading...",
-        "Interesting...",
         "Interpreting request...",
         "Processing..."
     ];
@@ -209,6 +276,9 @@ function fakeLoading(callback) {
     }, 800 + Math.random() * 1200);
 }
 
+// --------------------
+// CHOICES
+// --------------------
 function showChoices(options) {
     const wrapper = document.createElement("div");
     wrapper.className = "choices";
@@ -224,55 +294,51 @@ function showChoices(options) {
 
             fakeLoading(() => {
 
-                if (opt === "Freshwater") {
-                    addLine("Freshwater specimens available.", "bot");
+                if (opt === "Proceed") {
+                    addLine("Do you understand that all specimens require environmental maintenance?", "bot");
 
                     setTimeout(() => {
-                        addLine("Would you still like to proceed?", "bot");
-                        showChoices(["Yes", "No"]);
-                    }, 800);
-
-                } else if (opt === "Saltwater") {
-                    addLine("Saltwater specimens require additional containment.", "bot");
-
-                    setTimeout(() => {
-                        addLine("Continue?", "bot");
-                        showChoices(["Continue", "Cancel"]);
-                    }, 800);
-
-                } else if (opt === "Mutated") {
-                    addLine("Warning: Mutations are unstable.", "bot");
-
-                    setTimeout(() => {
-                        addLine("Liability waiver required.", "bot");
-                        showChoices(["Accept Risk", "Decline"]);
-                    }, 800);
+                        showChoices(["I Understand", "I Do Not"]);
+                    }, 700);
                 }
 
-                else if (opt === "Yes") {
-                    addLine("Access granted.", "bot");
-                    setTimeout(() => {
-                        showNavigationButton("Buy freshwater", "freshwater");
-                    }, 600);
+                else if (opt === "I Understand") {
+                    addLine("Verification step 2 required.", "bot");
 
-                } else if (opt === "Continue") {
-                    addLine("Access granted.", "bot");
                     setTimeout(() => {
-                        showNavigationButton("Buy saltwater", "saltwater");
-                    }, 600);
+                        addLine("Do you agree to assume responsibility for specimen behavior?", "bot");
+                        showChoices(["I Agree", "I Refuse"]);
+                    }, 700);
+                }
 
-                } else if (opt === "Accept Risk") {
-                    addLine("Access granted.", "bot");
+                else if (opt === "I Agree") {
+                    addLine("Final verification required.", "bot");
+
                     setTimeout(() => {
-                        showNavigationButton("Buy mutated", "mutated");
-                    }, 600);
+                        addLine("Type your name to sign authorization.", "bot");
+                        awaitingSignature = true;
+                    }, 700);
+                }
 
-                } else if (opt === "No" || opt === "Cancel" || opt === "Decline") {
+                else if (opt === "Retry Verification") {
+                    addLine("Re-enter signature.", "bot");
+
+                    setTimeout(() => {
+                        addLine("Type your name exactly as registered.", "bot");
+                        awaitingSignature = true;
+                    }, 700);
+                }
+
+                else if (opt === "Abort") {
                     addLine("Request terminated.", "bot");
+
+                    setTimeout(() => {
+                        addLine("Session flagged.", "bot");
+                    }, 600);
                 }
 
-                else {
-                    addLine(`"${opt}" logged.`, "bot");
+                else if (opt === "I Do Not" || opt === "I Refuse") {
+                    addLine("Request terminated.", "bot");
                 }
 
             });

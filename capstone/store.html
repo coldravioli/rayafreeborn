@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NEW RIVER / ECOLOGICAL SYSTEM</title>
+
+<style>
+
+@font-face {
+  font-family:"cofo-sans-pixel";
+  src:url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+      url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+      url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+  font-display:auto;
+  font-style:normal;
+  font-weight:400;
+  font-stretch:normal;
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: rgb(24,237,0);
+  font-family: "cofo-sans-pixel", monospace;
+  text-transform: uppercase;
+  overflow: hidden; 
+  font-size: 14px;
+}
+
+.tank {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 67%;
+  height: 240px;
+  border-top: 2px solid rgb(24,237,0);
+  overflow: hidden;
+  transition: background 0.8s ease;
+  z-index: 1;
+}
+
+.header {
+  padding: 20px;
+  font-size: 22px;
+  text-shadow: 0 0 10px rgba(24,237,0,0.8);
+}
+
+/* Moved UI to sit right above the tank */
+.system-ui {
+  position: fixed;
+  bottom: 245px; 
+  left: 20px;
+  width: 220px;
+  font-size: 12px;
+  z-index: 5;
+  background: black;
+  padding: 5px;
+}
+
+.bar {
+  width: 100%;
+  height: 10px;
+  border: 1px solid rgb(24,237,0);
+  margin-top: 5px;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+  background: rgb(24,237,0);
+  transition: 0.5s;
+}
+
+.wrap { display: flex; height: 100vh; }
+
+.store {
+  width: 67%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; 
+  height: calc(100vh - 300px); /* Keep grid from hitting the quality bar */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.item {
+  border: 1px solid rgba(24,237,0,0.4);
+  padding: 12px;
+  cursor: pointer;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 5px rgba(24,237,0,0.3);
+  font-size: 12px;
+}
+
+.item:hover {
+  background: rgba(24,237,0,0.15);
+  box-shadow: 0 0 12px rgba(24,237,0,0.5);
+  border-color: rgb(24,237,0);
+}
+
+.cart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 33%;
+  height: 100vh;
+  border-left: 1px solid rgb(24,237,0);
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.cart-header {
+  padding: 15px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(24,237,0,0.3);
+  flex-shrink: 0;
+}
+
+#cart-ui-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cart-items {
+  flex-grow: 1;
+  overflow-y: auto; 
+  padding: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(24,237,0) transparent;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(24,237,0,0.1);
+}
+
+.cart-bottom {
+  padding: 15px;
+  font-size: 16px;
+  border-top: 1px solid rgba(24,237,0,0.3);
+  background: black;
+  flex-shrink: 0;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid rgb(24,237,0);
+  color: rgb(24,237,0);
+  padding: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+button:hover { background: rgba(24,237,0,0.2); }
+
+.fish {
+  position: absolute;
+  background: currentColor;
+  clip-path: polygon(0 50%,30% 0,60% 20%,100% 50%,60% 80%,30% 100%);
+  z-index: 2;
+}
+
+.fish.dead { background: rgb(255,0,0) !important; opacity: 0.75; }
+
+.bubble {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  animation: rise 3s linear forwards;
+  z-index: 2;
+}
+
+.seaweed {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  background: currentColor;
+  animation: sway 2.5s infinite;
+  z-index: 1;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-160px); opacity: 0; }
+}
+
+@keyframes sway {
+  0%,100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+#collapseMsg {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px; color: rgb(255,0,0);
+  z-index: 999; white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255,0,0,0.5);
+}
+
+.help-btn {
+  position: fixed; bottom: 20px; right: 20px;
+  width: 60px; height: 60px;
+  border: 2px solid rgb(24,237,0);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; color: rgb(24,237,0);
+  text-decoration: none; z-index: 100;
+  background: black; box-shadow: 0 0 15px rgba(24,237,0,0.4);
+}
+
+.petri-dish {
+  position: relative;
+  width: 160px; height: 160px;
+  border: 3px solid rgb(24,237,0);
+  border-radius: 50%;
+  margin: 40px auto;
+  background: rgba(24, 237, 0, 0.08);
+  display: none;
+}
+
+.item-ball {
+  position: fixed;
+  width: 16px; height: 16px;
+  background: rgb(24,237,0);
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 0 8px rgb(24,237,0);
+  /* Direct travel transition */
+  transition: all 0.6s ease-in-out; 
+}
+
+.checkout-overlay { display: none; padding: 20px; text-align: center; overflow-y: auto; height: 100%; }
+
+.checkout-overlay input {
+  width: 100%; background: black; border: 1px solid rgb(24,237,0);
+  color: rgb(24,237,0); padding: 12px; margin: 10px 0;
+  box-sizing: border-box; font-family: inherit;
+}
+
+#email-error { color: #ff0000; font-size: 14px; margin-bottom: 10px; display: none; text-shadow: 0 0 5px red; }
+
+.hidden { display: none !important; }
+
+</style>
+</head>
+
+<body>
+
+<div class="header">NEW RIVER / ECOLOGICAL DATABASE</div>
+
+<div class="wrap">
+  <div class="store">
+    <h2>Fish selection</h2>
+    <div class="grid">
+      <div class="item" onclick="addFish('smallmouth bass')">smallmouth bass</div>
+      <div class="item" onclick="addFish('largemouth bass')">largemouth bass</div>
+      <div class="item" onclick="addFish('bluegill')">bluegill</div>
+      <div class="item" onclick="addFish('rock bass')">rock bass</div>
+      <div class="item" onclick="addFish('pumpkinseed sunfish')">pumpkinseed sunfish</div>
+      <div class="item" onclick="addFish('channel catfish')">channel catfish</div>
+      <div class="item" onclick="addFish('flathead catfish')">flathead catfish</div>
+      <div class="item" onclick="addFish('carp')">carp</div>
+      <div class="item" onclick="addFish('golden shiner')">golden shiner</div>
+      <div class="item" onclick="addFish('creek chub')">creek chub</div>
+      <div class="item" onclick="addFish('black crappie')">black crappie</div>
+      <div class="item" onclick="addFish('freshwater drum')">freshwater drum</div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <div class="cart-header">river system</div>
+    <div id="cart-ui-container">
+      <div class="cart-items" id="cart"></div>
+      <div class="cart-bottom">
+        total: $<span id="total">0</span>
+        <button onclick="checkout()">checkout</button>
+        <button onclick="restart()">restart ecosystem</button>
+      </div>
+    </div>
+
+    <div id="checkout-overlay" class="checkout-overlay">
+      <div class="petri-dish" id="petriDish"></div>
+      <div id="credentials-form">
+        <p>ENTER BIOLOGICAL CREDENTIALS</p>
+        <input type="text" placeholder="NAME" id="userName">
+        <input type="email" placeholder="EMAIL" id="userEmail">
+        <div id="email-error">ERROR FALSE</div>
+        <button onclick="submitOrder()">SUBMIT DATA</button>
+      </div>
+      <div id="thank-you-msg" class="hidden">
+        <p>THANK YOU FOR YOUR ORDER.</p>
+        <p style="font-size: 11px; opacity: 0.8;">FURTHER INFORMATION WILL BE SENT.<br>WE WILL GET BACK TO YOU SOON.</p>
+        <button onclick="window.location.href='#'" style="margin-top: 20px;">LEARN MORE ABOUT FIH</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="system-ui">
+  water quality
+  <div class="bar"><div class="fill" id="qualityFill"></div></div>
+  <div id="qualityText">stable</div>
+</div>
+
+<div class="tank" id="tank"></div>
+<a href="chat.html" class="help-btn">?</a>
+
+<script>
+
+let audioCtx;
+function playBeep(freq=700,type="square",dur=0.03,vol=0.03){
+  if(!audioCtx){ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.connect(g); g.connect(audioCtx.destination);
+  o.type = type; o.frequency.value = freq + Math.random()*120;
+  g.gain.value = vol; o.start(); o.stop(audioCtx.currentTime + dur);
+}
+
+let fishCount = 0, total = 0, ecosystemLoad = 0, deadState = false, fishIdCounter = 0;
+
+let fishData = {
+  "smallmouth bass": 1.4, "largemouth bass": 1.8, "bluegill": 0.9, "rock bass": 1.1,
+  "pumpkinseed sunfish": 0.8, "channel catfish": 2.0, "flathead catfish": 2.4, "carp": 1.7,
+  "golden shiner": 0.6, "creek chub": 0.7, "black crappie": 1.0, "freshwater drum": 1.6
+};
+
+function addFish(type){
+  playBeep(750,"square");
+  const currentId = "fish-" + fishIdCounter++;
+  fishCount++;
+  ecosystemLoad += fishData[type]*10;
+  total += Math.floor(fishData[type]*10);
+  spawnFish(type, currentId);
+  spawnBubble();
+  spawnSeaweed();
+  updateWater();
+  renderCart(type, currentId);
+  const cartDiv = document.getElementById("cart");
+  cartDiv.scrollTop = cartDiv.scrollHeight;
+}
+
+function renderCart(type, fishId){
+  const c = document.getElementById("cart");
+  const price = Math.floor(fishData[type]*10);
+  const row = document.createElement("div");
+  row.className = "cart-item";
+  row.innerHTML = `<div>${type}</div><div>$${price}<span onclick="removeFish(this,'${type}',${price}, '${fishId}')" style="color:red;cursor:pointer;margin-left:8px;">x</span></div>`;
+  c.appendChild(row);
+  document.getElementById("total").innerText = total;
+}
+
+function removeFish(el, type, price, fishId){
+  const f = document.getElementById(fishId); if(f) f.remove();
+  el.parentElement.parentElement.remove();
+  fishCount--; ecosystemLoad -= fishData[type]*10; total -= price;
+  document.getElementById("total").innerText = total;
+  updateWater();
+}
+
+function checkout(){
+  const cartRows = document.querySelectorAll('.cart-item');
+  if(cartRows.length === 0) return;
+  playBeep(200,"sawtooth",0.15,0.05);
+  document.getElementById('checkout-overlay').style.display = 'block';
+  document.getElementById('petriDish').style.display = 'block';
+  document.getElementById('cart-ui-container').style.display = 'none';
+
+  cartRows.forEach((row, i) => {
+    const ball = document.createElement('div');
+    ball.className = 'item-ball';
+    const rect = row.getBoundingClientRect();
+    ball.style.left = rect.left + 'px';
+    ball.style.top = rect.top + 'px';
+    document.body.appendChild(ball);
+
+    setTimeout(() => {
+      const petri = document.getElementById('petriDish');
+      const petriRect = petri.getBoundingClientRect();
+      const centerX = petriRect.left + (petriRect.width / 2);
+      const centerY = petriRect.top + (petriRect.height / 2);
+      
+      const angle = (i * 0.8);
+      const radius = 15 + (Math.random() * 50); 
+      
+      ball.style.left = (centerX + Math.cos(angle) * radius - 8) + 'px';
+      ball.style.top = (centerY + Math.sin(angle) * radius - 8) + 'px';
+    }, i * 50);
+  });
+}
+
+function submitOrder() {
+  const email = document.getElementById('userEmail').value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    playBeep(150, "sawtooth", 0.2);
+    document.getElementById('email-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('email-error').style.display = 'none';
+  playBeep(600, "sine", 0.1);
+  document.getElementById('credentials-form').classList.add('hidden');
+  document.getElementById('thank-you-msg').classList.remove('hidden');
+}
+
+function spawnFish(type, id){
+  const tank = document.getElementById("tank");
+  const f = document.createElement("div");
+  f.className = "fish"; f.id = id;
+  const scale = fishData[type];
+  f.style.width = (12*scale)+"px"; f.style.height = (8*scale)+"px";
+  tank.appendChild(f);
+  animateFish(f);
+}
+
+function animateFish(f){
+  let x = Math.random()*100, y = Math.random()*200, dx = (Math.random()-0.5)*0.4, dy = (Math.random()-0.5)*0.3, fallSpeed = 0;
+  function move(){
+    if(deadState){
+      f.classList.add("dead"); fallSpeed += 0.02; y += fallSpeed;
+      x += (Math.random()-0.5)*0.2; f.style.left = x + "%"; f.style.top = y + "px";
+      if(y < 300) requestAnimationFrame(move); return;
+    }
+    x += dx; y += dy;
+    if(x < 0 || x > 90) dx *= -1; if(y < 0 || y > 200) dy *= -1;
+    f.style.left = x + "%"; f.style.top = y + "px";
+    requestAnimationFrame(move);
+  }
+  move();
+}
+
+function spawnBubble(){
+  const b=document.createElement("div");
+  b.className="bubble"; b.style.left=Math.random()*100+"%"; b.style.bottom="0px";
+  document.getElementById("tank").appendChild(b);
+  setTimeout(()=>b.remove(),3000);
+}
+
+function spawnSeaweed(){
+  const s=document.createElement("div");
+  s.className="seaweed"; s.style.left=Math.random()*100+"%"; s.style.height=(30+Math.random()*90)+"px";
+  document.getElementById("tank").appendChild(s);
+}
+
+function updateWater(){
+  let q = Math.max(0, 100 - ecosystemLoad);
+  const fill = document.getElementById("qualityFill");
+  fill.style.width = q + "%";
+  const txt = document.getElementById("qualityText");
+  if(q > 70){ txt.innerText = "stable"; fill.style.background = "rgb(24,237,0)"; } 
+  else if(q > 50){ txt.innerText = "warning"; fill.style.background = "rgb(255,230,0)"; } 
+  else if(q > 30){ txt.innerText = "unstable"; fill.style.background = "rgb(255,140,0)"; } 
+  else { txt.innerText = "TOXIC RIVER"; fill.style.background = "rgb(255,0,0)"; }
+  if(q === 0 && !deadState){ deadState = true; showCollapse(); }
+}
+
+function showCollapse(){
+  if(document.getElementById("collapseMsg")) return;
+  const m = document.createElement("div");
+  m.id = "collapseMsg"; m.innerText = "ECOSYSTEM COLLAPSE";
+  document.getElementById("tank").appendChild(m);
+}
+
+function restart(){ location.reload(); }
+</script>
+
+</body>
+</html>
