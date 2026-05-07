@@ -217,7 +217,7 @@ function handleResponse(inputText) {
             addLine(`Hello, ${userName}. Are you interested in purchasing fish? If so, please inquire.`, "bot");
         });
 
-    } else if (inputText.includes("fih")) {
+    } else if (inputText.includes("what is")) {
         fakeLoading(() => {
             addLine("F.I.H. stands for Future Ichykoid Habitation.", "bot");
 
@@ -232,6 +232,7 @@ function handleResponse(inputText) {
         inputText.includes("buy") ||
         inputText.includes("fish") ||
         inputText.includes("specimen") ||
+        inputText.includes("store") ||
         inputText.includes("yes")
     ) {
         fakeLoading(() => {
