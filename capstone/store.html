@@ -83,23 +83,37 @@
             text-decoration: none;
         }
 
-        /* --- RESPONSIVE GRID --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+/* --- UPDATED RESPONSIVE GRID --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
 
-        .item {
-            border: 1px solid rgba(24,237,0,0.3);
-            padding: 1rem;
-            cursor: pointer;
-            text-align: center;
-            font-size: 0.8rem;
-            transition: 0.2s;
-        }
-        .item:hover { background: rgba(24,237,0,0.1); border-color: var(--terminal-green); box-shadow: 0 0 10px var(--terminal-green); }
+* {
+    box-sizing: border-box;
+}
+
+.item {
+    border: 1px solid rgba(24,237,0,0.3);
+    padding: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    transition: 0.2s;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.item:hover { 
+    background: rgba(24,237,0,0.1); 
+    border-color: var(--terminal-green); 
+    box-shadow: 0 0 15px var(--terminal-green); 
+}
 
         /* --- CHECKOUT OVERLAY --- */
         #checkout-overlay {
@@ -160,7 +174,7 @@
     <!-- LEFT SIDE -->
     <div class="store-content">
         <div class="scroll-area">
-            <h1 class="neon-png">SPECIMEN_SELECTION</h1>
+            <h1 class="neon-png">SPECIMEN</h1>
             <div class="grid">
                 <div class="item" onclick="addFish('smallmouth bass')">smallmouth bass</div>
                 <div class="item" onclick="addFish('largemouth bass')">largemouth bass</div>
