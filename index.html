@@ -664,121 +664,220 @@ Hiiiiiiiiiiiii~ welcome to my code!
         
         <div class="image-morph-overlay"></div>
 
-        <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="container py-5" id="about">
+        <section class="container py-5" id="about">
           <div class="text-center py-5">
-              <h2 class="fw-bolder">Hello, my name is <b style="color: #acbed1;">Raya Freeborn</b></h2>
-              <p class="fs-5" style="font-family: neue-haas-grotesk-display, sans-serif;
-              font-weight: 400;
-              font-style: normal;;">/ˈræj.ə/</p>
+            <h2 class="fw-bolder">
+              Hello, my name is <b style="color: #acbed1;">Raya Freeborn</b>
+            </h2>
+            <p class="fs-5" style="font-family: neue-haas-grotesk-display, sans-serif;">
+              /ˈræj.ə/
+            </p>
           </div>
-          <div class="row">
-              <div class="col-lg-4" >
-                <div class="profile-pic-wrap">
-                  <img class="img-fluid pixel-corners profile-pic" src="image/Smaller_Headshot.png">
+        
+          <div class="row align-items-start">
+        
+            <!-- LEFT COLUMN -->
+            <div class="col-lg-4 text-center">
+        
+              <!-- MAIN IMAGE -->
+              <div class="profile-pic-wrap about-pic-center">
+                <img
+                  id="mainAboutImage"
+                  class="img-fluid pixel-corners profile-pic about-main-pic"
+                  src="image/fishy.jpg"
+                  alt="About main"
+                >
+        
+                <!-- MINI THUMBNAILS -->
+                <div class="about-mini-row">
+                  <img src="image/fishy.jpg" class="pixel-corners about-mini active">
+                  <img src="image/tough.JPG" class="pixel-corners about-mini">
+                  <img src="image/i_love_fish.jpg" class="pixel-corners about-mini">
+                  <img src="image/so_yum.JPG" class="pixel-corners about-mini">
+                  <img src="image/on_da_bike.jpg" class="pixel-corners about-mini">
+
                 </div>
-                 <br><br>
-                 <div class="text-center mt-4">
-                  <a href="image/Freeborn,Raya_Resume.pdf" 
-                     target="_blank" 
-                     class="btn pixel-corners px-4 resume-btn">
-                     View Resume
-                  </a>
+              </div>
+        
+              <!-- RESUME BUTTON -->
+              <div class="text-center mt-4">
+                <a href="image/Freeborn,Raya_Resume.pdf"
+                   target="_blank"
+                   class="btn pixel-corners px-4 resume-btn">
+                  View Resume
+                </a>
+              </div>
+        
+<!-- LIKES / DISLIKES -->
+<div class="about-likes pixel-corners mt-4 text-start">
+
+  <div class="row">
+
+    <!-- LIKES -->
+    <div class="col-md-6">
+      <h5 class="fw-bold">Likes</h5>
+      <ul class="list-unstyled mt-2 hover-list">
+
+        <li class="hover-item"
+            data-img="image/cute/swim.jpeg"
+            data-text="Whale sharks, Manta Rays, and Magikarp!">
+          Fish!
+        </li>
+
+        <li class="hover-item "
+        data-img="image/cute/travel.jpg"
+            data-text="Dream goal: be Link">
+          The Legend of Zelda series
+        </li>
+
+        <li class="hover-item"
+            data-img="image/chai.jpg"
+            data-text="Best served cold">
+          Dirty chai lattes
+        </li>
+
+        <li class="hover-item"
+            data-img="image/cute/karaoke.jpeg"
+            data-text="'The Winner Takes it All' by ABBA">
+          Karaoke
+        </li>
+        <li class="hover-item"
+        data-img="image/cute/kayak.jpg"
+        data-text="Everyone needs their mandatory outside time">
+      Hiking + Kayaking
+    </li>
+
+      </ul>
+    </div>
+
+    <!-- DISLIKES -->
+    <div class="col-md-6">
+      <h5 class="fw-bold">Dislikes</h5>
+      <ul class="list-unstyled mt-2 hover-list">
+
+        <li class="hover-item"
+            data-img="image/tapioca.jpg"
+            data-text="It's the texture...">
+          Tapioca pudding
+        </li>
+
+        <li class="hover-item"
+            data-img="image/bic.jpg"
+            data-text="...">
+          BIC ballpoint pens
+        </li>
+
+        <li class="hover-item"
+            data-img="image/cute/reading.jpeg"
+            data-text="I will find the next episode/chapter.">
+          Cliffhangers
+        </li>
+
+        <li class="hover-item"
+        data-img="image/stopPropagation.jpg"
+        data-text="I will find the next episode/chapter.">
+      Cliffhangers
+    </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+        
+            </div>
+        
+            <!-- RIGHT COLUMN -->
+            <div class="col-lg-7 offset-lg-1 pixel-corners"
+                 style="background-color: rgba(255, 255, 255, 0.7);
+                        padding: clamp(1.5rem, 5vw, 4rem);">
+        
+              <p class="lh-lg mb-0">
+                Great design communicates. Greater design engages, empowers, and resonates.
+                <br><br>
+        
+                Raya Freeborn is a multimedia artist from Southwest Virginia. She is a senior pursuing a B.F.A. in graphic design at
+                <b><a style="color:#acbed1;" href="https://arts.vcu.edu/graphic-design/" target="_blank">
+                  Virginia Commonwealth University School of the Arts
+                </a></b>,
+                with minors in computer science and media studies.
+                <br><br>
+        
+                Her practice focuses on intentional interaction, accessibility, and blending physical + digital systems
+                into cohesive, exploratory experiences.
+              </p>
+        
+              <div class="row mt-5">
+
+                <!-- EXHIBITIONS -->
+                <div class="col-md-8 mb-4">
+                  <h5 class="fw-bold">Exhibitions</h5>
+                  <ul class="list-unstyled mt-2">
+                    <li>
+                      2025 VCUarts Undergraduate Juried Exhibition
+                      <span class="award-date">Risk ≠ Reward</span><br>
+                      <span class="not-award-date">Richmond, VA // 2025</span>
+                    </li>
+              
+                    <li>
+                      Silver Key
+                      <span class="award-date">Scholastic Art Award</span><br>
+                      <span class="not-award-date">Roanoke, VA // 2022</span>
+                    </li>
+              
+                    <li>
+                      Honorable Mention
+                      <span class="award-date">Scholastic Art Award</span><br>
+                      <span class="not-award-date">Roanoke, VA // 2022</span>
+                    </li>
+              
+                    <li>
+                      Best In Show
+                      <span class="award-date">Red. & Ad Astra</span><br>
+                      <span class="not-award-date">Blacksburg, VA // 2022</span>
+                    </li>
+                  </ul>
                 </div>
-                
-<br><br>
-              </div>
-              <div class="col-lg-7 offset-lg-1 pixel-corners" style="  background-color: rgba(255, 255, 255, 0.7);
-            
-              padding: clamp(1.5rem, 5vw, 4rem);">
-                  <p class="lh-lg mb-6">    Great design communicates. Greater design engages, empowers, and resonates. 
-                    <br><br>
-                   Raya Freeborn is a multimedia artist from Southwest Virginia. She is a senior pursuing a B.F.A. in graphic design at 
-                    <b><a style="color: #acbed1;" href="https://arts.vcu.edu/graphic-design/" target="_blank">Virginia Commonwealth University School of the Arts</a></b>, 
-                    with minors in computer science and media studies.
-                    <br><br>
-                    Her design practice is built on the belief that design should not only exist in space, but come alive through <b style="color: #acbed1;">intentional interaction</b>, with a focus on accessibility across both physical and digital platforms. Whether developing for the digital cosmos or physical forms, she focuses on how iconography, color, medium, and texture work together to invite exploration and engagement.  This approach enables high-level creative vision with practical execution, translating concepts into graphics that are both innovative and culturally literate.                  </p>
-
-                  <div class="row mt-5">
-
-                    <!-- LEFT SIDE: Exhibitions (takes 2 columns) -->
-                    <div class="col-md-8 mb-4">
-                      <h5 class="fw-bold">Exhibitions</h5>
-                      <ul class="list-unstyled mt-2">
-                        <!-- <li>2025 VCUarts Undergraduate Juried Exhibition – Risk ≠ Reward <span class="award-date">(2025)</span></li> -->
-
-                        <li>2025 VCUarts Undergraduate Juried Exhibition <span class="award-date">Risk ≠ Reward</span><br> <span class="not-award-date">Richmond, VA // 2025</span></li>
-
-                        <li>Silver Key <span class="award-date">Scholastic Art Award</span><br> <span class="not-award-date">Roanoke, VA // 2022</span></li>
-
-                        <li>Honorable Mention <span class="award-date">Scholastic Art Award</span><br> <span class="not-award-date">Roanoke, VA // 2022</span></li>
-<!-- 
-                        <li>Honorable Mention <span class="award-date">Scholastic Art Award – (2022)</span></li><br><span class="award-date">Roanoke, VA < style="font-family: Rubik Microbe, system-ui;">//</a> (2022)</span></li> -->
-
-                        <!-- <li>Best in Show – Red. & Ad Astra <span class="award-date">Blacksburg, VA (2022)</span></li> -->
-                        
-                        <li>Best In Show <span class="award-date">Red. & Ad Astra</span><br> <span class="not-award-date">Blacksburg, VA // 2022</span></li>
-
-                      </ul>
-                    </div>
-                  
-                    <!-- RIGHT SIDE: Speaker + Advertising stacked -->
-                    <div class="col-md-4">
-                      
-                      <div class="mb-4">
-                        <h5 class="fw-bold">Speaker</h5>
-                        <ul class="list-unstyled mt-2">
-                          <!-- <li>Ours Talk Shop <span class="award-date">(2025)</span></li>
-                          <li>The Fishbowl Artist Talk <span class="award-date">(2026)</span></li> -->
-                          <li>Talk Shop <span class="award-date">OURS</span><br> <span class="not-award-date">Richmond, VA // 2025</span></li>
-
-                          <li>Artist Speaker <span class="award-date">The Fishbowl</span><br> <span class="not-award-date">Richmond, VA // 2026</span></li>
-
-
-                        </ul>
-                      </div>
-                  
-                      <div>
-                        <h5 class="fw-bold">Advertising</h5>
-                        <ul class="list-unstyled mt-2">
-                          <!-- <li>Ad Club at VCU – Best Packaging Design Winner <span class="award-date">(2025)</span></li> -->
-                          <li>Best Packaging Design <span class="award-date">Ad Club at VCU</span><br> <span class="not-award-date">Richmond, VA // 2025</span></li>
-
-                        </ul>
-                      </div>
-                  
-                    </div>
+              
+                <!-- RIGHT SIDE MINI COLUMNS -->
+                <div class="col-md-4">
+              
+                  <div class="mb-4">
+                    <h5 class="fw-bold">Speaker</h5>
+                    <ul class="list-unstyled mt-2">
+                      <li>
+                        Talk Shop <span class="award-date">OURS</span><br>
+                        <span class="not-award-date">Richmond, VA // 2025</span>
+                      </li>
+              
+                      <li>
+                        Artist Speaker <span class="award-date">The Fishbowl</span><br>
+                        <span class="not-award-date">Richmond, VA // 2026</span>
+                      </li>
+                    </ul>
                   </div>
-                  
-<!--                     
-
-
-                  <h3 class="fw-bold fs-4">Skills</h3>
-                  
-                  <p class="mb-0" >Photoshop:</p>
-                  <div class="progress mb-3">
-                      <div class="progress-bar progress-bar-striped bg-greenyellow" style="width: 99%;">99%</div>
+              
+                  <div>
+                    <h5 class="fw-bold">Advertising</h5>
+                    <ul class="list-unstyled mt-2">
+                      <li>
+                        Best Packaging Design <span class="award-date">Ad Club at VCU</span><br>
+                        <span class="not-award-date">Richmond, VA // 2025</span>
+                      </li>
+                    </ul>
                   </div>
-                  <p class="mb-0" >InDesign:</p>
-                  <div class="progress mb-3">
-                      <div class="progress-bar progress-bar-striped bg-info" style="width: 99%;">99%</div>
-                  </div>
-                  <p class="mb-0" >Illustrator:</p>
-                  <div class="progress mb-3">
-                      <div class="progress-bar progress-bar-striped bg-warning" style="width: 99%;">99%</div>
-                  </div>
-                  <p class="mb-0" >BOOTSTRAP 5:</p>
-                  <div class="progress mb-3">
-                      <div class="progress-bar progress-bar-striped bg-danger" style="width: 99%;">99%</div>
-                  </div>
-                  <p class="mb-0" >REACT:</p>
-                  <div class="progress mb-3">
-                      <div class="progress-bar progress-bar-striped bg-green" style="width: 99%;">99%</div>
-                  </div> -->
+              
+                </div>
+              
               </div>
 
+            </div>
+        
           </div>
 
-      </section>
+          
+        </section>
        
       
       
@@ -846,6 +945,33 @@ Hiiiiiiiiiiiii~ welcome to my code!
     </div>
 
     <script>
+
+const preview = document.getElementById("hoverPreview");
+const previewImg = document.getElementById("hoverImg");
+const previewText = document.getElementById("hoverText");
+
+document.querySelectorAll(".hover-item").forEach(item => {
+
+  item.addEventListener("mouseenter", (e) => {
+    previewImg.src = item.dataset.img;
+    previewText.textContent = item.dataset.text;
+
+    preview.style.opacity = "1";
+    preview.style.transform = "translateY(0px)";
+  });
+
+  item.addEventListener("mousemove", (e) => {
+    preview.style.left = (e.clientX + 15) + "px";
+    preview.style.top = (e.clientY + 15) + "px";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    preview.style.opacity = "0";
+    preview.style.transform = "translateY(10px)";
+  });
+
+});
+
         function switchStyle() {
         if (document.getElementById('styleSwitch').checked) {
             document.getElementById('gallery').classList.add("custom");
@@ -1010,7 +1136,64 @@ Hiiiiiiiiiiiii~ welcome to my code!
   }
   
   typeLoop();
+
+
+  const mainAboutImage = document.getElementById("mainAboutImage");
+  const aboutThumbs = document.querySelectorAll(".about-mini");
+
+  aboutThumbs.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      if (thumb.src === mainAboutImage.src) return;
+
+      mainAboutImage.style.opacity = "0";
+
+      setTimeout(() => {
+        mainAboutImage.src = thumb.src;
+        mainAboutImage.style.opacity = "1";
+      }, 150);
+
+      aboutThumbs.forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+    });
+  });
+
   </script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  
+    const preview = document.getElementById("hoverPreview");
+    const previewImg = document.getElementById("hoverImg");
+    const previewText = document.getElementById("hoverText");
+  
+    document.querySelectorAll(".hover-item").forEach(item => {
+  
+      item.addEventListener("mouseenter", () => {
+        previewImg.src = item.dataset.img;
+        previewText.textContent = item.dataset.text;
+  
+        preview.style.opacity = "1";
+      });
+  
+      item.addEventListener("mousemove", (e) => {
+        preview.style.left = (e.clientX + 15) + "px";
+        preview.style.top = (e.clientY + 15) + "px";
+      });
+  
+      item.addEventListener("mouseleave", () => {
+        preview.style.opacity = "0";
+      });
+  
+    });
+  
+  });
+  </script>
+
+<div id="hoverPreview" class="hover-preview">
+  <img id="hoverImg" src="" alt="">
+  <p id="hoverText"></p>
+</div>
 
 </body>
 </html>
