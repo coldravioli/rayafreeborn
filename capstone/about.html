@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.I.H. | ABOUT_INTERFACE</title>
+    
+    <style>
+        @font-face {
+            font-family: "cofo-sans-pixel";
+            src: url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2");
+        }
+
+        :root {
+            --terminal-green: rgb(24, 237, 0);
+            --fih-purple: #bc13fe;
+            --warning-red: #ff3e3e;
+            /* Fluid base font size: adjusts between 14px and 22px based on width */
+            font-size: clamp(14px, 1.1vw, 22px);
+        }
+
+        body {
+            margin: 0; background-color: black; color: var(--terminal-green);
+            font-family: "cofo-sans-pixel", monospace; text-transform: uppercase;
+            height: 100vh; overflow: hidden; display: flex; flex-direction: column;
+        }
+
+        body::before {
+            content: ""; position: fixed; inset: 0;
+            background-image: url("images/globe.png");
+            background-repeat: no-repeat; background-position: center; background-size: 30vw;
+            filter: brightness(0.4) sepia(1) saturate(5) hue-rotate(70deg); opacity: 0.15; z-index: -1;
+        }
+
+        .scanlines {
+            position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+        }
+
+        /* --- UNIFIED HEADER --- */
+        .chat-header {
+            padding: 2vh 4vw; border-bottom: 3px solid var(--terminal-green);
+            display: flex; justify-content: space-between; align-items: center;
+            background: black; z-index: 5; text-shadow: 0 0 10px var(--terminal-green);
+            font-size: 1.2rem;
+        }
+
+        .neon-png {
+            filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px var(--terminal-green));
+        }
+
+        /* --- TERMINATE BTN --- */
+        .terminate-btn {
+            color: var(--warning-red); text-decoration: none; font-size: 1.5rem;
+            border: 2px solid var(--warning-red); padding: 0.4rem 1.2rem; font-weight: bold;
+            transition: 0.2s; text-shadow: 0 0 8px var(--warning-red);
+        }
+        .terminate-btn:hover { background: var(--warning-red); color: black; box-shadow: 0 0 20px var(--warning-red); }
+
+        .wrap { display: flex; flex-grow: 1; min-height: 0; }
+
+        /* --- CONTENT AREA --- */
+        .content-area { 
+            width: 60%; padding: 4vw; overflow-y: auto; scrollbar-width: none;
+        }
+        .content-area::-webkit-scrollbar { display: none; }
+
+        p, .manifesto { 
+            max-width: 50vw; line-height: 1.6; font-size: 1.2rem; 
+            color: rgba(24, 237, 0, 0.8); margin-bottom: 1.8rem; 
+            letter-spacing: 0.5px; text-shadow: 0 0 2px rgba(24, 237, 0, 0.3); 
+        }
+        
+        strong { color: var(--terminal-green); text-shadow: 0 0 5px var(--terminal-green); font-weight: normal; }
+
+        /* --- SIDEBAR FEED --- */
+        .feed-container { 
+            width: 40%; border-left: 3px solid var(--terminal-green); 
+            background: rgba(0,0,0,0.95); display: flex; flex-direction: column;
+        }
+
+        .feed-header {
+            padding: 1.5rem; border-bottom: 2px solid var(--terminal-green);
+            background: rgba(24, 237, 0, 0.1); font-size: 1rem; letter-spacing: 2px;
+        }
+
+        #live-feed { 
+            flex-grow: 1; padding: 1.5rem; overflow-y: auto; 
+            display: flex; flex-direction: column-reverse; gap: 1.2rem;
+            scrollbar-width: thin; scrollbar-color: var(--terminal-green) black;
+        }
+
+        h1 { font-size: clamp(3rem, 5.5vw, 8rem); margin: 0 0 2rem 0; line-height: 0.9; }
+        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--terminal-green); padding-bottom: 0.5rem; margin-top: 3.5rem; color: var(--fih-purple); }
+
+        .data-point { 
+            background: rgba(24, 237, 0, 0.05); padding: 1.5rem; 
+            border: 1px solid rgba(24, 237, 0, 0.2); margin-bottom: 2rem; 
+            font-size: 1.1rem;
+        }
+
+        .comment { 
+            font-size: 0.9rem; border: 1px solid rgba(24, 237, 0, 0.3); padding: 1.2rem; 
+            background: black; animation: fadeIn 0.3s ease-out;
+        }
+
+        /* --- NAV BUTTONS --- */
+        .nav-btn {
+            display: inline-block; text-decoration: none; color: var(--terminal-green);
+            border: 2px solid var(--terminal-green); padding: 1.5rem 2.5rem; 
+            margin: 2rem 1rem 0 0; transition: 0.2s; font-size: 1.2rem; text-align: center;
+        }
+        .nav-btn:hover { background: rgba(24, 237, 0, 0.2); box-shadow: 0 0 20px var(--terminal-green); }
+
+        .nav-btn.purple { border-color: var(--fih-purple); color: var(--fih-purple); }
+        .nav-btn.purple:hover { background: rgba(188, 19, 254, 0.2); box-shadow: 0 0 20px var(--fih-purple); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .user-id { color: var(--fih-purple); font-weight: bold; margin-bottom: 0.3rem; display: block; }
+        .hate { color: var(--warning-red); }
+        .admin-response { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dotted var(--terminal-green); opacity: 0.7; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div class="chat-header">
+        <div class="neon-png">F.I.H. // ABOUT_PROTOCOL</div>
+        <div>STATUS: <span style="color: var(--fih-purple);">CONNECTED_AS_<span id="user-display">VISITOR</span></span></div>
+        <a href="website.html" class="terminate-btn" title="TERMINATE SESSION">X</a>
+    </div>
+
+    <div class="wrap">
+        <div class="content-area">
+            <h1 class="neon-png">REDEFINING<br>DOMESTIC LIFE</h1>
+            
+            <div class="manifesto">
+                F.I.H. specializes in the collection, refinement, and homing of advanced ichthyoid specimens originating in the New River. By aligning biological innovation with controlled environments, we make accelerated evolution accessible.
+            </div>
+
+            <div class="data-point">
+                <strong>THE CATALYST:</strong> In polluted waterways today, fish experience endocrine disruption—chemical interference that alters reproductive systems and development. We intercept these emergent species before uncontrolled spread, stabilizing them for your habitat.
+            </div>
+
+            <h2>THE PROCESS</h2>
+            <p><strong>[01] INTERCEPTION:</strong> Identification of high-frequency pulses in the New River basin.</p>
+            <p><strong>[02] REFINEMENT:</strong> Neutralization of erratic mutagenic traits while preserving bioluminescence and sensory enhancements.</p>
+            <p><strong>[03] INTEGRATION:</strong> Controlled domestic delivery and stabilization monitoring.</p>
+
+            <h2>SYSTEM_FAQ</h2>
+            <p><strong>Q: HOW MANY FISH IN MY TANK?</strong><br>> 1 SPECIMEN PER 20 GAL. DO NOT MIX SPECIES WITHOUT ALPHA-CLEARANCE.</p>
+            <p><strong>Q: WHEN WILL I HEAR BACK?</strong><br>> SYSTEM OVERLOAD. INQUIRIES ARE CURRENTLY AT A 72-HOUR RECOVERY WINDOW.</p>
+
+            <div style="margin-top: 4rem; padding-bottom: 4rem;">
+                <a href="store.html" class="nav-btn">VIEW_SPECIMENS</a>
+                <a href="home.html" class="nav-btn purple">MAIN_MENU</a>
+            </div>
+        </div>
+
+        <div class="feed-container">
+            <div class="feed-header">LIVE_COMMUNITY_DISCOURSE [ENCRYPTED]</div>
+            <div id="live-feed">
+                <!-- Comments inject here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('user-display').innerText = (sessionStorage.getItem("fihUser") || "visitor").toUpperCase();
+
+        const comments = [
+            { user: "AquariumLover88", text: "My Catfish is humming at the same frequency as my microwave. Is this refined behavior?" },
+            { user: "Eco_Watch_NR", text: "THIS IS DISGUSTING. You are selling the victims of industrial neglect. SHUT IT DOWN.", type: "hate", admin: "Evolution is inevitable. We just provide the container." },
+            { user: "V_Thorne", text: "The bioluminescence on the Shiners is incredible. My living room has never felt more alive." },
+            { user: "Silent_Fisher", text: "Still waiting on my inquiry response... it's been 4 days. I need the stabilization salts NOW.", admin: "Processing. Your patience is recorded." },
+            { user: "River_Rat", text: "I saw one of your drones last night near the dam. Stay away from my spot.", type: "hate" },
+            { user: "User_441", text: "Can I put three Bluegills in a 10 gallon? They look lonely.", admin: "Negative. Overcrowding triggers predatory reversion." },
+            { user: "Mutation_Fan", text: "The extra fins actually make them swim faster. Engineering at its finest." },
+            { user: "Justice4Fish", text: "Environmental injustice at its peak. Profit from pollution is the lowest form of business.", type: "hate", admin: "We prefer 'Biological Resource Management'." }
+        ];
+
+        const feed = document.getElementById('live-feed');
+        let index = 0;
+
+        function addComment() {
+            if (index < comments.length) {
+                const c = comments[index];
+                const div = document.createElement('div');
+                div.className = 'comment';
+                div.innerHTML = `
+                    <span class="user-id ${c.type === 'hate' ? 'hate' : ''}">${c.user}:</span>
+                    ${c.text}
+                    ${c.admin ? `<div class="admin-response"><strong>ADMIN:</strong> ${c.admin}</div>` : ''}
+                `;
+                feed.prepend(div);
+                index++;
+                setTimeout(addComment, Math.random() * 3000 + 1000);
+            }
+        }
+        addComment();
+    </script>
+</body>
+</html>
