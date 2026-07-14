@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="design.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="fav icon" type="image/x-icon" href="favicon2.png">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0; /* No padding here, use padding-top on #div02 instead */
+    background-color: white;
+    overflow-x: hidden;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    scroll-snap-type: y mandatory; /* Keep if you still want snapping sections */
+    scroll-behavior: smooth;
+    height: 100%; /* Important for proper body scrolling behavior */
+  }
+
+  @font-face { font-family: Moon; src: url('moon_get-Heavy.otf'); }
+  @font-family { font-family: goose; src: url('goose.ttf'); }
+  @font-family { font-family: goose-thin; src: url('goose-thin.ttf'); }
+  @font-family { font-family: goose-thin-italic; src: url('goose-thin-italic.ttf'); }
+  @font-family { font-family: caviar-italic; src: url('CaviarDreams_Italic.ttf'); }
+  @font-family { font-family: aurora; src: url('AURORA.otf'); }
+
+    p { font-family: 'Lato', sans-serif; }
+    h2 { font-family: Moon; font-size: clamp(1.5rem, 5vw, 8rem); margin: 0; }
+    h3 { font-family: caviar-italic; font-size: 2vw; margin: 0; }
+    h4 { font-family: aurora; font-size: clamp(2rem, 10vw, 16rem); color: red; margin: 0; text-align: center; }
+
+  /* --- Universal Fixed Menu Container (The Bar) --- */
+  #menu-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; /* Ensure it's above other content */
+    height: 6.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white background for blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom-left-radius: 20px; /* Adjust as desired for bottom-left corner */
+  border-bottom-right-radius: 20px; /* Adjust as desired for bottom-right corner */
+  }
+
+  /* Specific overrides for .rayaMenu to control its fade-in effect and layout */
+  .rayaMenu {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    float: none;
+    padding-top: 0; /* Adjusted for better alignment within fixed menu */
+    padding-left: 2vw; /* Keep left padding for desired horizontal spacing */
+    z-index: 10;
+  }
+
+  /* Override for topMenu2 to prevent it from taking 100% width and messing up flex layout */
+  .topMenu2 {
+    width: auto;
+    flex-shrink: 1;
+  }
+
+  /* #div01: Splash Screen */
+  #div01 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: white;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transition: opacity 1.5s ease-out;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0; /* Splash screen should cover the whole screen */
+    box-sizing: border-box;
+  }
+
+  #div01.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* --- NEW: Transition GIF Styles --- */
+  #transition-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* HIGHEST Z-INDEX: Ensures the GIF is on top of EVERYTHING */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  #transition-animation.active {
+      opacity: 1;
+      pointer-events: auto;
+  }
+
+  #transition-animation img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  /* #div02: Main content */
+  #div02 {
+    position: relative;
+    width: 100%;
+    background: rgb(246, 246, 246);
+    /* overflow: hidden;  This might cause issues if content extends too far. Remove if you see issues. */
+    z-index: 5;
+    scroll-snap-align: start;
+    padding-top: 6.5vw; /* Pushes content down below the fixed menu */
+    box-sizing: border-box;
+    /* min-height will be determined by content, not fixed to viewport */
+  }
+
+  /* --- Page Layouts --- */
+  .parent-container { 
+    flex-grow: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    top: 12%; 
+  }
+
+  .main-page-layout {
+      display: flex;
+      width: 100%;
+      position: relative;
+      min-height: calc(100vh - 6.5vw); /* Ensure this section fills remaining viewport height if content is short */
+  }
+
+  .middle-partition {
+      flex: 0 0 65%; /* Take 65% width */
+      padding: 2vw;
+      box-sizing: border-box;
+      position: sticky;
+      top: 6.5vw; /* Sticks below the fixed menu when scrolled */
+      /* background-image: url('bubbles.gif') !important; */
+      /* IMPORTANT: Remove fixed height and overflow-y: auto so content flows and creates page scroll */
+      /* height: calc(100vh - 6.5vw); */
+      /* overflow-y: auto; */
+      cursor: cell;
+  }
+
+  .middle-partition .content-block img{ height: auto; width: 100%; }
+
+  #sticker { position: absolute; bottom: 20px; left: 20px; width: 10vw; height: auto; z-index: 998; pointer-events: none; }
+
+  .right-partition {
+    flex: 0 0 35%; /* Take 35% width */
+    box-sizing: border-box;
+    background-color: rgb(200, 230, 255); /* Initial color */
+    transition: background-color 0.5s ease;
+    top: 6.5vw; /* Sticks below the fixed menu when scrolled */
+    position: sticky; /* Keep sticky position */
+    background-image: url('bubbles.gif') !important;
+
+
+    /* IMPORTANT: Keep fixed height and overflow-y: auto for independent scrolling */
+    height: calc(100vh - 6.5vw);
+    overflow-y: auto;
+    overflow-x:hidden;
+    border: 5px solid #ccc;
+    border-bottom: 5px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    /* Keep scrollbar hiding for this independent scroll area */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Apply scrollbar hiding specifically to the right partition */
+.right-partition::-webkit-scrollbar { display: none; }
+/* Remove .middle-partition::-webkit-scrollbar as it no longer scrolls independently */
+
+  .right-partition .project-link { display: block; text-decoration: none; color: inherit; transition: transform 0.2s ease-out; }
+  .right-partition .project-link:hover { transform: scale(1.02); }
+  .right-partition .content-block { padding: 20px; margin: 15px; border-radius: 10px; }
+  .right-partition .content-block img { width: 100%; height: auto; border-radius: 8px; }
+  .right-partition h3 { font-family: caviar-italic; font-size: 2vw; margin-top: 0; }
+  .welcome-image { max-width: 100%; height: auto; display: block; margin: 0; }
+</style>
+
+</head>
+<body>
+    <div id="menu-container">
+        <div class="rayaMenu" id="raya-menu-fade-element">
+            <a href="https://rayafreeborn.com/">
+                <img src="rayaname.png" alt="Raya Name Link">
+            </a>
+        </div>
+
+        <div class="topMenu2">
+            <div class="dropdown2">
+                <button class="dropbtn2 active-btn">PORTFOLIO</button>
+                <div class="dropdown-content2">
+                    <a href="design.html">DESIGNS</a>
+                    <a href="ads.html">ADS</a>
+                    </div>
+            </div>
+            <div class="dropdown2">
+                <button class="dropbtn2">CONTACT</button>
+                <div class="dropdown-content2">
+                    <a href="https://www.linkedin.com/in/rayafreeborn/" target="_blank">LINKEDIN</a>
+                    <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+                </div>
+            </div>
+            <a href="resume.html">RÉSUMÉ</a><br>
+            <a href="about.html" >ABOUT</a>
+        </div>
+    </div>
+
+    <div id="div01">
+        <div class="parent-container">
+            <div class="image-box grow"><img src="rayaname.png" alt="Raya Name Graphic" /></div>
+            <div class="video-box"><video src="Rayawhitebackground.mp4" autoplay muted loop></video></div>
+        </div>
+    </div>
+
+    <div id="transition-animation">
+        <img src="bubblefade.gif" alt="Transition Animation">
+    </div>
+
+    <div id="div02">
+        
+        <div class="main-page-layout">
+            
+            <div class="middle-partition">
+                <div class="content-block">
+                    
+                    <h4 class="lab-welcome-title"><img src="meep.png" alt="Welcome to the LAB" class="welcome-image"></h4>
+<!-- 
+                    <p>Hello! My name is Raya and I'm a designer. This is my portfolio, and as you can see, it's under the works...</p>
+                    <h2>Anyways...</h2>
+
+
+                    <p>Great design does more than communicate. Greater design engages, empowers, and resonates. I’m a designer, storyteller, and full-time sidequester who loves exploring the space where tech, design, and narrative come together.</p>
+                    <p>My fascination with visual storytelling started early. At three, I taught myself to read while exploring the world of the game, Club Penguin. Seeing firsthand how digital worlds can spark curiosity has stuck with me. Today, I aim to create work that starts a conversation, building immersive experiences through branding, digital media, and interactive design.</p>
+                    <img src="fun_pictures/rayaonrock.png" alt="Placeholder Image" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: 0; margin-bottom: 0;"> -->
+                     
+                </div>
+
+                <marquee scrolldelay="100" style="font-family: dotfont; font-size: 6vwpx; color: greenyellow; background-color: grey;">
+                    Welcome to my handmade website! It's a bit finnicky at times, but trust. It works, and it will most definitely NOT give you a virus hehe... Anyways, Raya is currently working somewhere this summer, and has three fish. They're not named, because she is afraid that they'll die any day because her tank is a hazardous environment due to it being quite new. Raya loves to hike, as well as playing videogames such as Super Mario Odyssey and games from the Legend of Zelda series.
+                  
+                </marquee>
+
+            </div>
+            <div class="right-partition">
+              <a href="absurd.html" class="project-link"><div class="content-block"><h3><img src="text/name_absurdsnacks.png" alt="Absurd Snacks" class="title-image"></h3><img src="ads/absurd/packages2.png"></div></a>
+              <a href="guide.html" class="project-link"><div class="content-block"><h3><img src="text/name_fieldguide.png" alt="Field Guide" class="title-image"></h3><img src="scans2/guidecover.png" alt="Field Guide"><img src="scans2/guide2.png" alt="Field Guide" style="margin-top: 15px;"></div></a>
+              <a href="bones.html" class="project-link"><div class="content-block"><h3><img src="text/name_bones.png" alt="BONES" class="title-image"></h3><img src="scans/bones.jpg" alt="Bones Project"></div></a>
+              <a href="digest.html" class="project-link"><div class="content-block"><h3><img src="text/name_eatersdigest.png" alt="The Eater's Digest" class="title-image"></h3><img src="scans2/digest.png" alt="Eater's Digest"></div></a>
+              <img id="sticker" src="sticker.png" alt="Sticker">
+
+            </div>
+        </div>
+    </div>
+
+    <a href="https://github.com/coldravioli" target="_blank"><img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link"></a>
+    <a style="position:fixed; left:6px; bottom:10px; font-size:16px; font-family: caviar-italic; color:#b3b3b3; text-decoration:none; padding:5px 10px; border-radius:5px; z-index: 999;">Website Hand-coded by me!</a>
+
+    <script type="module">
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+
+        // --- SPLASH SCREEN & TRANSITION LOGIC ---
+        window.addEventListener('load', function () {
+            const splashScreen = document.getElementById('div01');
+            const transitionAnimation = document.getElementById('transition-animation');
+            const rayaMenuElement = document.getElementById('raya-menu-fade-element');
+
+            const SPLASH_SCREEN_DISPLAY_TIME = 2000;
+            const GIF_FADE_IN_DURATION = 800;
+            const GIF_DISPLAY_DURATION = 170;
+            const GIF_FADE_OUT_DURATION = 300;
+
+            // Initially hide rayaMenu
+            rayaMenuElement.style.opacity = '0';
+            rayaMenuElement.style.pointerEvents = 'none';
+
+            // Step 1: Keep splash screen visible for a short period
+            setTimeout(() => {
+                // Step 2: Activate GIF fade-in
+                transitionAnimation.classList.add('active'); // This starts the opacity transition for GIF
+
+                // Step 3: Hide splash screen AFTER GIF starts to become visible
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden');
+                }, GIF_FADE_IN_DURATION / 2); // Hide splash after GIF is halfway faded in
+
+                // Step 4: After GIF has fully faded in and played, fade it out and show menu
+                setTimeout(() => {
+                    transitionAnimation.classList.remove('active'); // This starts the opacity transition for GIF fade-out
+                    // Show rayaMenu slightly before GIF completely disappears for smoother transition
+                    setTimeout(() => {
+                        rayaMenuElement.style.opacity = '1';
+                        rayaMenuElement.style.pointerEvents = 'auto';
+                    }, GIF_FADE_OUT_DURATION / 2); // Show menu halfway through GIF fade-out
+
+                }, GIF_FADE_IN_DURATION + GIF_DISPLAY_DURATION); // Total time until GIF starts to fade out
+
+            }, SPLASH_SCREEN_DISPLAY_TIME);
+        });
+
+        // --- COLOR SCROLL EFFECT FOR RIGHT PARTITION (REVERTED TO PARTITION'S SCROLL) ---
+        const rightPartition = document.querySelector('.right-partition');
+        if (rightPartition) {
+            // Attach listener to the rightPartition itself, as it's the scroll container for its content
+            rightPartition.addEventListener('scroll', function () {
+                const scrollTop = rightPartition.scrollTop;
+                const contentHeight = rightPartition.scrollHeight;
+                const elementHeight = rightPartition.clientHeight;
+                const maxScroll = contentHeight - elementHeight;
+                let scrollRatio = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+                const startBgColor = [200, 230, 255], midBgColor = [32, 118, 199], endBgColor = [0, 18, 64];
+                const startTextColor = [0, 0, 0], endTextColor = [255, 255, 255];
+                let bgR, bgG, bgB;
+
+                if (scrollRatio < 0.5) {
+                    const r = scrollRatio * 2;
+                    bgR = Math.round(startBgColor[0] + (midBgColor[0] - startBgColor[0]) * r);
+                    bgG = Math.round(startBgColor[1] + (midBgColor[1] - startBgColor[1]) * r);
+                    bgB = Math.round(startBgColor[2] + (midBgColor[2] - startBgColor[2]) * r);
+                } else {
+                    const r = (scrollRatio - 0.5) * 2;
+                    bgR = Math.round(midBgColor[0] + (endBgColor[0] - midBgColor[0]) * r);
+                    bgG = Math.round(midBgColor[1] + (endBgColor[1] - midBgColor[1]) * r);
+                    bgB = Math.round(midBgColor[2] + (endBgColor[2] - midBgColor[2]) * r);
+                }
+                rightPartition.style.backgroundColor = `rgb(${bgR}, ${bgG}, ${bgB})`;
+
+                let textR = Math.round(startTextColor[0] + (endTextColor[0] - startTextColor[0]) * scrollRatio);
+                let textG = Math.round(startTextColor[1] + (endTextColor[1] - startTextColor[1]) * scrollRatio);
+                let textB = Math.round(startTextColor[2] + (endTextColor[2] - startTextColor[2]) * scrollRatio);
+                const textElements = rightPartition.querySelectorAll('h2, h3, p, li, ol, a, span');
+                textElements.forEach(el => {
+                    if (el.tagName !== 'IMG' && !el.style.color) { // Only change if not an image and no inline style already
+                        el.style.color = `rgb(${textR}, ${textG}, ${textB})`;
+                    }
+                });
+            });
+        }
+
+          // --- BUBBLE CURSOR INITIALIZATION AND FIX ---
+  new bubbleCursor();
+  const cursorCanvas = document.querySelector('.cursor-canvas');
+  if (cursorCanvas) {
+    cursorCanvas.style.zIndex = '10000'; // Ensure bubbles are on top of everything else
+  }
+    </script>
+
+</body>
+</html>

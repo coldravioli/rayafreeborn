@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    background: #111;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  canvas {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:0;
+  }
+
+  p {
+    color: white;
+  }

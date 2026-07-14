@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="design.css">
+  <title>Advertisements</title>
+</head>
+
+<body class="body-ads">
+
+    <div class="rayaMenu">
+        <a href="https://rayafreeborn.com/">
+            <img src="rayaname.png" alt="GitHub Link">
+          </a>
+    </div>
+
+    <div class="topMenu">
+        <div class="dropdown">
+            <button class="dropbtn active-btn">PORTFOLIO</button>
+            <div class="dropdown-content">
+              <a href="design.html">DESIGNS</a>
+              <a href="ads.html">ADS</a>
+              <!-- <a href="photos.html">PHOTOS</a> -->
+
+            </div>
+          </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">CONTACT
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="https://www.linkedin.com/in/rayafreeborn/" target="_blank">LINKEDIN</a>
+              <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>      
+
+          <a href="resume.html">RÉSUMÉ</a><br>
+
+          <a href="about.html">ABOUT</a>
+
+        </div>
+
+        <div class= page-af>
+          <div id="navbar">
+            <a href="ads.html">
+              <h1>ADVERTISING</h1>
+            </a>
+      
+              <button class="accordion">INFORMATION +</button>
+              <div class="panel about-text">
+                <p>I approach advertising with a focus on impactful storytelling that speaks directly to the audience.
+                  <br><br>
+    
+                  By blending creative concepts with strategic visuals, I craft campaigns that don’t just advertise, but resonate. I aim to create memorable experiences that drive action and build lasting brand connections.</p>
+            </div>
+        
+            <button class="accordion">ABOUT +</button>
+            <div class="panel about-text">
+                <p>I thrive on developing creative strategies that turn simple ideas into powerful campaigns. 
+                  <br><br>
+    
+                  I focus on crafting engaging visuals and messages that resonate with audiences and amplify brand voices. My work is about creating connections that leave a lasting impact, one concept at a time.</p>
+            </div>
+      
+              <br>
+      
+          <div class="sticky">
+              <a href="absurd.html">Absurd Snacks</a>
+              <a href="tinyhomes.html">Clever Tiny Homes</a>
+              <a href="tylenol.html" class = active>Extra Strength Tylenol</a>
+          </div>
+            </div>
+      
+      <script type="module">
+        import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+      
+        new bubbleCursor();
+      </script>
+
+      <script>
+const accordions = document.querySelectorAll(".accordion");
+
+accordions.forEach((accordion) => {
+  const panel = accordion.nextElementSibling;
+
+  accordion.addEventListener("click", () => {
+    const isActive = accordion.classList.contains("active") || accordion.classList.contains("active2");
+
+    if (isActive) {
+      // Collapse
+      accordion.classList.remove("active", "active2");
+      panel.classList.remove("open");
+    } else {
+      // Activate clicked
+      accordion.classList.add("active");
+      accordion.classList.remove("active2");
+      panel.classList.add("open");
+
+      // Make other open ones blue
+      accordions.forEach((acc) => {
+        if (acc !== accordion && (acc.classList.contains("active") || acc.classList.contains("active2"))) {
+          acc.classList.remove("active");
+          acc.classList.add("active2");
+          acc.nextElementSibling.classList.add("open");
+        }
+      });
+    }
+  });
+});
+      </script>
+
+
+      <div class="main-content">
+          <h2>Extra Strength Tylenol</h2>
+       <h3>2025</h3>
+<br><br>
+<div class="main-content-split">
+  <div class="left-block">
+<p>
+  Three-part print campaign for Tylenol that highlights the product’s ultra-lightweight nature, which is just 0.125 lbs. 
+  <br><br>
+  Set against off-grid, adventurous backdrops, each ad positions Tylenol as an essential item that belongs in every pack, pocket, or space suit. Relief shouldn't weigh you down or be left off your checklist.
+
+
+</p>
+
+</div>
+
+<div class="right-block">
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="carousel-item">
+        <img src="ads/tylenol/TylenolAdTentRevised.jpg" alt="camping">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row main">
+
+<div class="column main yumfull">
+  <img src="ads/tylenol/FixedPackingAd.jpg">
+</div>
+<div class="column main yumfull">
+  <img src="ads/tylenol/PackingAd2.jpg">
+</div>
+<div class="column main yumfull">
+  <img src="ads/tylenol/PackingAd3.jpg">
+</div>
+</div>
+</div>
+
+
+        <a href="https://github.com/coldravioli" target="_blank">
+          <img src="lab.png" style="position:fixed; height:40px; right:6px; bottom:10px;" alt="GitHub Link">
+        </a>
+        
+    </body>
+
+</html>

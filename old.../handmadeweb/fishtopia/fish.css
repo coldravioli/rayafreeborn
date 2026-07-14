@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+body {
+  background: #000000;
+  font-family: 'Silkscreen', monospace;   
+}
+.hidden {
+  opacity:0;
+}
+.console-container {
+    font-family: 'Silkscreen', monospace;
+    font-size: 2em; 
+    text-align: center;
+    height: auto;
+    width: 100%; 
+    max-width: none; 
+    display: block;
+    position: absolute;
+    color: #00ff0000;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre;
+}
+
+pre {
+    font-family: 'Silkscreen', monospace;
+}
+/* .console-underscore {
+   display:inline-block;
+  position:relative;
+} */
+
+.menu-bar {
+  background-color: #ffffff00;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.menu-bar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+
+.menu-bar ul li {
+  flex: 1;
+}
+
+.menu-bar ul li a {
+  font-family: 'Silkscreen', monospace;
+  display: block;
+  color: rgb(20, 131, 151);
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.menu-bar ul li a:hover {
+  background-color: #57575707;
+  border-radius: 10px;
+}
+
+.content {
+  margin-top: 50px;
+  padding: 20px;
+}

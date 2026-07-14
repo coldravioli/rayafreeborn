@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume - Raya Freeborn</title>
+<link rel="stylesheet" href="dissolve.css">
+<style>
+  /* Full-page flex container to center content */
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertical center */
+    align-items: center;      /* horizontal center */
+    overflow-x: hidden;
+  }
+
+</style>
+
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+
+<div class="resume-container">
+  <img src="RayaUpdate.png" alt="Raya Freeborn Resume">
+  <a href="RayaUpdate.png" download class="download-btn">Download PDF</a>
+</div>
+
+<!-- Sand dissolve masthead -->
+<script>
+  const pageWord = "resume";
+</script>
+<script src="sand.js"></script>
+
+<script>
+  // Call your function with the pageWord
+  createParticlesFromText(pageWord);
+  animate(); // start animation
+
+  // Scroll-trigger animation for grid
+  const scrollItems = document.querySelectorAll('.animate-on-scroll');
+  function handleScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+    scrollItems.forEach(item => {
+      const top = item.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        item.classList.add('in-view');
+      }
+    });
+  }
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', handleScroll);
+</script>
+
+
+</body>
+</html>

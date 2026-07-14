@@ -2,1243 +2,594 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raya Freeborn</title>
-    <link rel="stylesheet" href="css/bootstrap.css" >
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap-callout.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/images/cursor.png">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap" rel="stylesheet">
-
-
-    <style>
-      @import url("https://use.typekit.net/ebe0xbp.css");
-    </style>
-
-<!-- Adobe fonts -->
-    <link rel="stylesheet" href="https://use.typekit.net/ebe0xbp.css">
-    
-    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-    <!-- <script type="module">
-      import { bubbleCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-    
-      new bubbleCursor();
-    </script> -->
-    <link rel="stylesheet" href="https://use.typekit.net/ebe0xbp.css">
-    <link rel="stylesheet" href="https://use.typekit.net/ebe0xbp.css">
-    <script type="module">
-      import { followingDotCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-    
-      new followingDotCursor({
-    color: "rgba(172, 190, 209, 0.35)",  
-    size: 4,
-  });
-    </script>
-    
-		<link rel="fav icon" type="image/x-icon" href="cursor.png">
-
 </head>
-<!-- 
-Hiiiiiiiiiiiii~ welcome to my code! 
-
-
-             __.............__
-     .--""```                 ```""--.
-      ':--..___             ___..--:'
-        \      ```"""""""```      /
-      .-`  ___.....-----.....___  '-.
-    .:-""``     ~          ~    ``""-:.
-   /`-..___ ~        ~         ~___..-'\
-  /  ~    '`""---.........---""`        \
- ;                                       ;
-; '::.   '          _,           _,       ;
-|   ':::    '     .' (    ~   .-'./    ~  |
-|~  .:'   .     _/..._'.    .'.-'/        |
-| .:'       .-'`      ` '-./.'_.'         |
-|  ':.     ( o)   ))      ;= <_           |
-; '::.      '-.,\\__ __.-;`\'. '.  .      ;
- ;    ':         \) |`\ \)  '.'-.\       ;
-  \.:'.:':.         \_/       '-._\     /
-   \ ':.     ~                    `    /
-    '. '::..  _ . - - -- .~ _      ~ .'
-      '-._':'                 `'-_.-'
-         (``''--..._____...--''``)
-          `"--...__     __...--"`
-                   `````  -->
 
 <body>
-    <nav id="scrolling_navbar" class="navbar navbar-expand-lg  fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav fw-bold">
-              <li class="nav-item">
-                <a class="nav-link" href="#home">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#works">
-                  Portfolio
-                </a>
-              
-                <ul class="dropdown-menu pixel-corners">
-                  <li>
-                    <a class="dropdown-item" href="#works">Selected Works</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#archive">Archive</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">About</a>
-              </li>
-              
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#contact" id="contactDropdown" role="button">
-                  Contact
-                </a>
-                <ul class="dropdown-menu pixel-corners">
-                  <li>
-                    <a class="dropdown-item" href="https://www.linkedin.com/in/rayafreeborn/" target="_blank">
-                      LinkedIn
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="mailto:rayafreeborn@gmail.com">
-                      Gmail
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">
-                      Instagram
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              
-            </ul>
-          </div>
+<div class="page-grid">
+
+    <main class="left-pane">
+<!-- 
+        <div class="left-pane-bg">
+            <div class="bg-layer blue"></div>
+            <div class="bg-layer white"></div>
+          </div> -->
+
+        <div class="welcome">
+            <div class="main-image">
+                <img src="items/trying things.gif" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <header class="header-section">
+                <h1 class="massive-title">
+                    <b class="">Raya Freeborn</b><br>
+                    Graphic Designer <br>& <span id="dynamic-word">Art Director</span><br>
+                </h1>
+            </header>
+
+            <div class="home-blue-bg"></div>
+
+        <!-- Purple version (visible first) -->
+        <div class="home-stack purple"></div>
+      
+        <!-- White version (hidden at start) -->
+        <div class="home-stack white"></div>
         </div>
-      </nav>
 
-      <div data-bs-spy="scroll" data-bs-target="#scrolling_navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example  p-3" tabindex="0">
-<!-- <section class="min-vh-100 d-flex flex-wrap align-content-center" id="home" style="background-image: url('image/home.jpg'); background-size: cover;">
-  <div class="container d-flex align-items-center py-5 justify-content-center">
-    <div class="col text-center bg-light m-4 p-4 text-dark bg-opacity-50 rounded-5 border border-2 border-white">
-      
+        <!-- ONLY ADDITION: filter attributes -->
+        <div class="intro-text-grid">
 
-            <video autoplay muted loop class="home-video mb-4">
-              <source src="image/Rayawhitebackground.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <div class="intro-col" data-filter="print">
+                <p class="meta-label"><b>Print</b></p>
+                <p>Imagery functions as a universal language, communicating both information and feeling. Through print, branding, and interactive media, design becomes a tool for translating ideas into compelling visual narratives that engage audiences and make complex concepts accessible and memorable.</p>
+            </div>
 
-      <h1 class="display-2 text-secondary mb-3">Raya Freeborn</h1>
-      <p class="text-secondary fs-5 mb-6">Designer, storyteller, and full-time side quest advocate.</p>
-      <a class="btn btn-success btn-lg active rounded-pill mb-3" href="#about">About</a>
-      <a class="btn btn-light btn-lg rounded-pill mb-3" href="#contact">Contact</a>
-    </div>
-  </div>
-</section> -->
+            <div class="intro-col" data-filter="digital">
+                <p class="meta-label"><b>Digital</b></p>
+                <p>Experienced in developing visual identities, logos, iconography, and design systems that create consistency across print and digital platforms. A strong focus on typography, hierarchy, and visual cohesion ensures that every design effectively communicates its intended message.</p>
+            </div>
 
-<section id="home" class="home-scroll">
+            <div class="intro-col" data-filter="branding">
+                <p class="meta-label"><b>3D Design</b></p>
+                <p>Experienced working across cross-functional teams and incorporating feedback to strengthen ideas throughout the design process. Comfortable engaging from early concept development through final production, balancing creative exploration with practical implementation while adapting to the needs of fast-paced environments.</p>
+            </div>
 
-  <div class="home-blue-bg"></div>
+        </div>
 
-  <!-- Purple version (visible first) -->
-  <div class="home-stack purple"></div>
+        <!-- PROJECTS (ONLY ADD data-category — NOTHING ELSE CHANGED) -->
 
-  <!-- White version (hidden at start) -->
-  <div class="home-stack white"></div>
+        <!-- <div class="project-block" data-category="print">
 
-<div class="home-hero">
-  <p class="hero-sub">
-    designer 
-    <b class="amp">&</b> 
-    <span class="type-text"></span><span class="cursor"></span>
-  </p>
-</div>
+            <div class="project-header">
+                <h3>RBC Research Review</h3>
+                <p>2026 — Editorial Design</p>
+            </div>
 
-</section>
+            <div class="main-image-placeholder gallery" data-gallery="project2">
+                <img src="images/inside/omni.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
 
-<script>
-  const hero = document.querySelector(".home-hero");
-  const purple = document.querySelector(".home-stack.purple");
-  const white = document.querySelector(".home-stack.white");
-  const homeSection = document.querySelector("#home");
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/inside/cover.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/omni.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/pecan.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/triplet.png" loading="lazy" class="thumb" data-gallery="project2">
+                </div>
 
-  // 👇 FORCE correct starting state
-  purple.style.opacity = "1";
-  white.style.opacity = "0";
+                <div class="project-description">
+                    <p>Richard Bland College's official magazine for their Office of Research and Innovation (ORI). </p>
+                </div>
+            </div>
 
-  window.addEventListener("scroll", () => {
-    const rect = homeSection.getBoundingClientRect();
-    const height = window.innerHeight;
-
-    let progress = 1 - (rect.bottom / height);
-    progress = Math.min(Math.max(progress, 0), 1);
-
-    hero.style.opacity = 1 - progress;
-
-    purple.style.opacity = 1 - progress;
-    white.style.opacity = progress;
-  });
-</script>
-
-
-
-
-        
-        <!-- <div class="dot-divider">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
         </div> -->
-        
-        
-        <section class="container py-5" id="works">
-          <div class="container">
-            <h2 class="text-center fw-bolder mb-4">Selected Works</h2>
-        
-            <div class="scatter-section">
-              <div class="scatter-container">
-        
-                <a href="blt.html" class="scatter-item item-1" data-name="The B.L.T.">
-                  <img src="image/sammy/bread3.png" alt="The B.L.T.">
-                </a>
-        
-                <a href="inside-rbc.html" class="scatter-item item-2" data-name="Inside RBC Magazine">
-                  <img src="image/rbc/cover2.png" alt="Inside RBC">
-                </a>
-        
-                <a href="e-card.html" class="scatter-item item-3" data-name="Ready to Lead">
-                  <img src="image/boyd.png" alt="Ready to Lead">
-                </a>
-        
-                <a href="risk.html" class="scatter-item item-4" data-name="Risk ≠ Reward">
-                  <img src="image/guide/bag2.png" alt="Risk ≠ Reward">
-                </a>
-        
-              </div>
-            </div>
-          </div>
-        </section>
 
-        
-        
-        
+        <div class="project-block" data-category="print">
 
-
-
-        <!-- <section data-bs-spy="scroll" data-bs-target="#scrolling_navbar" class="bg-dark py-5" id="contact">
-            <div class="container">
-                <div class="text-white text-center py-5">
-                    <h2 class="fw-bolder">Contact</h2>
-                    <p class="fs-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, necessitatibus.</p>
-                </div>
-
-                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 col-sm-10 col-11 mx-auto">
-                    <form action="" class="text-white fs-6">
-                        <div class="mb-3">
-                            <label class="form-label text-white">Name Surname</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-white">Email</label>
-                            <input type="email" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-white">Subject</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-white">Message</label>
-                            <textarea type="text" rows="10" class="form-control"></textarea>
-                        </div>
-                        <div class="d-grid gap-2 col-lg-4 col-md-4 mx-auto">
-                            <button class="btn btn-success btn-lg rounded-pill">Send</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section> -->
-
-        <section class="archive-vibe " id="archive">
-          <div class="archive-vibe-inner pixel-corners">
-        
-            <h2 class="archive-title">Archive</h2>
-            <p class="archive-subtitle">Additional works and explorations.</p>
-        
-            <!-- ================= PROJECTS ================= -->
-        
-            <!-- ===== PROJECT 1 ===== -->
-        
-            <!-- ===== PROJECT 6 ===== -->
-            
-            <!-- ===== PROJECT 3 ===== -->
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>The Commonwealth Times</h3>
-                  <p>2026</p>
-                  <span class="material-type">Print + Digital</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/news/news.png" class="">
-                </div>
-              </div>
-              
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Editorial and digital design for independent student newsroom, including typesetting, photo editing, and preparing formatted, color-correct files for print production.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/news/news2.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
+            <div class="project-header">
+                <h3>Inside RBC Magazine</h3>
+                <p>2025-2026 — Editorial Design</p>
             </div>
 
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Richard Bland College Logo Redesign</h3>
-                  <p>2026</p>
-                  <span class="material-type">Logo + Digital</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/athletic/rbc_logo.png" class="">
-                </div>
-              </div>
-              
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Redesigned the athletic logo and business cards for Richard Bland College as part of a broader rebranding initiative, creating a cohesive and contemporary visual identity that strengthens brand recognition across platforms.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/athletic/rbc_athletic.png" class="morph-trigger">
-                    <br>
-                    <img src="image/business_cards.png" class="morph-trigger">
-
-                  </div>
-                </div>
-              </div>
+            <div class="main-image-placeholder gallery" data-gallery="project2">
+                <img src="images/inside/cover111.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
             </div>
 
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>F.I.H.</h3>
-                  <p>2026</p>
-                  <span class="material-type">Website</span>
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/inside/cover111.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/robot.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/NUTS.png" loading="lazy" class="thumb" data-gallery="project2">
+                    <img src="images/inside/triplets.png" loading="lazy" class="thumb" data-gallery="project2">
                 </div>
-                <div class="archive-preview-right">
-                  <img src="capstone/images/trying.png" class="">
+
+                <div class="project-description">
+                    <p>Led the design and art direction for Inside RBC, the college’s official 70-page magazine, managing cohesive layouts and visuals for both print and digital editions. Oversaw the full production process from concept to final publication, ensuring consistent branding and storytelling across a large-scale, multi-section issue. Distributed worldwide to alumni, faculty, and board members, each edition communicates the college’s story with clarity and impact, incorporating custom illustrations, photography, and interactive elements to engage readers.
+                    </p>
                 </div>
-              </div>
-              
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Identify. Stabilize. Redistribute. By 2035, climate change and pollution have accelerated mutation in New River fish beyond repair. Introducing F.I.H.: not a solution, but a way to make profit. Operating as a temporary storefront, F.I.H. sells exclusive items, including the mutated fish themselves, alongside an interactive website where users can learn more.
+            </div>
 
-                    <br>
+        </div>
 
-                    <a href="https://rayafreeborn.com/capstone/website.html" target="_blank">
-                      <p>Enter F.I.H. here.</p>
-                    </a>
+        <div class="project-block" data-category="digital">
+
+            <div class="project-header">
+                <h3>Richard Bland Banners</h3>
+                <p>2026 — Web</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project8">
+                <img src="images/rbc_web/intro_web.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/rbc_web/website.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/website2.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/website3.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/website4.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/website5.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/intro_web.png" loading="lazy" class="thumb" data-gallery="project8">
+                    <img src="images/rbc_web/intro_web2.png" loading="lazy" class="thumb" data-gallery="project8">
+
+
+
+                </div>
+
+                <div class="project-description">
+                    <p>Designed banner graphics and promotional visuals for the official Richard Bland College website and large-scale campus displays. Created engaging digital assets that supported institutional branding, campus announcements, events, and student-facing communications.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="project-block" data-category="digital">
+
+            <div class="project-header">
+                <h3>Richard Bland College Web Articles</h3>
+                <p>2026 — Web</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project9">
+                <img src="images/rbc_web/social.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/rbc_web/social.png" loading="lazy" class="thumb" data-gallery="project9">
+                    <img src="images/rbc_web/social2.png" loading="lazy" class="thumb" data-gallery="project9">
+
+                </div>
+
+                <div class="project-description">
+                    <p>Designed graphics for RBC news articles, student highlights, and institutional announcements featured across official LinkedIn channels, newsletters, and web publications. Developed visual content that enhanced storytelling and showcased student achievements, research, and campus initiatives.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="project-block" data-category="print">
+
+            <div class="project-header">
+                <h3>The Commonwealth Times</h3>
+                <p>2025 - 2026 — Editorial + Print Design + Web</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project7">
+                <img src="images/news/news.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/news/news.png" loading="lazy" class="thumb" data-gallery="project7">
+                    <img src="images/news/news2.png" loading="lazy" class="thumb" data-gallery="project7">
+                    <img src="images/news/web.jpg" loading="lazy" class="thumb" data-gallery="project7">
+
+                </div>
+
+                <div class="project-description">
+                    <p>Designed 23 print issues for a student-run newsroom, leading editorial layout, typography, photo editing, and print production preparation under tight publication deadlines. 
 
                     </p>
+                </div>
+            </div>
 
-                    <div class="archive-large-image">
-                      <img src="image/EGG3.png" class="morph-trigger">
+        </div>
+
+        <div class="project-block" data-category="print">
+
+            <div class="project-header">
+                <h3>Sammy Scramble</h3>
+                <p>2026 — Packaging + Card Design</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project1">
+                <img src="images/scramble/game1.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/scramble/game1.png" loading="lazy" class="thumb" data-gallery="project1">
+                    <img src="images/scramble/game222.png" loading="lazy" class="thumb" data-gallery="project1">
+                    <img src="images/scramble/game3.png" loading="lazy" class="thumb" data-gallery="project1">
+                </div>
+
+                <div class="project-description">
+                    <p>Exploring how meaning shifts when information is translated through systems. This ‘translation machine’ chops sandwich recipes apart into a simple game.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="project-block" data-category="print">
+
+            <div class="project-header">
+                <h3>Risk ≠ Reward</h3>
+                <p>2026 — Editorial + Print Design</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project4">
+                <img src="images/guide/bag2.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/guide/bag2.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/insideguide.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/guide1.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/guide3.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/rgb.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/redin.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/blueins.png" loading="lazy" class="thumb" data-gallery="project4"> 
+                    <img src="images/guide/greenout.png" loading="lazy" class="thumb" data-gallery="project4">
+                    <img src="images/guide/reward-map.png" loading="lazy" class="thumb" data-gallery="project4">
+
+                    <video loading="lazy" class="thumb" data-gallery="project4" autoplay muted loop playsinline>
+                        <source src="images/guide/guide.mp4" type="video/mp4">
+                    </video>
+
+
+                </div>
+
+                <div class="project-description">
+                    <p>Risk ≠ Reward is a tactile, exploratory project that investigates the effects of risk and what it truly means to take one. The pocket-sized, Swiss-bound book combines research and design to examine the relationship between extreme sports, personal decision-making, and environmental responsibility. It includes “Leave No Trace” guidelines for wilderness preparation, highlighting sustainable practices, and is accompanied by three pamphlet-style bookmarks offering quick-reference tips for outdoor ethics. A thought map, inspired by a ski slope map, creatively visualizes key concepts around risk management, environmental impact, and the balance between adventure and responsibility.
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="project-block" data-category="print">
+
+            <div class="project-header">
+                <h3>Ready to Lead</h3>
+                <p>2025 — Print Design</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project3">
+                <img src="images/boyd/boyd1.png" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/boyd/boyd1.png" loading="lazy" class="thumb" data-gallery="project3">
+                    <img src="images/boyd/boyd2.png" loading="lazy" class="thumb" data-gallery="project3">
+                    <img src="images/boyd/boyd3.png" loading="lazy" class="thumb" data-gallery="project3">
+                </div>
+
+                <div class="project-description">
+                    <p>Designed the visual identity and layout for a hybrid digital business card with an embedded screen for Jesse Vaughan Productions, tailored for executive and administrative use. Produced a limited run of 50 units, ensuring consistent branding, high-quality visuals, and a seamless integration of digital and physical elements, creating a modern, functional networking tool.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- project 6 -->
+        <div class="project-block" data-category="digital, print">
+
+            <div class="project-header">
+                <h3>An Ode To Maintenance</h3>
+                <p>2025 — Video + Print Design</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project6">
+                <video class="main-display" autoplay muted loop playsinline>
+                    <source src="images/spoke/ODE.mp4" type="video/mp4">
+                </video>
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <video loading="lazy" class="thumb" data-gallery="project6" autoplay muted loop playsinline>
+                        <source src="images/spoke/ODE.mp4" type="video/mp4">
+                    </video>
+                    <img src="images/spoke/An-Ode-To-Maintenance_01.jpg" loading="lazy" class="thumb" data-gallery="project6">
+                    <img src="images/spoke/An-Ode-To-Maintenance_02.jpg" loading="lazy" class="thumb" data-gallery="project6">
+                </div>
+
+                <div class="project-description">
+                    <p>
+                        This project began during finals week, with a fish tank I couldn’t keep alive and a feeling of losing control. What I could maintain was my dad’s old bike: cleaning it, fixing it, keeping it going. That small routine became grounding.
+<br><br>
+                        Printed onto transparent bike spoke cards is Lucas Winzenburg’s essay, Debt of Disrepair: An Ode to Maintenance. The project turns maintenance into a feedback loop: neglect makes the message unreadable, while care brings clarity. The design only works if you care for it. Maintenance doesn’t just preserve the message. It is the message. Activated through a ride and shared repairs with the Bike Club @VCU, maintenance becomes attention, commitment, and practice.
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- project 5 -->
+        <div class="project-block" data-category="print">
+
+            <div class="project-header">
+                <h3>The B.L.T.</h3>
+                <p>2026 — Editorial + Print Design</p>
+            </div>
+
+            <div class="main-image-placeholder gallery" data-gallery="project5">
+                <img src="images/sammy/bread4.jpg" class="main-display" />
+                <div class="nav left"></div>
+                <div class="nav right"></div>
+            </div>
+
+            <div class="project-description-wrapper">
+                <div class="condensed-thumbnails">
+                    <img src="images/sammy/bread4.jpg" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/digest.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/salt.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/Betterr.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/sag.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/inside.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/ate.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/cover-food.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/food.png" loading="lazy" class="thumb" data-gallery="project5">
+                    <img src="images/sammy/bread2.jpg" loading="lazy" class="thumb" data-gallery="project5">
+                </div>
+
+                <div class="project-description">
+                    <p>
+                        Book Lettuce Tomato (B.L.T.) is a playful exploration of ideas as sustenance, this project takes inspiration from the classic BLT sandwich, which layers concepts like ingredients to create something digestible and satisfying. <br><br>
+                        
+                        <b>Food for Thought</b> <br>
+                        An homage to Chef Raya (c. 2015), this work reflects on the ways we consume ideas, both literally and figuratively. It blends culinary creativity with intellectual curiosity, inviting the viewer to consider how knowledge, like food, can be tasted, savored, and digested. <br><br>
+                        
+                       <b>The Eater's Digest</b> <br>
+                        Continuing the exploration, this piece transforms the act of reading into a sensory experience, emphasizing the interplay between literal consumption and metaphorical ingestion of ideas. It’s both a tribute to culinary craft and a meditation on how ideas nourish the mind.
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+                <!-- project 5 -->
+                <div class="project-block" data-category="print">
+
+                    <div class="project-header">
+                        <h3>Rigid</h3>
+                        <p>2024 — Poster Series</p>
                     </div>
-
-                  </div>
-                  <div class="archive-large-image">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Sammy Scramble</h3>
-                  <p>2025</p>
-                  <span class="material-type">Print + Game</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/game4.png" class="">
-                </div>
-              </div>
         
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Exploring how meaning shifts when information is translated through systems. This ‘translation machine’ chops sandwich recipes apart into a simple game. 
+                    <div class="main-image-placeholder gallery" data-gallery="project10">
+                        <img src="images/buildings/both1.png" class="main-display" />
+                        <div class="nav left"></div>
+                        <div class="nav right"></div>
+                    </div>
+        
+                    <div class="project-description-wrapper">
+                        <div class="condensed-thumbnails">
+                            <img src="images/buildings/both1.png" loading="lazy" class="thumb" data-gallery="project10">
+                        </div>
+        
+                        <div class="project-description">
+                            <p></p>
+                        </div>
+                    </div>
+        
+                </div>
+
+        <div class="project-footer">
+            <div class="author-details">Website Hand-Coded by Raya Freeborn <br>Last Update: 7/14/2026</div>
+        </div>
+
+    </main>
+
+    <aside class="right-pane">
+            
+        <section class="resume-block">
+            <h2 class="section-title pixel_mama">About</h2>
+            <div class="section-content">
+                <p>Great design communicates. Greater design engages, empowers, and resonates.</p>
+                <p>Raya Freeborn is a multimedia artist from Southwest Virginia and a recent graduate of Virginia Commonwealth University School of the Arts, where she earned her B.F.A. in graphic design with minors in computer science and media studies.</p>
+                <p>Her practice is rooted in the belief that imagery is a universal language. At the core of her work is E³: education, exploration, and entertainment, a framework that guides her design decisions from concept to execution. She sees strong design as a balance of all three, where work informs, invites curiosity, and holds attention.
+                </p>
+
+                <p class="links resume-description">
+                    <a href="https://www.linkedin.com/in/rayafreeborn/" target="_blank">LinkedIn</a>, 
+                    <a href="mailto:rayafreeborn@gmail.com">Email</a>, 
+                    <a href="items/Freeborn,Raya_Resume.pdf" target="_blank">Resume</a> 
+                    <!-- <a href="https://www.instagram.com/lifeafterbreakfastt/" target="_blank">Instagram </a> -->
+                </p>
+            </div>
+        </section>
+      
+        <hr>
+      
+        <section class="resume-block">
+            <h2 class="section-title pixel_mama">Education</h2>
+            <div class="section-content">
+                <div class="resume-item">
+                    <p><b>Virginia Commonwealth University School of the Arts</b><br>Richmond, VA<br><i>2022-2026</i></p>
+                    <p class="resume-description">
+                      B.F.A. Graphic Design
+                      <br>
+                      Minors: Computer Science, Media Studies<br><br>Summa Cum Laude
+                      <br>Dean's List 2022 - 2026
+                      <br>Virginia Merit Scholarship 2022-2026
+                      
                     </p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/game4.png" class="morph-trigger">
-
-                    <img src="image/game3.png" class="morph-trigger">
-
-                    <img src="image/game2.png" class="morph-trigger">
-
-                  </div>
-
                 </div>
-              </div>
+                <div class="resume-item">
+                    <p><b>Santa Reparata School of Art</b><br>Florence, Italy<br><i>2024</i></p>
+                </div>
             </div>
-
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Clever Tiny Homes</h3>
-                  <p>2025</p>
-                  <span class="material-type">Marketing Campaign</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="ads/clever/CleverTinyHomesAd3.jpg" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>
-                      A three-part print campaign for Clever Tiny Homes. From mountains to deserts, city streets to lush forests, no matter where the road takes you, home is where you park it.
-                      <br><br>
-                      By splicing images of the same tiny home in diverse locations, I aim to emphasize freedom and flexibility in being mobile. 
-                    </p>
-                    
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="ads/clever/home1.jpg" class="morph-trigger">
-
-                    <img src="ads/clever/home2.jpg" class="morph-trigger">
-
-                    <img src="ads/clever/home4.jpg" class="morph-trigger">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Absurd Snacks</h3>
-                  <p>2025</p>
-                  <span class="material-type">Marketing Campaign</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="ads/absurd/set1.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>
-                      As part of a 24-hour creative sprint, I collaborated with a team of three to develop a comprehensive campaign for Absurd Snacks, an allergy-friendly snack brand. We were challenged to respond to a client brief with strategic creative solutions, which we presented directly to the brand. 
-                      <br><br>
-                      My responsibilities included producing high-quality mockups of redesigned merchandise and packaging to visually support and strengthen our concept of adventure can be anywhere!
-                  
-                  </p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="ads/absurd/set1.png" class="morph-trigger">
-                    <img src="ads/absurd/packages2.png" class="morph-trigger">
-
-                    <img src="ads/absurd/totebags1.png" class="morph-trigger">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-                        <!-- ===== PROJECT 7 ===== -->
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>An Ode to Maintenance</h3>
-                  <p>2025</p>
-                  <span class="material-type">Print + Installation</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/spoke/An-Ode-To-Maintenance_02.jpg" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>This project began during finals week, with a fish tank I couldn’t keep alive and a feeling of losing control. What I could maintain was my dad’s old bike: cleaning it, fixing it, keeping it going. That small routine became grounding. <br><br>
-
-                      Printed onto transparent bike spoke cards is Lucas Winzenburg’s essay, Debt of Disrepair: An Ode to Maintenance. The project turns maintenance into a feedback loop: neglect makes the message unreadable, while care brings clarity. The design only works if you care for it. Maintenance doesn’t just preserve the message. It is the message. Activated through a ride and shared repairs with the Bike Club @VCU, maintenance becomes attention, commitment, and practice.
+        </section>
+      
+        <hr>
+      
+        <section class="resume-block">
+            <h2 class="section-title pixel_mama">Employment</h2>
+            <div class="section-content">
+      
+                <div class="resume-item">
+                    <p><b>Assistant Program Coordinator</b><br>
+                    Richard Bland College<br>
+                    <i>2026 - Present</i><br></p>
+                    <p class="resume-description">
+                      Supported UAV and VR program operations, assisting with lab coordination, technical setup, and student-facing instructional workflows.
                       </p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/spoke/An-Ode-To-Maintenance_02.jpg" class="morph-trigger">
-                  </div>
                 </div>
-              </div>
+      
+                <div class="resume-item">
+                  <p><b>Graphic Designer & Art Director</b><br>
+                  Richard Bland College<br>
+                  <i>2025 - 2026</i><br></p>
+                  <p class="resume-description">
+                    Contributed to a campus-wide rebrand through identity systems spanning logos, iconography, and templates across print, digital, and campaign materials. Led design and production for <i>Inside RBC</i>, managing editorial direction and distribution for alumni, faculty, and board communications. Produced print-ready files in collaboration with external vendors and designed executive presentation materials for the Board of Visitors.                
+                  </div></p>
+      
+              <div class="resume-item">
+                <p><b>Graphic Designer</b><br>
+                The Commonwealth Times<br>
+                <i>2025 - 2026</i><br></p>
+                <p class="resume-description">
+                  Designed 23 print issues for a student-run newsroom, leading editorial layout, typography, photo editing, and print production preparation under tight publication deadlines.                    </p>
             </div>
-
-
-            
-            
-          <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Food for Thought</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/sammy/cover-food.png" class="">
-                </div>
-              </div>
-
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>  Created and authored a perfect-bound recipe book featuring original recipes and personal insights, focusing on the experience and setting where the food is enjoyed rather than just the recipes themselves.
-                      <br><br>
-                      The design emphasizes storytelling, atmosphere, and trial-and-error, inviting readers to savor both the culinary and emotional connections to each dish.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/sammy/cover-food.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div>
-        
-            <!-- ===== PROJECT 4 ===== -->
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Angular</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print + Poster</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/buildings/both.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>A series of three A2-sized posters featuring original photographs taken throughout Italy. The collection highlights the striking angularity of Italian architecture, emphasizing its geometric elegance, structural beauty, framing, and the creative use of angles in design.
-                    </p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/buildings/both.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div>
-        
-            <!-- ===== PROJECT 5 ===== -->
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>The Eater's Digest</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/sammy/salt.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Authored a 500-page book exploring themes of consumption and digestion through materials, writings, imagery, and condiments, all creatively packaged within the format of a sandwich. 
-                      <br><br>
-                      This work pairs with the recipe book <i>Food for Thought</i>, offering a conceptual dive into food, experience, and the symbolic layers of eating.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/sammy/salt.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div>
-        
-            <!-- ===== PROJECT 6 =====
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Pizza Time!</h3>
-                  <p>2025</p>
-                  <span class="material-type">Website</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/guide/guide4.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Instructional system designed for outdoor awareness and mapping.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/guide/guide4.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-        
-            <!-- <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Food d Thought</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/sammy/cover-food.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>  Created and authored a perfect-bound recipe book featuring original recipes and personal insights, focusing on the experience and setting where the food is enjoyed rather than just the recipes themselves.
-                      <br><br>
-                      The design emphasizes storytelling, atmosphere, and trial-and-error, inviting readers to savor both the culinary and emotional connections to each dish.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/sammy/cover-food.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- ===== PROJECT 8 ===== -->
-            <!-- <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>Risk ≠ Reward Map</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print / Mapping</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/guide/reward-map.png" class="">
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Visual mapping of risk systems and environmental awareness.</p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/guide/reward-map.png" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div> -->
-        
-            <!-- ===== PROJECT 9 ===== -->
-            <div class="archive-item">
-              <div class="archive-preview">
-                <div class="archive-preview-left">
-                  <h3>BONES!</h3>
-                  <p>2024</p>
-                  <span class="material-type">Print / Experimental</span>
-                </div>
-                <div class="archive-preview-right">
-                  <img src="image/bones.jpg" >
-                </div>
-              </div>
-        
-              <div class="archive-content">
-                <div class="archive-content-inner">
-                  <div class="archive-info">
-                    <p>Inspired by fish, the dragons from 'The Legend of Zelda: Tears of the Kingdom', and the red line in the 'Indiana Jones' series, <I>BONES</I> is a 48x8” accordion book featuring original photographs of rock arrangements in the Mojave Desert.
-                      <br><br>
-                      The rocks are composed to resemble the skeletal remains of a fish, with ribs and body evoking a sense of decay and natural artistry, presented through a seamless line of continuation. </p>
-                  </div>
-                  <div class="archive-large-image">
-                    <img src="image/bones.jpg" class="morph-trigger">
-                  </div>
-                </div>
-              </div>
-            </div>
-        
+    
+            <div class="resume-item">
+              <p><b>Web + Graphic Designer</b><br>
+              Life After Breakfast<br>
+              <i>2020 - Present</i><br></p>
+              <p class="resume-description"></p>
           </div>
+      
+            </div>
         </section>
-        
-        <div class="image-morph-overlay"></div>
-
-        <section class="container py-5" id="about">
-          <div class="text-center py-5">
-            <h2 class="fw-bolder">
-              Hello, my name is <b style="color: #acbed1;">Raya Freeborn</b>
-            </h2>
-            <p class="fs-5" style="font-family: neue-haas-grotesk-display, sans-serif;">
-              /ˈræj.ə/
+    
+        <hr>
+    
+        <section class="resume-block">
+          <h2 class="section-title pixel_mama">Awards & Exhibitions</h2>
+          <div class="section-content">
+            <div class="resume-item">
+              <p><b>Undergraduate Juried Exhibition</b><br>
+              VCUarts<br>
+              <i>2025</i><br></p>
+              <p class="resume-description">
+                Risk ≠ Reward  
+              </p>
+          </div>
+          <div class="resume-item">
+            <p><b>Artist Speaker</b><br>
+            Ours Today<br>
+            <i>2025</i><br></p>
+            <p class="resume-description">
+              An Ode To Maintenance  
             </p>
+        </div>
+        <div class="resume-item">
+          <p><b>Artist Speaker</b><br>
+          The Fishbowl<br>
+          <i>2026</i><br></p>
+          <p class="resume-description">
+            "Who am I?"  
+          </p>
+      </div>
+      <div class="resume-item">
+        <p><b>Best Packaging Design</b><br>
+        Ad Club at VCU<br>
+        <i>2026</i><br></p>
+        <p class="resume-description">
+          Absurd Snacks packaging redesign.  
+        </p>
+    </div>
+    <div class="resume-item">
+      <p><b>Silver Key</b><br>
+      Scholastic Art Award<br>
+      <i>2022</i><br></p>
+      <p class="resume-description">
+        Ad Astra and Rigid  
+      </p>
+    </div>
+    
           </div>
-        
-          <div class="row align-items-start">
-        
-            <!-- LEFT COLUMN -->
-            <div class="col-lg-4 text-center">
-        
-              <!-- MAIN IMAGE -->
-              <div class="profile-pic-wrap about-pic-center">
-                <img
-                  id="mainAboutImage"
-                  class="img-fluid pixel-corners profile-pic about-main-pic"
-                  src="image/fishy.jpg"
-                  alt="About main"
-                >
-        
-                <!-- MINI THUMBNAILS -->
-                <div class="about-mini-row">
-                  <img src="image/fishy.jpg" class="pixel-corners about-mini active">
-                  <img src="image/tough.JPG" class="pixel-corners about-mini">
-                  <img src="image/i_love_fish.jpg" class="pixel-corners about-mini">
-                  <img src="image/so_yum.JPG" class="pixel-corners about-mini">
-                  <img src="image/on_da_bike.jpg" class="pixel-corners about-mini">
+      </section>
 
-                </div>
+      <hr>
+      
+      <section class="resume-block">
+          <h2 class="section-title pixel_mama">Interests</h2>
+          <div class="section-content">
+              <div class="resume-item">
+                  <p>YouTube Science videos<br>Kayaking <br> Hiking <br> Playing games (Zelda) <br>Biking</p>
               </div>
-        
-              <!-- RESUME BUTTON -->
-              <div class="text-center mt-4">
-                <a href="image/Freeborn,Raya_Resume.pdf"
-                   target="_blank"
-                   class="btn pixel-corners px-4 resume-btn">
-                  View Resume
-                </a>
-              </div>
-        
-<!-- LIKES / DISLIKES -->
-<div class="about-likes pixel-corners mt-4 text-start">
-
-  <div class="row">
-
-    <!-- LIKES -->
-    <div class="col-md-6">
-      <h5 class="fw-bold">Likes</h5>
-      <ul class="list-unstyled mt-2 hover-list">
-
-        <li class="hover-item"
-            data-img="image/cute/swim.jpeg"
-            data-text="Whale sharks, Manta Rays, and Magikarp!">
-          Fish!
-        </li>
-
-        <li class="hover-item"
-        data-img="image/cute/bikelove.jpg"
-        data-text="I LOVE BIKING!">
-      Biking
-    </li>
-
-        <li class="hover-item "
-        data-img="image/cute/travel.jpg"
-            data-text="Dream goal: be Link">
-          The Legend of Zelda series
-        </li>
-
-        <li class="hover-item"
-            data-img="image/chai.jpg"
-            data-text="Best served cold">
-          Dirty chai lattes
-        </li>
-
-        <li class="hover-item"
-            data-img="image/cute/karaoke.jpeg"
-            data-text="'The Winner Takes it All' by ABBA">
-          Karaoke
-        </li>
-        <li class="hover-item"
-        data-img="image/cute/kayak.jpg"
-        data-text="Everyone needs their mandatory outside time">
-      Hiking + Kayaking
-    </li>
-
-      </ul>
-    </div>
-
-    <!-- DISLIKES -->
-    <div class="col-md-6">
-      <h5 class="fw-bold">Dislikes</h5>
-      <ul class="list-unstyled mt-2 hover-list">
-
-        <li class="hover-item"
-            data-img="image/tapioca.jpg"
-            data-text="It's the texture...">
-          Tapioca pudding
-        </li>
-
-        <li class="hover-item"
-            data-img="image/bic.jpg"
-            data-text="...">
-          BIC ballpoint pens
-        </li>
-
-        <li class="hover-item"
-            data-img="image/cute/reading.jpeg"
-            data-text="I will find the next episode/chapter.">
-          Cliffhangers
-        </li>
-
-        <li class="hover-item"
-        data-img="image/cute/tech.jpeg"
-        data-text="Big on hike-a-bike">
-      Super technical trails
-    </li>
-
-      </ul>
-    </div>
-
-  </div>
+          </div>
+      </section>
+            
+      <!-- <div class="button-container">
+        <a href="items/Freeborn,Raya_Resume.pdf" target="_blank" class="resume-button">
+          View Resume
+        </a>
+      </div> -->
+      
+    </aside>
 
 </div>
-        
-            </div>
-        
-            <!-- RIGHT COLUMN -->
-            <div class="col-lg-7 offset-lg-1 pixel-corners"
-                 style="background-color: rgba(255, 255, 255, 0.7);
-                        padding: clamp(1.5rem, 5vw, 4rem);">
-        
-        <p class="lh-lg mb-0">
-          Great design communicates. Greater design engages, empowers, and resonates.
-          <br><br>
-        
-          Raya Freeborn is a multimedia artist from Southwest Virginia and a recent graduate of
-          <b><a style="color:#acbed1;" href="https://arts.vcu.edu/graphic-design/" target="_blank">
-            Virginia Commonwealth University School of the Arts
-          </a></b>,
-          where she earned her B.F.A. in graphic design with minors in computer science and media studies.
-          <br><br>
-        
-          Her practice is rooted in the belief that imagery is a universal language. At the core of her work is <b style="color: #acbed1;"><i>E³</i>: education, exploration, and entertainment</b>, a framework that guides her design decisions from concept to execution. She sees strong design as a balance of all three, where work informs, invites curiosity, and holds attention.
+<!-- <h1>Hand-coded by Raya Freeborn</h1>
+<h3>Last Updated: July 2026</h3> -->
 
-          <!-- <br> <br> -->
-          <!-- Design exists to evoke.          -->
-          
-          <div class="row mt-5">
-
-                <!-- EXHIBITIONS -->
-                <div class="col-md-8 mb-4">
-                  <h5 class="fw-bold">Exhibitions</h5>
-                  <ul class="list-unstyled mt-2">
-                    <li>
-                      2025 VCUarts Undergraduate Juried Exhibition
-                      <span class="award-date">Risk ≠ Reward</span><br>
-                      <span class="not-award-date">Richmond, VA // 2025</span>
-                    </li>
-              
-                    <li>
-                      Silver Key
-                      <span class="award-date">Scholastic Art Award</span><br>
-                      <span class="not-award-date">Roanoke, VA // 2022</span>
-                    </li>
-              
-                    <li>
-                      Honorable Mention
-                      <span class="award-date">Scholastic Art Award</span><br>
-                      <span class="not-award-date">Roanoke, VA // 2022</span>
-                    </li>
-              
-                    <li>
-                      Best In Show
-                      <span class="award-date">Red. & Ad Astra</span><br>
-                      <span class="not-award-date">Blacksburg, VA // 2022</span>
-                    </li>
-                  </ul>
-                </div>
-              
-                <!-- RIGHT SIDE MINI COLUMNS -->
-                <div class="col-md-4">
-              
-                  <div class="mb-4">
-                    <h5 class="fw-bold">Speaker</h5>
-                    <ul class="list-unstyled mt-2">
-                      <li>
-                        Talk Shop <span class="award-date">OURS</span><br>
-                        <span class="not-award-date">Richmond, VA // 2025</span>
-                      </li>
-              
-                      <li>
-                        Artist Speaker <span class="award-date">The Fishbowl</span><br>
-                        <span class="not-award-date">Richmond, VA // 2026</span>
-                      </li>
-                    </ul>
-                  </div>
-              
-                  <div>
-                    <h5 class="fw-bold">Advertising</h5>
-                    <ul class="list-unstyled mt-2">
-                      <li>
-                        Best Packaging Design <span class="award-date">Ad Club at VCU</span><br>
-                        <span class="not-award-date">Richmond, VA // 2025</span>
-                      </li>
-                    </ul>
-                  </div>
-              
-                </div>
-              
-              </div>
-
-            </div>
-        
-          </div>
-
-          
-        </section>
-       
-      
-      
-        
-        <!-- <a href="https://github.com/coldravioli" target="_blank"><img src="coloredcutie.png" style="position:fixed; height:40px; right:6px; bottom:10px; z-index: 999;" alt="GitHub Link"></a> -->
-
-        <footer id="contact" class="text-white">
-          <div class="container">
-        
-            <div class="d-flex justify-content-between align-items-end flex-wrap">
-        
-              <!-- LEFT SIDE -->
-              <div class="footer-left">
-        
-                <!-- BIG NAME -->
-                <div class="footer-name pixel_mama">
-                  RAYA FREEBORN
-                </div>
-        
-                <!-- CREDIT TEXT -->
-                <div class="footer-credit mt-2">
-                  <div>Hand Coded By Raya Freeborn.</div>
-                  <div class="small opacity-75">
-                    Last updated: 5/18/26
-                  </div>
-                </div>
-        
-              </div>
-        
-              <!-- RIGHT SIDE -->
-              <div class="d-flex flex-column align-items-end">
-        
-                <div class="footer-icons d-flex align-items-center gap-3 mb-3">
-                  <a href="https://linkedin.com/in/rayafreeborn/" target="_blank">
-                    <img src="/image/icons/linkedin.png" class="footer-icon">
-                  </a>
-
-                  <a href="https://github.com/coldravioli" target="_blank">
-                    <img src="/image/icons/github.png" class="footer-icon" alt="GitHub">
-                  </a>
-
-                  <a href="https://instagram.com/lifeafterbreakfastt/" target="_blank">
-                    <img src="/image/icons/insta.png" class="footer-icon">
-                  </a>
-                </div>
-        
-                <div>
-                  <a href="mailto:rayafreeborn@gmail.com"
-                     class="text-white text-decoration-none">
-                    rayafreeborn@gmail.com
-                  </a>
-                </div>
-        
-              </div>
-        
-            </div>
-        
-          </div>
-        </footer> 
-
-
-        
-        
-
-    </div>
-
-    <script>
-
-const preview = document.getElementById("hoverPreview");
-const previewImg = document.getElementById("hoverImg");
-const previewText = document.getElementById("hoverText");
-
-document.querySelectorAll(".hover-item").forEach(item => {
-
-  item.addEventListener("mouseenter", (e) => {
-    previewImg.src = item.dataset.img;
-    previewText.textContent = item.dataset.text;
-
-    preview.style.opacity = "1";
-    preview.style.transform = "translateY(0px)";
-  });
-
-  item.addEventListener("mousemove", (e) => {
-    preview.style.left = (e.clientX + 15) + "px";
-    preview.style.top = (e.clientY + 15) + "px";
-  });
-
-  item.addEventListener("mouseleave", () => {
-    preview.style.opacity = "0";
-    preview.style.transform = "translateY(10px)";
-  });
-
-});
-
-        function switchStyle() {
-        if (document.getElementById('styleSwitch').checked) {
-            document.getElementById('gallery').classList.add("custom");
-            document.getElementById('exampleModal').classList.add("custom");
-        } else {
-            document.getElementById('gallery').classList.remove("custom");
-            document.getElementById('exampleModal').classList.remove("custom");
-        }
-        };
-        
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-      // Create a tooltip element
-      const tooltip = document.createElement('div');
-      tooltip.className = 'scatter-tooltip';
-      document.body.appendChild(tooltip);
-    
-      // Select all scatter items
-      const items = document.querySelectorAll('.scatter-item');
-    
-      items.forEach(item => {
-        item.addEventListener('mousemove', (e) => {
-          const name = item.getAttribute('data-name');
-          tooltip.textContent = name;
-          tooltip.style.left = e.clientX + 'px';
-          tooltip.style.top = e.clientY + 'px';
-          tooltip.style.opacity = 1;
-        });
-    
-        item.addEventListener('mouseleave', () => {
-          tooltip.style.opacity = 0;
-        });
-      });
-    </script>
-    
-    <div class="image-morph-overlay"></div>
-
-    <script>
-
-      /* ================= DROPDOWN TOGGLE ================= */
-      
-      document.querySelectorAll(".archive-preview").forEach(preview => {
-      
-        preview.addEventListener("click", () => {
-      
-          const item = preview.closest(".archive-item");
-          item.classList.toggle("active");
-      
-        });
-      
-      });
-      
-       
-      /* ================= IMAGE MORPH ================= */
-      
-      const overlay = document.querySelector(".image-morph-overlay");
-      
-      document.querySelectorAll(".morph-trigger").forEach(img => {
-      
-        img.addEventListener("click", (e) => {
-      
-          e.stopPropagation();
-      
-          const rect = img.getBoundingClientRect();
-          const clone = img.cloneNode(true);
-      
-          clone.classList.add("morph-image");
-      
-          clone.style.width = rect.width + "px";
-          clone.style.height = rect.height + "px";
-          clone.style.left = rect.left + "px";
-          clone.style.top = rect.top + "px";
-      
-          document.body.appendChild(clone);
-      
-          requestAnimationFrame(() => {
-      
-            overlay.classList.add("active");
-      
-            clone.style.left = "50%";
-  clone.style.top = "50%";
-  clone.style.transform = "translate(-50%, -50%)";
-  clone.style.width = "90vw";
-  clone.style.height = "90vh";
-  clone.style.objectFit = "contain";
-      
-          });
-      
-          function close() {
-      
-            overlay.classList.remove("active");
-      
-            clone.style.left = rect.left + "px";
-            clone.style.top = rect.top + "px";
-            clone.style.transform = "none";
-            clone.style.width = rect.width + "px";
-            clone.style.height = rect.height + "px";
-      
-            setTimeout(() => {
-              clone.remove();
-            }, 400);
-          }
-      
-          overlay.addEventListener("click", close, { once: true });
-          clone.addEventListener("click", close);
-      
-        });
-      
-      });
-      
-      </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script src="script.js"></script>
 
 <script>
-  const words = [
-    "art director",
-    "breakfast for dinner enjoyer",
-    "web developer",
-    "side quest aficionado",
-    "inventor",
-    "outdoor-enthusiast",
-    "storyteller"
-  ];
-  
-  const el = document.querySelector(".type-text");
-  
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  
-  function typeLoop() {
-    if (!el) return; // safety check
-  
-    const currentWord = words[wordIndex];
-  
-    if (!isDeleting) {
-      el.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-  
-      if (charIndex === currentWord.length) {
-        isDeleting = true;
-        setTimeout(typeLoop, 1200);
-        return;
-      }
-    } else {
-      el.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-  
-      if (charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-      }
-    }
-  
-    setTimeout(typeLoop, isDeleting ? 40 : 70);
-  }
-  
-  typeLoop();
-
-
-  const mainAboutImage = document.getElementById("mainAboutImage");
-  const aboutThumbs = document.querySelectorAll(".about-mini");
-
-  aboutThumbs.forEach(thumb => {
-    thumb.addEventListener("click", () => {
-      if (thumb.src === mainAboutImage.src) return;
-
-      mainAboutImage.style.opacity = "0";
-
-      setTimeout(() => {
-        mainAboutImage.src = thumb.src;
-        mainAboutImage.style.opacity = "1";
-      }, 150);
-
-      aboutThumbs.forEach(t => t.classList.remove("active"));
-      thumb.classList.add("active");
+    document.querySelectorAll("img.thumb").forEach(img => {
+        img.setAttribute("loading", "lazy");
+        img.setAttribute("decoding", "async");
     });
-  });
+    </script>
 
-  </script>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-  
-    const preview = document.getElementById("hoverPreview");
-    const previewImg = document.getElementById("hoverImg");
-    const previewText = document.getElementById("hoverText");
-  
-    document.querySelectorAll(".hover-item").forEach(item => {
-  
-      item.addEventListener("mouseenter", () => {
-        previewImg.src = item.dataset.img;
-        previewText.textContent = item.dataset.text;
-  
-        preview.style.opacity = "1";
-      });
-  
-      item.addEventListener("mousemove", (e) => {
-        preview.style.left = (e.clientX + 15) + "px";
-        preview.style.top = (e.clientY + 15) + "px";
-      });
-  
-      item.addEventListener("mouseleave", () => {
-        preview.style.opacity = "0";
-      });
-  
-    });
-  
-  });
-  </script>
-
-<div id="hoverPreview" class="hover-preview">
-  <img id="hoverImg" src="" alt="">
-  <p id="hoverText"></p>
-</div>
 
 </body>
 </html>
+

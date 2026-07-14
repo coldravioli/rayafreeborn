@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>F.I.H. | HOME</title>
+    <link rel="stylesheet" href="sexy.css">
+    <style>
+        body::before { content: ""; position: fixed; inset: 0; background-image: url("images/trying.png"); background-repeat: no-repeat; background-position: center; background-size: 30vw; filter: brightness(0.4) sepia(1) saturate(5) hue-rotate(70deg); opacity: 0.2; z-index: -1; }
+        .main-hero { width: 65%; padding: 5vw; display: flex; flex-direction: column; justify-content: center; }
+        .home-menu { width: 35%; border-left: 3px solid var(--terminal-green); background: rgba(0,0,0,0.95); padding: 4vw; display: flex; flex-direction: column; gap: 2vh; }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="chat-header">
+        <div class="neon-png">F.I.H. // SYSTEM_MAIN</div>
+        <div>STATUS: <span style="color: var(--fih-purple);">CONNECTED_AS_<span id="user-display">VISITOR</span></span></div>
+        <a href="website.html" class="terminate-btn">X</a>
+    </div>
+    <div class="wrap">
+        <div class="main-hero">
+            <div style="color: var(--fih-purple); font-size: 1.5rem; margin-bottom: 1rem;">AUTHENTICATED_USER: <span class="user-name">VISITOR</span></div>
+            <h1 class="neon-png">FUTURE<br>ICHTHYOID<br>HABITATION</h1>
+            <p>STABILIZING EMERGENT SPECIES FROM THE NEW RIVER BASIN. WE BRIDGE BIOLOGICAL INNOVATION WITH CONTROLLED AQUATIC ENVIRONMENTS.</p>
+        </div>
+        <div class="home-menu">
+            <h2 style="margin-top: 0;">SYSTEM_MENU</h2>
+            <a href="store.html" class="nav-btn">01_STORE_INTERFACE</a>
+            <a href="about.html" class="nav-btn">02_MISSION_PROTOCOL</a>
+            <a href="chat.html" class="nav-btn purple">03_CHAT_ASSISTANT</a>
+        </div>
+    </div>
+    <script>
+        const user = (sessionStorage.getItem("fihUser") || "visitor").toUpperCase();
+        document.getElementById('user-display').innerText = user;
+        document.querySelector('.user-name').innerText = user;
+    </script>
+</body>
+</html>

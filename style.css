@@ -1,0 +1,718 @@
+/* ==========================================================================
+   1. BASE RESET & FONTS
+   ========================================================================== */
+   @font-face {
+    font-family: "Positive System";
+    src: url("fonts/PositiveSystem.woff2") format("woff2"),
+         url("fonts/PositiveSystem.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.rubik-microbe-regular {
+    font-family: "Rubik Microbe", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.argent-pixel {
+    font-family: "argent-pixel-cf", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.argent-pixel-italic {
+    font-family: "argent-pixel-cf", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family:"scandia-line-web-med";
+    src:url("https://use.typekit.net/af/9ed838/00000000000000007735db08/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/9ed838/00000000000000007735db08/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/9ed838/00000000000000007735db08/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-line-web";
+    src:url("https://use.typekit.net/af/7c8396/00000000000000007735db06/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/7c8396/00000000000000007735db06/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/7c8396/00000000000000007735db06/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-line-web";
+    src:url("https://use.typekit.net/af/5daa3e/00000000000000007735db09/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/5daa3e/00000000000000007735db09/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/5daa3e/00000000000000007735db09/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-web";
+    src:url("https://use.typekit.net/af/04b7f1/00000000000000007735dd24/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/04b7f1/00000000000000007735dd24/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/04b7f1/00000000000000007735dd24/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-web";
+    src:url("https://use.typekit.net/af/305e65/00000000000000007735f526/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/305e65/00000000000000007735f526/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/305e65/00000000000000007735f526/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-web";
+    src:url("https://use.typekit.net/af/552ea1/00000000000000007735f52b/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/552ea1/00000000000000007735f52b/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/552ea1/00000000000000007735f52b/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"scandia-web";
+    src:url("https://use.typekit.net/af/a5776e/00000000000000007735f52a/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/a5776e/00000000000000007735f52a/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/a5776e/00000000000000007735f52a/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+    font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"cofo-sans-pixel";
+    src:url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/5e0ca9/000000000000000077572fbf/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@import url("https://p.typekit.net/p.css?s=1&k=ebe0xbp&ht=tk&f=39494.39495.39500.39501.39504.39505.39508.39509.58279.59172.59173&a=117800583&app=typekit&e=css");
+
+@font-face {
+    font-family:"neue-haas-grotesk-display";
+    src:url("https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/2724c2/00000000000000007735bb48/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-display";
+    src:url("https://use.typekit.net/af/32e980/00000000000000007735bb53/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/32e980/00000000000000007735bb53/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/32e980/00000000000000007735bb53/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+    font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-display";
+    src:url("https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/216c2e/00000000000000007735bb6a/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-display";
+    src:url("https://use.typekit.net/af/a311fa/00000000000000007735bb6c/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/a311fa/00000000000000007735bb6c/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/a311fa/00000000000000007735bb6c/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+    font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-text";
+    src:url("https://use.typekit.net/af/912d1e/00000000000000007735bb33/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/912d1e/00000000000000007735bb33/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/912d1e/00000000000000007735bb33/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-text";
+    src:url("https://use.typekit.net/af/68dda9/00000000000000007735bb35/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff2"),url("https://use.typekit.net/af/68dda9/00000000000000007735bb35/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("woff"),url("https://use.typekit.net/af/68dda9/00000000000000007735bb35/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3") format("opentype");
+    font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-text";
+    src:url("https://use.typekit.net/af/2288cb/00000000000000007735bb39/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/2288cb/00000000000000007735bb39/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/2288cb/00000000000000007735bb39/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"neue-haas-grotesk-text";
+    src:url("https://use.typekit.net/af/71e50e/00000000000000007735bb3d/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff2"),url("https://use.typekit.net/af/71e50e/00000000000000007735bb3d/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("woff"),url("https://use.typekit.net/af/71e50e/00000000000000007735bb3d/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3") format("opentype");
+    font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+    font-family:"lingua";
+    src:url("https://use.typekit.net/af/079f8e/00000000000000007735eecd/31/l?subset_id=2&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/079f8e/00000000000000007735eecd/31/d?subset_id=2&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/079f8e/00000000000000007735eecd/31/a?subset_id=2&fvd=n3&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+    
+@font-face {
+    font-family:"lingua-r";
+    src:url("https://use.typekit.net/af/d15af9/00000000000000007735eece/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/d15af9/00000000000000007735eece/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/d15af9/00000000000000007735eece/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    cursor: url("images/cursor.png"), default;
+}
+
+body {
+    position: relative;
+    font-family: "scandia-line-web", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    height: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    z-index: -99;
+    pointer-events: none;
+    background: url("items/gradient-background.gif") center/cover no-repeat;
+    filter: blur(20px) brightness(1.3);
+    opacity: 0.2; 
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   2. MAIN LAYOUT SYSTEM
+   ========================================================================== */
+   .page-grid {
+    display: grid;
+    grid-template-columns: 3.5fr 2fr;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-pane {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    min-width: 0;
+    /* background-color: red; */
+    padding-right: 0.5rem;
+    overflow: scroll;
+}
+
+.right-pane {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    min-width: 0;
+    /* background-color: pink; */
+    padding-left: 0.5rem;
+
+    
+    /* 💡 THE CENTER SPACING FIX: 
+       Zero out the left side padding so it tucks perfectly into the grid column channel */
+}
+
+.left-pane::-webkit-scrollbar,
+.right-pane::-webkit-scrollbar {
+    display: none;
+}
+
+.left-pane,
+.right-pane {
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-bottom: 3rem; /* add this */
+
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY & INTERNALS
+   ========================================================================== */
+.header-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    perspective: 1000px; 
+}
+
+/* 💡 DYNAMIC FLUID FONTS: Stops title from expanding container grid sizes */
+.large-number {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+}
+
+.massive-title {
+    font-size: clamp(2rem, 7vw, 6rem); 
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    word-break: break-word;
+}
+
+.intro-text-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    font-size: .75rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.meta-label {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.internal-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.internal-grid div {
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.65rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+.project-footer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    font-size: 0.65rem;
+    color: #666;
+}
+
+.footer-text-block p {
+    margin-bottom: 1rem;
+    text-indent: 2rem;
+}
+
+/* ==========================================================================
+   4. RESUME STYLES (RIGHT PANE)
+   ========================================================================== */
+.resume-block {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-left: none;
+}
+
+.section-title {
+    font-size: .9rem;
+    font-weight: normal;
+    flex: 0 0 40%; 
+    color: #333;
+    text-align: left;
+}
+
+.section-content {
+    flex: 1; 
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    margin-left: 2.5rem;
+}
+
+.section-content p {
+    margin-bottom: 1rem;
+}
+
+.resume-item {
+    margin-bottom: 1.8rem;
+}
+
+.resume-description {
+    font-size: 0.76rem;
+    line-height: 1;
+    color: #666;
+    margin-top: 0.4rem;
+}
+
+.links {
+    margin-top: 1rem;
+}
+
+.links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    text-decoration: underline;
+    cursor: url("images/cursor2.png"), default;
+
+}
+
+.links a:hover {
+    color: #acbed1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #323232;
+    margin: 2rem 0;
+}
+
+.right-pane hr {
+    border: 0;
+    border-top: 1px solid #323232;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.scroll-spacer {
+    height: 40vh;
+}
+
+b {
+    color: #acbed1;
+}
+
+.pixel_mama {
+    font-family: "cofo-sans-pixel", sans-serif !important;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   5. PROJECT VIEWPORTS & RESPONSIVE WORK STYLES
+   ========================================================================== */
+.project-block {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.project-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.project-header h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: #acbed1;
+}
+
+.project-header p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: .25rem;
+}
+
+.project-description-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* DESCRIPTION */
+
+.project-description {
+    font-size: 0.9rem;
+    line-height: 1.25;
+    /* padding-left: 0.5rem; */
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    padding-bottom: 1rem;
+}
+
+.main-image img {
+    width: 100%;
+    max-height: 60vh;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+/* LARGE IMAGE */
+
+.main-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #323232;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    /* padding: 0.25rem; */
+    box-sizing: border-box;
+}
+
+/* THUMBNAILS */
+
+.condensed-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    padding-right: .5rem;
+    align-content: start;
+}
+
+.condensed-thumbnails .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    box-sizing: border-box;
+    border: 1px solid #323232;
+    cursor: url("images/cursor2.png");
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+
+}
+
+.condensed-thumbnails .thumb img {
+    width: 100%;
+    height: 100%;
+
+    /* show entire image */
+    object-fit: contain;
+    object-position: center;
+
+    display: block;
+    padding: 0.25rem;
+    box-sizing: border-box;
+
+}
+
+.condensed-thumbnails .thumb.active {
+    outline: 2px solid #acbed1;
+    outline-offset: -2px;
+    
+}
+
+.condensed-thumbnails .thumb:hover {
+    border-color: #acbed1;
+    
+}
+
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINT (BULLETPROOF VIEWPORT RESTACK)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .page-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .left-pane, .right-pane {
+        grid-column: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin-left: 0 !important;
+        padding: 2rem !important;
+    }
+    
+    .right-pane {
+        border-top: 1px solid #1a1a1a;
+    }
+}
+
+.main-image-placeholder.gallery {
+    cursor: url("images/cursor2.png"), default;
+}
+
+.filter-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.filter {
+    border: 1px solid #323232;
+    padding: 1rem;
+    cursor: url("images/cursor2.png"), default;
+    transition: 0.2s ease;
+}
+
+.filter:hover {
+    border-color: #acbed1;
+    transform: translateY(-2px);
+}
+
+.filter.active {
+    background: #f4f4f4;
+    border-color: #acbed1;
+}
+
+.intro-col.active {
+    border: 1px solid #000;
+    background: rgba(0,0,0,0.03);
+    transition: all 0.2s ease;
+}
+
+.left-pane {
+  position: relative;
+  z-index: 1;
+}
+
+/* fixed background that only lives behind the left pane */
+.left-pane-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;          /* if your left pane is half the screen */
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+
+  --fade: 0;
+}
+
+/* both image layers */
+.left-pane-bg::before,
+.left-pane-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/* blue image */
+.left-pane-bg::before {
+  background-image: url("/items/rayablue.png");
+  opacity: calc(1 - var(--fade));
+}
+
+/* white image */
+.left-pane-bg::after {
+  background-image: url("/items/rayawhite.png");
+  opacity: var(--fade);
+}
+
+/* keep content above bg */
+.left-pane > *:not(.left-pane-bg) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   VIDEO DISPLAY & ZOOM FIXES
+   ========================================================================== */
+
+/* Force the video to perfectly match the 16:9 container dimensions */
+/* Lock the main video to its container without stretching or overflowing */
+.main-image-placeholder video.main-display {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important; 
+}
+
+/* Keep the thumbnail video perfectly squared up */
+.condensed-thumbnails video.thumb {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 3. Handle the thumbnail wrapper behavior cleanly for both img and video */
+.condensed-thumbnails .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border: 1px solid #323232;
+    cursor: url("images/cursor2.png"), default;
+    overflow: hidden; /* Cleans up loose edges */
+    background: #ffffff; /* Gives videos the same default canvas backing as images */
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Centers the button container horizontally on the page */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px; /* Adjust spacing from the top as needed */
+  }
+  
+  /* Styles the link to look and feel like a button */
+  .resume-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #acbed1;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  
+  /* Adds a subtle color change when hovered */
+  .resume-button:hover {
+    background-color: #acbed181;
+  }
+  
+  /* Adds a click effect */
+  .resume-button:active {
+    transform: scale(0.98);
+  }
+  
+  #dynamic-word {
+    display: inline-flex;
+    white-space: nowrap;
+    position: relative;
+}
+
+#dynamic-word .char {
+    display: inline-block;
+    transition:
+        transform 550ms cubic-bezier(.22,1,.36,1),
+        opacity 550ms cubic-bezier(.22,1,.36,1);
+    will-change: transform, opacity;
+}
+
+#dynamic-word .old {
+    transform: translateY(-120%);
+    opacity: 0;
+}
+
+#dynamic-word .new {
+    transform: translateY(120%);
+    opacity: 0;
+}
+
+#dynamic-word .new.show {
+    transform: translateY(0);
+    opacity: 1;
+}

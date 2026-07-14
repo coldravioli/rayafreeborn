@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color:greem;
+}
